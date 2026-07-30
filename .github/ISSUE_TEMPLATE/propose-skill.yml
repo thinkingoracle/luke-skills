@@ -1,0 +1,165 @@
+name: Propose a Luke skill
+description: Propose an inert, read-only Luke schema-v1 skill for maintainer review
+title: "[skill proposal] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for proposing a Luke skill.
+
+        This issue is editable public intake evidence only. It can record proposed
+        bytes, but it cannot land or publish catalog content or make a skill
+        trusted or active. If the proposal is eligible,
+        a maintainer performs the only source review in the maintained Luke source.
+        Maintainers post status and decisions as comments here; contributors do
+        not need access to the maintainer source repository.
+
+        Catalog V1 accepts one inert UTF-8 `SKILL.md`, Luke schema version 1,
+        public read-only access, and the required routing, failure, and redaction
+        evaluation evidence. Do not include secrets, credentials, private data,
+        browser sessions, or vulnerability details.
+
+        Paste both complete files into their rendered source fields below. Use
+        UTF-8, LF line endings, and exactly one final newline. Optional immutable
+        public links may supplement, but never replace, the inline files. A
+        maintainer posts the canonical diff and SHA-256 values here for contributor
+        confirmation before the bytes enter source review.
+
+        This issue remains editable status context. If exact bytes are later
+        released, the public payload includes a review record keyed by skill,
+        version, and content hash. Neither this issue nor that record grants trust.
+
+  - type: input
+    id: skill-name
+    attributes:
+      label: Proposed skill name and ID
+      description: Give the human-readable name and a new, stable Luke skill ID.
+      placeholder: "Example: City library events reader, browser-skill:city-library-events-read"
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-need
+    attributes:
+      label: User and need
+      description: Who needs this skill, what are they trying to do, and why is the result useful?
+      placeholder: Describe one concrete user journey from request to useful result.
+    validations:
+      required: true
+
+  - type: input
+    id: public-hosts
+    attributes:
+      label: Public hosts
+      description: List every exact public host the skill reads. Do not include private, loopback, local-file, or credential-bearing URLs.
+      placeholder: "Example: status.example.com"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: authentication-boundary
+    attributes:
+      label: Authentication boundary
+      description: V1 is eligible only when no login, credential, browser session, or private account data is required.
+      options:
+        - No authentication or credentials are required
+        - Authentication or credentials are required, so this is outside V1
+    validations:
+      required: true
+
+  - type: textarea
+    id: data-boundary
+    attributes:
+      label: Data boundary
+      description: State exactly what public data the skill reads, what it must not read, and any sensitivity or redaction concerns.
+      placeholder: "Reads: ...\nNever reads: ...\nRedacts: ..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mutation-boundary
+    attributes:
+      label: Mutation boundary
+      description: V1 cannot send, purchase, edit, upload, delete, install, or otherwise change an external system.
+      options:
+        - Read-only, with no external mutation
+        - External mutation is required, so this is outside V1
+    validations:
+      required: true
+
+  - type: textarea
+    id: behavior-and-result
+    attributes:
+      label: Expected behavior and result
+      description: Describe the steps, successful result, where the result lands, and safe failure behavior.
+      placeholder: "Steps: ...\nSuccess: ...\nLands in: ...\nFailure behavior: ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Realistic examples
+      description: Give at least one request that should route to the skill and one similar request that should not.
+      placeholder: "Should route: ...\nShould not route: ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: skill-source
+    attributes:
+      label: skills/<slug>/SKILL.md
+      description: Paste the complete creator-produced SKILL.md inline. A public immutable link may supplement this field but does not replace it.
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: evaluation-source
+    attributes:
+      label: evals/<slug>.json
+      description: Paste the complete matching positive-routing, negative-routing, failure, and redaction evaluation fixture inline. A public immutable link may supplement this field but does not replace it.
+      render: json
+    validations:
+      required: true
+
+  - type: textarea
+    id: evaluation-evidence
+    attributes:
+      label: Evaluation evidence
+      description: Summarize the local validation and evaluation results, including any known limitation. Use the creator and validator documentation for the shipped commands.
+      placeholder: Name the checks run and their results without including private data.
+    validations:
+      required: true
+
+  - type: textarea
+    id: provenance
+    attributes:
+      label: Provenance
+      description: Identify who authored the proposed material, its source, and any third-party content or adaptation.
+      placeholder: Include stable source links and explain what is original or adapted.
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License and notices
+      description: State the license and link or attach every required copyright, attribution, or NOTICE record. Terms must be Apache-2.0-compatible.
+      placeholder: "Example: Apache-2.0, original work by ..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Contributor attestations
+      options:
+        - label: I have the right to submit this material under Apache-2.0-compatible terms and included all required notices.
+          required: true
+        - label: I included no secret, credential, private user data, copied browser session, or undisclosed vulnerability detail.
+          required: true
+        - label: I understand this issue is proposal intake only and cannot review, accept, publish, install, or activate the skill.
+          required: true
+        - label: I understand maintainers control the only source-review lifecycle, public status stays on this issue, and each user separately trusts the exact content hash.
+          required: true

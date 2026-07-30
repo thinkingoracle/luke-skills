@@ -1,0 +1,253 @@
+{
+  "$defs": {
+    "catalog_entry": {
+      "additionalProperties": false,
+      "properties": {
+        "auth_required": {
+          "type": "boolean"
+        },
+        "capability_targets": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "catalog_role": {
+          "enum": [
+            "bundled_mirror",
+            "new_id_pilot",
+            "community"
+          ]
+        },
+        "content_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "deprecated": {
+          "type": "boolean"
+        },
+        "distribution_origin": {
+          "const": "optional"
+        },
+        "distribution_source_id": {
+          "const": "thinkingoracle-curated"
+        },
+        "hosts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "install_state": {
+          "enum": [
+            "available",
+            "held"
+          ]
+        },
+        "luke_2_0_import": {
+          "enum": [
+            "eligible_new_id",
+            "not_eligible_bundled_id"
+          ]
+        },
+        "min_luke_version": {
+          "$ref": "#/$defs/semver"
+        },
+        "mutation_boundaries": {
+          "items": {
+            "const": "read_only"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "name": {
+          "$ref": "#/$defs/slug"
+        },
+        "platforms": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "prerequisite_commands": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "proposal_url": {
+          "anyOf": [
+            {
+              "pattern": "^https://github\\.com/thinkingoracle/luke-skills/issues/[1-9][0-9]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "related_skills": {
+          "items": {
+            "$ref": "#/$defs/skill_id"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "replaced_by": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/skill_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "review_decision": {
+          "const": "accepted_candidate"
+        },
+        "review_record_url": {
+          "pattern": "^https://raw\\.githubusercontent\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/[0-9a-f]{40}/review-records/[a-z0-9]+(?:-[a-z0-9]+)*/(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)/[0-9a-f]{64}\\.md$",
+          "type": "string"
+        },
+        "revoked_hashes": {
+          "items": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "schema_version": {
+          "const": 1
+        },
+        "skill_id": {
+          "$ref": "#/$defs/skill_id"
+        },
+        "source_path": {
+          "pattern": "^skills/[a-z0-9]+(?:-[a-z0-9]+)*/SKILL\\.md$",
+          "type": "string"
+        },
+        "source_url": {
+          "pattern": "^https://raw\\.githubusercontent\\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/[0-9a-f]{40}/skills/[a-z0-9]+(?:-[a-z0-9]+)*/SKILL\\.md$",
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "trust_state": {
+          "const": "needs_review"
+        },
+        "trust_tier": {
+          "const": "curated"
+        },
+        "validation_status": {
+          "const": "validated"
+        },
+        "validation_checks": {
+          "items": {
+            "enum": [
+              "catalog_schema_v1",
+              "read_only_public_boundary",
+              "routing_failure_redaction_cases",
+              "source_security_profile_luke_skill_unicode_v1"
+            ]
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "version": {
+          "$ref": "#/$defs/semver"
+        }
+      },
+      "required": [
+        "auth_required",
+        "capability_targets",
+        "catalog_role",
+        "content_sha256",
+        "deprecated",
+        "distribution_origin",
+        "distribution_source_id",
+        "hosts",
+        "install_state",
+        "luke_2_0_import",
+        "min_luke_version",
+        "mutation_boundaries",
+        "name",
+        "platforms",
+        "prerequisite_commands",
+        "proposal_url",
+        "related_skills",
+        "replaced_by",
+        "review_decision",
+        "review_record_url",
+        "revoked_hashes",
+        "schema_version",
+        "skill_id",
+        "source_path",
+        "source_url",
+        "tags",
+        "trust_state",
+        "trust_tier",
+        "validation_checks",
+        "validation_status",
+        "version"
+      ],
+      "type": "object"
+    },
+    "semver": {
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$",
+      "type": "string"
+    },
+    "skill_id": {
+      "pattern": "^browser-skill:[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    },
+    "slug": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "type": "string"
+    }
+  },
+  "$id": "https://thinkingoracle.github.io/luke-skills/catalog/schema-v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "source_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "source_repository": {
+      "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$",
+      "type": "string"
+    },
+    "skills": {
+      "items": {
+        "$ref": "#/$defs/catalog_entry"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_commit",
+    "source_repository",
+    "skills"
+  ],
+  "title": "Luke curated skills catalog index",
+  "type": "object"
+}

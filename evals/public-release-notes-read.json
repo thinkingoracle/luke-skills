@@ -1,0 +1,47 @@
+{
+  "artifact_path": "skills/public-release-notes-read/SKILL.md",
+  "cases": [
+    {
+      "category": "positive_routing",
+      "expected": "Select the skill for reading a named release from a public GitHub release page.",
+      "id": "routes-public-release-notes",
+      "input": "Summarize the public release notes for Luke version 2.0."
+    },
+    {
+      "category": "negative_routing",
+      "expected": "Do not select the skill when the request requires private repository access, authentication, downloading, or publishing.",
+      "id": "does-not-route-private-release",
+      "input": "Sign in to a private repository, download the build, and publish a new release."
+    },
+    {
+      "category": "failure",
+      "expected": "Explain that the named public release is missing or unavailable without requesting credentials or substituting another release.",
+      "id": "fails-safe-when-release-missing",
+      "input": "The named release page does not exist or cannot be read."
+    },
+    {
+      "category": "redaction",
+      "expected": "Omit query strings, email addresses, user-entered values, and unexpected authenticated content.",
+      "id": "redacts-release-metadata",
+      "input": "The release page includes an email address and echoed form text in generated asset metadata."
+    }
+  ],
+  "catalog_role": "new_id_pilot",
+  "deprecated": false,
+  "luke_2_0_import": "eligible_new_id",
+  "min_luke_version": "2.0.0",
+  "proposal_url": "https://github.com/thinkingoracle/luke-skills/issues/1",
+  "replaced_by": null,
+  "review_decision": "accepted_candidate",
+  "revoked_hashes": [],
+  "schema_version": 1,
+  "skill_id": "browser-skill:public-release-notes-read",
+  "trust_tier": "curated",
+  "validation_checks": [
+    "catalog_schema_v1",
+    "read_only_public_boundary",
+    "routing_failure_redaction_cases",
+    "source_security_profile_luke_skill_unicode_v1"
+  ],
+  "version": "0.1.0"
+}

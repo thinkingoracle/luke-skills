@@ -1,0 +1,89 @@
+name: Verify Luke catalog deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-luke-catalog-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  reject-public-source-pr:
+    name: Reject public source pull requests
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Keep proposal intake separate from source review
+        shell: bash
+        run: |
+          echo "::error::This repository accepts proposal issues only. It is a published mirror, so catalog source review does not happen here and pull requests against it are closed unread. Open a proposal issue instead."
+          exit 1
+
+  # The proof a reader of this repository can reproduce. It reads nothing but
+  # this repository, needs no network once the refs are fetched, and does not
+  # depend on the private-source comparison below succeeding or even running.
+  verify-structure:
+    name: Verify the released commit pair
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out this repository with its tags
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Prove the payload and descriptor commits offline
+        shell: bash
+        run: >-
+          python3 scripts/verify_release.py
+          structure
+          --repository-root .
+          --expect-head '${{ github.sha }}'
+
+  # A separate gate because it proves a different thing and fails for a
+  # different reason: an outage here must not read as a broken release, and a
+  # contradicted release must not read as an outage.
+  verify-release-evidence:
+    name: Verify the immutable public release
+    if: github.event_name == 'push'
+    needs: verify-structure
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out this repository with its tags
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Prove a published immutable release pins this commit
+        shell: bash
+        run: >-
+          python3 scripts/verify_release.py
+          release
+          --repository-root .
