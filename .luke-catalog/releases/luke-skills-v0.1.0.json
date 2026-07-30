@@ -1,0 +1,39 @@
+{
+  "descriptor_paths": [
+    "catalog/index.json"
+  ],
+  "descriptor_sha256": "3b88c3de8663425ba2b87069ec204ead91234470da765937d186ba1a96157556",
+  "manifest_sha256": "bac93ab98483feed08c890b7b45dbf53a1de0a644309dba95e476bbf17986bc7",
+  "payload_commit": "1dafa4126b942235c1f1fafd87c506265f3d18f1",
+  "payload_path_sha256": {
+    ".github/ISSUE_TEMPLATE/propose-skill.yml": "acc944c5548330358cd150580dd57d6efad29847a20d3b2f1e9a014109dc4255",
+    ".github/workflows/verify_deploy.yml": "6a17ec6d8246405adf5b9919910037f5f65e1fe12881090a882eab061d94f394",
+    "CONTRIBUTING.md": "535893994287c9272a65b5dd38dc2b9711c0a35b7553a9f563b8dd2dbeb9e00b",
+    "LICENSE": "7d3de1094d94d8329a2ed2c29b0b2af44ef1a88ff78e2e0e41eb9912321d1f5d",
+    "README.md": "ef8c0df006ee79447cd22cab14a01d7e22a9f35c0e3b3fa3856554ffcd61af8f",
+    "SECURITY.md": "fb0ee493d64e895432ed070f9bae510cfbe1092069d94cac87ef0969c7a424da",
+    "TRUST.md": "daeca7dac1a9ea1cc9c0988c252faa645f63f19dc936124df821793617ec7247",
+    "catalog/schema.json": "81a60c896c9d7e1865f9ab43beb37a2255a8ef4a61349c3a71aa0d1c28e8269e",
+    "creator/create-luke-skill/SKILL.md": "25857d962dd6f95009d664a09c81cbb55a0ac82ce5a7e08b14fe4538dcb8fcdb",
+    "creator/create-luke-skill/references/luke-schema-v1.md": "f1357aa8cfda4bd8eb011b960f37b4e980a757904b803d4fcf37dda5ff5db694",
+    "creator/create-luke-skill/scripts/new_skill.py": "31c88577d8de4d3fd23f0028a12e0f96c993d236d393c34873464e11161c691c",
+    "creator/create-luke-skill/scripts/validate.py": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3",
+    "evals/public-release-notes-read.json": "71951b71f825c5ae761bb4565a8683561537413c79d94762e290a84b4cd3dc69",
+    "review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md": "2d93f0b3eb687dcec17d5213586b26678c35fb2c72ff392753eb4e703f343ef4",
+    "scripts/build_catalog.py": "eeff161280611f7bb0a1e3f3640a027c29beb9c35eb4fef6c7612e4ad22c6bfc",
+    "scripts/catalog_tooling.py": "6ea7b6532c6fe18c38e480a5540872e16cc783c890da942f9f9366b123b856b0",
+    "scripts/unicode_security.py": "81a7e1f1134f9363bbf5c57066f54871da3eff763f9ea8901ba55deb4f318b56",
+    "scripts/validate_catalog.py": "0b58bbf544d85eeb44900974b789549302d5db28be566297e6c14c9e42cdb8ea",
+    "scripts/verify_release.py": "c3b692fb3604d9288f90bf331e32cf72e53400dee898d2fc48e5c45ec50463c3",
+    "skills/public-release-notes-read/SKILL.md": "ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c"
+  },
+  "payload_sha256": "694cdb6c3bb1e638fcb80308b85e40292281c57d487ffe9f9f3435e34bdad836",
+  "previous_ledger_sha256": null,
+  "previous_release_tag": null,
+  "public_repository": "thinkingoracle/luke-skills",
+  "release_tag": "luke-skills-v0.1.0",
+  "schema_version": 2,
+  "source_commit": "15fae8ddc9003d1e9d75914d328d37b4b6b5413b",
+  "source_tree": "83e985a74b4704241328e01274e5aa6fb15f9ff9",
+  "version": "0.1.0"
+}

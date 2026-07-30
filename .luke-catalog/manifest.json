@@ -1,0 +1,29 @@
+{
+  "descriptor_paths": [
+    "catalog/index.json"
+  ],
+  "paths": [
+    ".github/ISSUE_TEMPLATE/propose-skill.yml",
+    ".github/workflows/verify_deploy.yml",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "TRUST.md",
+    "catalog/index.json",
+    "catalog/schema.json",
+    "creator/create-luke-skill/SKILL.md",
+    "creator/create-luke-skill/references/luke-schema-v1.md",
+    "creator/create-luke-skill/scripts/new_skill.py",
+    "creator/create-luke-skill/scripts/validate.py",
+    "evals/public-release-notes-read.json",
+    "review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md",
+    "scripts/build_catalog.py",
+    "scripts/catalog_tooling.py",
+    "scripts/unicode_security.py",
+    "scripts/validate_catalog.py",
+    "scripts/verify_release.py",
+    "skills/public-release-notes-read/SKILL.md"
+  ],
+  "schema_version": 2
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "skills": [
+    {
+      "auth_required": false,
+      "capability_targets": [
+        "fetch_url"
+      ],
+      "catalog_role": "new_id_pilot",
+      "content_sha256": "ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c",
+      "deprecated": false,
+      "distribution_origin": "optional",
+      "distribution_source_id": "thinkingoracle-curated",
+      "hosts": [
+        "github.com"
+      ],
+      "install_state": "held",
+      "luke_2_0_import": "eligible_new_id",
+      "min_luke_version": "2.0.0",
+      "mutation_boundaries": [
+        "read_only"
+      ],
+      "name": "public-release-notes-read",
+      "platforms": [
+        "macos"
+      ],
+      "prerequisite_commands": [],
+      "proposal_url": "https://github.com/thinkingoracle/luke-skills/issues/1",
+      "related_skills": [
+        "browser-skill:github-public-pr-read"
+      ],
+      "replaced_by": null,
+      "review_decision": "accepted_candidate",
+      "review_record_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/1dafa4126b942235c1f1fafd87c506265f3d18f1/review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md",
+      "revoked_hashes": [],
+      "schema_version": 1,
+      "skill_id": "browser-skill:public-release-notes-read",
+      "source_path": "skills/public-release-notes-read/SKILL.md",
+      "source_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/1dafa4126b942235c1f1fafd87c506265f3d18f1/skills/public-release-notes-read/SKILL.md",
+      "tags": [
+        "changelog",
+        "github",
+        "read-only",
+        "releases"
+      ],
+      "trust_state": "needs_review",
+      "trust_tier": "curated",
+      "validation_checks": [
+        "catalog_schema_v1",
+        "read_only_public_boundary",
+        "routing_failure_redaction_cases",
+        "source_security_profile_luke_skill_unicode_v1"
+      ],
+      "validation_status": "validated",
+      "version": "0.1.0"
+    }
+  ],
+  "source_commit": "1dafa4126b942235c1f1fafd87c506265f3d18f1",
+  "source_repository": "thinkingoracle/luke-skills"
+}
