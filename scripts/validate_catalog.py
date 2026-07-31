@@ -28,7 +28,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--check-index",
         action="store_true",
-        help="Also regenerate twice and compare catalog/index.json.",
+        help=(
+            "Also regenerate twice, re-resolve available public evidence, "
+            "and compare catalog/index.json."
+        ),
     )
     parser.add_argument(
         "--index",

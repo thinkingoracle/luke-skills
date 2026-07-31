@@ -11,7 +11,9 @@ import stat
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Iterable
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
+from urllib.request import Request, urlopen
 
 # Source-byte admission is a hard dependency, not an optional enhancement. If
 # the profile module is missing this import fails and no catalog tooling runs,
@@ -81,6 +83,8 @@ ALLOWED_CAPABILITY_TARGETS = frozenset(
     }
 )
 MAX_SKILL_BYTES = 512 * 1024
+PUBLIC_EVIDENCE_HOSTS = frozenset({"github.com", "raw.githubusercontent.com"})
+PUBLIC_EVIDENCE_TIMEOUT_SECONDS = 10
 
 SECRET_PATTERNS = (
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
@@ -1732,12 +1736,51 @@ def generate_catalog_index(
     return generated
 
 
+def resolve_public_evidence_anonymously(url: str) -> bool:
+    """Return whether one catalog evidence URL resolves without credentials."""
+
+    parsed = urlparse(url)
+    if (
+        parsed.scheme != "https"
+        or parsed.hostname not in PUBLIC_EVIDENCE_HOSTS
+        or parsed.username is not None
+        or parsed.password is not None
+    ):
+        return False
+    request = Request(
+        url,
+        method="HEAD",
+        headers={
+            "Accept": "text/html,application/json;q=0.9,*/*;q=0.8",
+            "User-Agent": "LukeCatalogBuilder/1",
+        },
+    )
+    try:
+        with urlopen(request, timeout=PUBLIC_EVIDENCE_TIMEOUT_SECONDS) as response:
+            final_url = urlparse(response.geturl())
+            return (
+                response.status == 200
+                and final_url.scheme == "https"
+                and final_url.hostname in PUBLIC_EVIDENCE_HOSTS
+                and final_url.username is None
+                and final_url.password is None
+            )
+    except (HTTPError, URLError, TimeoutError, ValueError):
+        return False
+
+
 def render_catalog_index(index: dict[str, Any]) -> bytes:
     return (json.dumps(index, indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
 def check_catalog_index(
-    catalog_root: Path | str, index_path: Path | str
+    catalog_root: Path | str,
+    index_path: Path | str,
+    *,
+    expected_install_state: str | None = None,
+    public_evidence_resolver: Callable[[str], bool] | None = (
+        resolve_public_evidence_anonymously
+    ),
 ) -> dict[str, Any]:
     """Regenerate twice, reject nondeterminism, and compare checked-in bytes."""
 
@@ -1760,15 +1803,32 @@ def check_catalog_index(
         for entry in baseline.get("skills", [])
         if isinstance(entry, dict)
     }
-    if install_states != {"held"}:
+    if len(install_states) != 1 or not install_states <= {"held", "available"}:
         raise CatalogValidationError(
             [
                 Diagnostic(
                     "CATALOG_INDEX_INVALID",
                     index_file.as_posix(),
                     (
-                        "checked-in source candidate must remain held; only the "
-                        "governed publisher may produce an available descriptor"
+                        "checked-in entries must use one homogeneous supported "
+                        "install_state"
+                    ),
+                )
+            ]
+        )
+    install_state = next(iter(install_states))
+    if (
+        expected_install_state is not None
+        and install_state != expected_install_state
+    ):
+        raise CatalogValidationError(
+            [
+                Diagnostic(
+                    "CATALOG_INDEX_INVALID",
+                    index_file.as_posix(),
+                    (
+                        f"checked-in install_state is {install_state}, expected "
+                        f"{expected_install_state}"
                     ),
                 )
             ]
@@ -1778,14 +1838,16 @@ def check_catalog_index(
         source_repository=source_repository,
         source_commit=source_commit,
         baseline_index_path=index_file,
-        install_state="held",
+        install_state=install_state,
+        public_evidence_resolver=public_evidence_resolver,
     )
     second = generate_catalog_index(
         catalog_root,
         source_repository=source_repository,
         source_commit=source_commit,
         baseline_index_path=index_file,
-        install_state="held",
+        install_state=install_state,
+        public_evidence_resolver=public_evidence_resolver,
     )
     first_bytes = render_catalog_index(first)
     second_bytes = render_catalog_index(second)

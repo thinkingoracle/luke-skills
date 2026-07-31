@@ -230,9 +230,11 @@ active. Each Luke user reviews and trusts the exact
 `{skill_id, content_sha256}` pair locally. Changed bytes receive a new hash and
 never inherit an earlier decision.
 
-The source candidate descriptor remains `install_state: held`. The governed
-publisher may produce `install_state: available` only after anonymous checks
+The source candidate descriptor remains `install_state: held` until a
+maintainer explicitly regenerates it as `available` after anonymous checks
 resolve both the public proposal and the exact commit-pinned review record.
+That reviewed source change is only release-eligible. A later governed release
+must still select and publish it before Luke can discover the exact bytes.
 `validation_status: validated` means only that the exact bytes passed the
 named bounded validators. `trust_state: needs_review` is Luke's local posture,
 not a maintainer verdict or a trust grant.

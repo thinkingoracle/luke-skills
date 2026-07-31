@@ -107,10 +107,11 @@ release includes a public review record keyed by skill, version, and exact
 content hash. That record names the public proposal, bounded checks, and
 disposition without granting trust. The current
 [`public-release-notes-read` candidate record](review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md)
-truthfully records that no public proposal or governed publication exists for
-that candidate. The record remains presentation only until separately
-authorized catalog-authority work binds public records into descriptor
-metadata.
+binds the public proposal, bounded checks, decision, and exact content hash.
+The first governed release published that revision as `held`, so it remained
+undiscoverable and un-installable. A later reviewed source change and higher
+governed release may promote the descriptor to `available` only after both
+public evidence links resolve anonymously.
 
 ## Security and conduct readiness
 

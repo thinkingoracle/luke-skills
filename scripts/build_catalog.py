@@ -13,6 +13,7 @@ from catalog_tooling import (
     check_catalog_index,
     generate_catalog_index,
     render_catalog_index,
+    resolve_public_evidence_anonymously,
 )
 
 
@@ -44,6 +45,14 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional prior index used to reject same-version content drift.",
     )
     parser.add_argument(
+        "--install-state",
+        choices=("held", "available"),
+        help=(
+            "Descriptor install state (default when writing: held). Available "
+            "requires anonymous proposal and review-record resolution."
+        ),
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="Regenerate twice and compare with the checked-in output.",
@@ -56,7 +65,11 @@ def main(argv: list[str] | None = None) -> int:
     output = arguments.output or arguments.catalog_root / "catalog" / "index.json"
     try:
         if arguments.check:
-            check_catalog_index(arguments.catalog_root, output)
+            check_catalog_index(
+                arguments.catalog_root,
+                output,
+                expected_install_state=arguments.install_state,
+            )
             print(f"catalog index verified: {output}")
             return 0
         if not arguments.source_commit:
@@ -69,11 +82,18 @@ def main(argv: list[str] | None = None) -> int:
                     )
                 ]
             )
+        install_state = arguments.install_state or "held"
         generated = generate_catalog_index(
             arguments.catalog_root,
             source_repository=arguments.source_repository,
             source_commit=arguments.source_commit,
             baseline_index_path=arguments.baseline_index,
+            install_state=install_state,
+            public_evidence_resolver=(
+                resolve_public_evidence_anonymously
+                if install_state == "available"
+                else None
+            ),
         )
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_bytes(render_catalog_index(generated))
