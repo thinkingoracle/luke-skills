@@ -31,12 +31,12 @@
       ],
       "replaced_by": null,
       "review_decision": "accepted_candidate",
-      "review_record_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/9d811ae35c6f2450802e745d1aabd72e88b364b8/review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md",
+      "review_record_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/ed3a16e7d8a812a5e9c78d1a3cdb6fa3057f6451/review-records/public-release-notes-read/0.1.0/ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c.md",
       "revoked_hashes": [],
       "schema_version": 1,
       "skill_id": "browser-skill:public-release-notes-read",
       "source_path": "skills/public-release-notes-read/SKILL.md",
-      "source_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/9d811ae35c6f2450802e745d1aabd72e88b364b8/skills/public-release-notes-read/SKILL.md",
+      "source_url": "https://raw.githubusercontent.com/thinkingoracle/luke-skills/ed3a16e7d8a812a5e9c78d1a3cdb6fa3057f6451/skills/public-release-notes-read/SKILL.md",
       "tags": [
         "changelog",
         "github",
@@ -55,6 +55,6 @@
       "version": "0.1.0"
     }
   ],
-  "source_commit": "9d811ae35c6f2450802e745d1aabd72e88b364b8",
+  "source_commit": "ed3a16e7d8a812a5e9c78d1a3cdb6fa3057f6451",
   "source_repository": "thinkingoracle/luke-skills"
 }
