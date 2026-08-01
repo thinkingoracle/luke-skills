@@ -217,37 +217,182 @@ def _render_evaluation(arguments: argparse.Namespace) -> str:
     return json.dumps(evaluation, indent=2, sort_keys=True) + "\n"
 
 
+# Fields that must end up set, however they arrive. Kebab-case here because that
+# is what a contributor reads in CONTRIBUTING.md and in the flag interface.
+REQUIRED_ANSWER_FIELDS: tuple[str, ...] = (
+    "output-root",
+    "slug",
+    "description",
+    "host",
+    "data-read",
+    "result-lands-in",
+    "positive-example",
+    "negative-example",
+    "failure-example",
+    "redaction-example",
+)
+
+OPTIONAL_ANSWER_FIELDS: tuple[str, ...] = (
+    "capability-target",
+    "version",
+    "min-luke-version",
+    "auth-assumption",
+    "mutation-boundary",
+)
+
+# Applied after the answers merge, never at the parser. A parser default is
+# indistinguishable from an explicit flag, and treating one as the other is what
+# made supplied optional values disappear.
+OPTIONAL_DEFAULTS: dict[str, str] = {
+    "capability-target": "web_search",
+    "version": "0.1.0",
+    "min-luke-version": "2.0.0",
+    "auth-assumption": "none",
+    "mutation-boundary": "read_only",
+}
+
+
+def apply_answers(arguments: argparse.Namespace) -> None:
+    """Fill unset arguments from --answers, then enforce requiredness.
+
+    Composing ten exact flags is the single largest obstacle between an idea and
+    a validated bundle, and it is the step a coding agent is most likely to get
+    subtly wrong. One JSON file is something an agent can produce, a person can
+    read, and both can diff. The flag interface keeps working unchanged, so
+    nothing that already runs has to change.
+    """
+    supplied: dict[str, object] = {}
+    if arguments.answers is not None:
+        try:
+            decoded = json.loads(arguments.answers.read_text(encoding="utf-8"))
+        except (OSError, UnicodeDecodeError) as error:
+            raise CreatorError(
+                "CREATOR_ANSWERS_UNREADABLE",
+                f"could not read the answers file: {error}",
+            ) from error
+        except json.JSONDecodeError as error:
+            raise CreatorError(
+                "CREATOR_ANSWERS_INVALID",
+                f"the answers file is not valid JSON: {error}",
+            ) from error
+        if not isinstance(decoded, dict):
+            raise CreatorError(
+                "CREATOR_ANSWERS_INVALID",
+                "the answers file must contain a JSON object",
+            )
+        known = set(REQUIRED_ANSWER_FIELDS) | set(OPTIONAL_ANSWER_FIELDS)
+        # Fail on an unrecognised key rather than ignoring it. A typo that is
+        # silently dropped produces a bundle that is wrong in a way nobody sees.
+        unknown = sorted(set(decoded) - known)
+        if unknown:
+            raise CreatorError(
+                "CREATOR_ANSWERS_UNKNOWN_FIELD",
+                "the answers file has fields the creator does not accept: "
+                + ", ".join(unknown)
+                + ". Accepted fields: "
+                + ", ".join(sorted(known)),
+            )
+        supplied = decoded
+
+    # Every value must be a string. Without this a numeric version turns into an
+    # AttributeError deep inside normalisation rather than a named diagnostic.
+    mistyped = sorted(
+        field for field, value in supplied.items() if not isinstance(value, str)
+    )
+    if mistyped:
+        raise CreatorError(
+            "CREATOR_ANSWERS_FIELD_NOT_TEXT",
+            "these answers-file fields must be text: " + ", ".join(mistyped),
+        )
+
+    for field in REQUIRED_ANSWER_FIELDS + OPTIONAL_ANSWER_FIELDS:
+        attribute = field.replace("-", "_")
+        # Everything is None at this point unless a flag set it, so an explicit
+        # flag always wins and a file can be a starting point one flag adjusts.
+        if getattr(arguments, attribute, None) is not None:
+            continue
+        if field not in supplied:
+            continue
+        value = supplied[field]
+        if field == "output-root":
+            value = Path(value)
+        setattr(arguments, attribute, value)
+
+    # Choice-constrained fields bypass argparse validation when they arrive from
+    # a file, so they are checked here against the same tuples.
+    for field, allowed in (
+        ("capability-target", tuple(CONTRIBUTOR_CAPABILITIES)),
+        ("auth-assumption", ("none",)),
+        ("mutation-boundary", ("read_only",)),
+    ):
+        value = getattr(arguments, field.replace("-", "_"), None)
+        if value is not None and value not in allowed:
+            raise CreatorError(
+                "CREATOR_ANSWERS_CHOICE_INVALID",
+                f"{field} must be one of: " + ", ".join(allowed) + f"; got {value!r}",
+            )
+
+    for field, default in OPTIONAL_DEFAULTS.items():
+        attribute = field.replace("-", "_")
+        if getattr(arguments, attribute, None) is None:
+            setattr(arguments, attribute, default)
+
+    missing = [
+        field
+        for field in REQUIRED_ANSWER_FIELDS
+        if getattr(arguments, field.replace("-", "_"), None) is None
+    ]
+    if missing:
+        raise CreatorError(
+            "CREATOR_ANSWERS_INCOMPLETE",
+            "these fields were supplied by neither a flag nor --answers: "
+            + ", ".join(missing),
+        )
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Create SKILL.md and its required Luke catalog evaluation fixture."
     )
-    parser.add_argument("--output-root", required=True, type=Path)
-    parser.add_argument("--slug", required=True)
-    parser.add_argument("--description", required=True)
-    parser.add_argument("--host", required=True)
-    parser.add_argument("--data-read", required=True)
-    parser.add_argument("--result-lands-in", required=True)
-    parser.add_argument("--positive-example", required=True)
-    parser.add_argument("--negative-example", required=True)
-    parser.add_argument("--failure-example", required=True)
-    parser.add_argument("--redaction-example", required=True)
+    # Every one of these may arrive as a flag or from --answers. argparse cannot
+    # express "required unless supplied by a file", so requiredness is enforced
+    # after the merge, where the diagnostic can name all of the missing fields at
+    # once instead of failing on the first.
+    parser.add_argument("--answers", type=Path, help=(
+        "JSON object supplying any of the fields below, keyed by their flag "
+        "name without the leading dashes. An explicit flag overrides the file."
+    ))
+    parser.add_argument("--output-root", type=Path)
+    parser.add_argument("--slug")
+    parser.add_argument("--description")
+    parser.add_argument("--host")
+    parser.add_argument("--data-read")
+    parser.add_argument("--result-lands-in")
+    parser.add_argument("--positive-example")
+    parser.add_argument("--negative-example")
+    parser.add_argument("--failure-example")
+    parser.add_argument("--redaction-example")
+    # These default to None at the parser so apply_answers can tell an
+    # explicitly supplied flag from a default it invented. The real defaults in
+    # OPTIONAL_DEFAULTS are applied after the merge. Setting them here instead
+    # made every optional value in an answers file silently ignored.
     parser.add_argument(
         "--capability-target",
         choices=CONTRIBUTOR_CAPABILITIES,
-        default="web_search",
+        default=None,
     )
-    parser.add_argument("--version", default="0.1.0")
-    parser.add_argument("--min-luke-version", default="2.0.0")
+    parser.add_argument("--version", default=None)
+    parser.add_argument("--min-luke-version", default=None)
     parser.add_argument(
         "--auth-assumption",
         choices=("none",),
-        default="none",
+        default=None,
         help="Catalog v1 accepts public, unauthenticated tasks only.",
     )
     parser.add_argument(
         "--mutation-boundary",
         choices=("read_only",),
-        default="read_only",
+        default=None,
         help="Catalog v1 accepts read-only tasks only.",
     )
     return parser
@@ -516,6 +661,11 @@ def _create_bundle(arguments: argparse.Namespace) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     arguments = build_parser().parse_args(argv)
+    try:
+        apply_answers(arguments)
+    except CreatorError as error:
+        print(f"{error.code}: {error.detail}", file=sys.stderr)
+        return 1
     try:
         arguments.slug = _one_line(arguments.slug, "slug")
         arguments.description = _one_line(arguments.description, "description")

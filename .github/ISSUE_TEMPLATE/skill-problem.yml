@@ -1,0 +1,75 @@
+name: A published skill answered wrongly
+description: A skill in the catalog gave a wrong, incomplete, or unhelpful result.
+title: "[skill problem] "
+labels: ["skill-problem"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **If this is a security problem, stop and use the private route instead.**
+        Do not describe a vulnerability here. Use *Report a security vulnerability*
+        on the previous screen.
+
+        Your coding agent can fill most of this in. The version and content hash
+        are in `catalog/index.json` in the repository.
+
+  - type: input
+    id: skill-id
+    attributes:
+      label: Skill ID
+      placeholder: "browser-skill:public-release-notes-read"
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      description: From `catalog/index.json`.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: hash
+    attributes:
+      label: content_sha256
+      description: From `catalog/index.json`. This is what identifies the exact bytes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What you asked, and what came back
+      placeholder: "Asked: ...\nGot: ...\nExpected: ..."
+    validations:
+      required: true
+
+  - type: input
+    id: release-tag
+    attributes:
+      label: Catalog release tag
+      description: The `luke-skills-vX.Y.Z` release the skill came from.
+      placeholder: "luke-skills-v0.1.1"
+    validations:
+      required: false
+
+  - type: input
+    id: luke-build
+    attributes:
+      label: Luke build
+      description: Which version of Luke you were using.
+    validations:
+      required: false
+
+  - type: textarea
+    id: diagnostic
+    attributes:
+      label: Verbatim diagnostic, if there was one
+      description: >-
+        Anything Luke or the catalog printed, copied exactly. Do not summarise
+        it; the exact text is what identifies the path taken.
+      render: text
+    validations:
+      required: false

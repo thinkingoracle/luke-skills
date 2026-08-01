@@ -1,0 +1,47 @@
+name: Suggest a skill idea
+description: Tell us what you wish Luke could look up. No files, no setup.
+title: "[idea] "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One sentence is enough. You do not need to build anything, and you do
+        not need to know whether it is possible.
+
+        If it turns out not to fit today's boundary, say so anyway. The list of
+        things people wanted and could not have is how we decide what to open
+        up next, so an idea that does not fit is worth more to us than silence.
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What do you want Luke to be able to look up?
+      description: Plain words. What would you ask, and what should come back?
+      placeholder: "I want Luke to tell me when my local pool has lane swimming."
+    validations:
+      required: true
+
+  - type: input
+    id: where
+    attributes:
+      label: Where does that information live?
+      description: The public page or site, if you know it. Leave blank if you do not.
+      placeholder: "pools.example.gov"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: fits
+    attributes:
+      label: Does it need a login, or does it change anything?
+      description: >-
+        Today the catalog only reads public pages. If your idea needs an account
+        or does something in the world, it does not fit yet, and we still want it.
+      options:
+        - "Neither. It just reads a page anyone can open."
+        - "It needs a login or an account."
+        - "It would send, buy, book, or change something."
+        - "I do not know."
+    validations:
+      required: true

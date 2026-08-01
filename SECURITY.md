@@ -52,8 +52,11 @@ capacity and an operator-approved service commitment.
 
 ## Conduct reports are separate
 
-Private vulnerability reporting is not a conduct-reporting route. A public
-community launch requires a separate monitored private conduct route, a named
-enforcement owner, a distinct alternate recipient, a checked-in Code of
-Conduct, and verification evidence. This candidate does not invent any of
-those details.
+Private vulnerability reporting is not a conduct-reporting route. Conduct
+concerns go to the Luke Support desk named in
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), which is a different queue with its
+own responder assignment, so a report about one person is never handled only by
+that person.
+
+Do not use this vulnerability channel for a conduct concern, and do not use a
+conduct report for a suspected vulnerability.

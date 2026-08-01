@@ -16,6 +16,9 @@ separately reviews and trusts the exact content hash on their machine.
 
 ## Start here
 
+- Using a coding agent? Read
+  [CONTRIBUTING_WITH_AN_AGENT.md](CONTRIBUTING_WITH_AN_AGENT.md),
+  which routes it to the right path without you having to.
 - To decide whether an idea fits V1 and create a proposal bundle, follow
   [CONTRIBUTING.md](CONTRIBUTING.md).
 - To understand exact-byte trust, updates, and revocation, read
@@ -121,11 +124,10 @@ to do when the required GitHub path is unavailable. The existence of this
 policy file is not evidence that repository settings or maintainer
 notifications have been verified.
 
-Security reporting is not a conduct-reporting channel. A public community
-launch remains held until the exact public tree includes a Code of Conduct and
-operators verify a monitored private conduct route, a named enforcement owner,
-a distinct alternate recipient, and durable evidence. No conduct form,
-contact, response deadline, or enforcement promise is invented here.
+Security reporting is not a conduct-reporting channel.
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) sets out what is expected here and how
+to report a concern privately, through a separate route with its own responder
+assignment. No response deadline is promised, because none has been measured.
 
 ## Luke 2.0 pilot boundary
 

@@ -1,0 +1,44 @@
+name: The creator, validator, or guidance did not work
+description: Something failed on your machine, or the instructions did not match what happened.
+title: "[trouble] "
+labels: ["trouble"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Both kinds belong here: a command that failed, and a step that was wrong
+        or unclear. If you had to guess at something, that is worth reporting on
+        its own.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What you ran or read, and what happened
+      description: Paste the command and the output, or quote the step that did not match.
+      placeholder: "Ran: ...\nGot: ...\nExpected: ..."
+    validations:
+      required: true
+
+  - type: input
+    id: diagnostic
+    attributes:
+      label: The exact error code, if there was one
+      description: Anything starting CREATOR_ or CATALOG_. Paste it as printed.
+    validations:
+      required: false
+
+  - type: input
+    id: tag
+    attributes:
+      label: Which release tag you cloned
+      placeholder: "luke-skills-v0.1.1"
+    validations:
+      required: false
+
+  - type: input
+    id: environment
+    attributes:
+      label: Your system and Python version
+      description: Output of `python3 --version`, and which operating system.
+    validations:
+      required: false

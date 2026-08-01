@@ -1,0 +1,23 @@
+# Structured intake only. A blank issue cannot carry what any of these paths
+# need, and the forms above cover the cases people were using it for, including
+# the one that has no files at all.
+blank_issues_enabled: false
+
+contact_links:
+  - name: How contributing works
+    url: https://github.com/thinkingoracle/luke-skills/blob/main/CONTRIBUTING.md
+    about: >-
+      Eligibility, the two files a proposal carries, and how review actually
+      works. Read this first, or hand it to your coding agent.
+
+  - name: What being listed does and does not mean
+    url: https://github.com/thinkingoracle/luke-skills/blob/main/TRUST.md
+    about: >-
+      A listed skill is not a trusted one. Each person approves an exact content
+      hash on their own machine before anything runs.
+
+  - name: Report a code of conduct concern
+    url: https://github.com/thinkingoracle/luke-skills/blob/main/CODE_OF_CONDUCT.md
+    about: >-
+      Reported privately, never as a public issue. The conduct route is separate
+      from the vulnerability route and reaches a different queue.

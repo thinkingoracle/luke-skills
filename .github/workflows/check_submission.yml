@@ -1,0 +1,121 @@
+name: Check submitted proposal bytes
+
+# A proposal filed through the API skips the issue form entirely, which is how
+# the first rehearsal was filed and how it arrived carrying none of the four
+# contributor attestations while every other check agreed it was fine.
+#
+# This runs the same verifier a maintainer would run, on arrival, and says what
+# it found in the issue itself. It never closes, labels away, or edits anyone's
+# submission: a maintainer still decides, and a contributor can fix and edit.
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: check-submission-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Verify declared bytes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      GH_TOKEN: ${{ github.token }}
+      NUMBER: ${{ github.event.issue.number }}
+      REPOSITORY: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+
+      - name: Classify the issue and check its attestations
+        id: classify
+        shell: bash
+        run: |
+          # The logic lives in scripts/classify_submission.py, with tests. Every
+          # defect in this workflow so far reached review unnoticed because
+          # nothing executed the bash it used to hold.
+          gh api "repos/${REPOSITORY}/issues/${NUMBER}" --jq .body > body.md
+          python3 scripts/classify_submission.py --body body.md \
+            --github-output "${GITHUB_OUTPUT}"
+
+      - name: Verify the submission against its own declared identities
+        id: verify
+        if: steps.classify.outputs.shape == 'structured'
+        shell: bash
+        run: |
+          set +e
+          python3 scripts/verify_submission.py --issue-body body.md --json > result.json
+          echo "ok=$([ $? -eq 0 ] && echo true || echo false)" >> "${GITHUB_OUTPUT}"
+          set -e
+          cat result.json
+
+      - name: Look for an earlier proposal of the same skill
+        id: duplicate
+        if: steps.classify.outputs.shape != 'other'
+        shell: bash
+        env:
+          # Through the environment, never interpolated into the script. A
+          # ${{ }} expression is substituted textually before bash parses the
+          # line, so an attacker-chosen title becomes code rather than data.
+          # This workflow's entire purpose is accepting input from strangers on
+          # a public repository, which makes it the one place that must not
+          # happen. Read from the environment, a title is only ever a string.
+          TITLE: ${{ github.event.issue.title }}
+        run: |
+          # An interrupted run can file twice. The agent cannot reliably know,
+          # so this is checked where the issues actually are. It reports; it
+          # does not close, because the second one may be the better draft.
+          title="${TITLE}"
+          earlier="$(gh issue list --repo "${REPOSITORY}" --state open \
+            --search "\"${title}\" in:title" --json number \
+            --jq "[.[] | select(.number < ${NUMBER})] | .[0].number // empty")"
+          echo "earlier=${earlier}" >> "${GITHUB_OUTPUT}"
+
+      - name: Report what was found
+        if: steps.classify.outputs.shape != 'other'
+        shell: bash
+        run: |
+          if [ "${{ steps.classify.outputs.shape }}" = "unstructured" ]; then
+            body="Automated check: this looks like a skill proposal, but it does not carry the structure a proposal needs, so nothing here can be verified.
+
+          A proposal states each file under its own heading, with that file's byte count and SHA-256 above its fenced contents. Without those, there is no way to confirm the bytes a maintainer would extract are the bytes you sent, and that check is what the catalog's trust model rests on.
+
+          The **Propose a Luke skill** form collects this, and \`CONTRIBUTING_WITH_AN_AGENT.md\` has a block your coding agent can follow. Edit this issue into that shape and the check runs again."
+          elif [ "${{ steps.verify.outputs.ok }}" = "true" ] && [ -z "${{ steps.classify.outputs.missing }}" ]; then
+            duplicate=""
+            if [ -n "${{ steps.duplicate.outputs.earlier }}" ]; then
+              duplicate="
+
+          Note: #${{ steps.duplicate.outputs.earlier }} is an earlier open proposal with the same title. If that was an interrupted run, close whichever is the lesser draft."
+            fi
+            body="Automated check: the bytes in this issue match the sizes and SHA-256 values it declares, and the four contributor attestations are present.
+
+          This is a conformance check only. It is not review, and it does not mean the skill is suitable, accurate, or safe. A maintainer reads every proposal.${duplicate}"
+          else
+            findings="$(python3 -c "import json;d=json.load(open('result.json'));print('\n'.join('- **'+f['code']+'**: '+f['detail'] for f in d['findings']) or '- none')" 2>/dev/null || echo '- the verifier could not read this issue')"
+            missing=""
+            if [ -n "${{ steps.classify.outputs.missing }}" ]; then
+              missing="
+          - **Attestations missing**: ${{ steps.classify.outputs.missing }}. These are claims about you rather than about the skill, so nobody can fill them in for you. Ticked boxes about something else do not count."
+            fi
+            body="Automated check found something to fix before this can be reviewed.
+
+          ${findings}${missing}
+
+          Edit the issue and this check runs again. If you think the check is wrong, say so here and a maintainer will look; it is new and being wrong is a bug worth reporting."
+          fi
+          gh issue comment "${NUMBER}" --repo "${REPOSITORY}" --body "${body}"

@@ -1,0 +1,84 @@
+name: Cap open issues per author
+
+# An agent-first contribution path means a looping or misconfigured agent can
+# file issues far faster than a person can, and intake is the surface with the
+# least friction in front of it. This caps how many issues one author may have
+# open at once. It closes the excess with an explanation and a route back; it
+# does not block, label, or judge anyone, and a closed issue can be reopened by
+# a maintainer.
+#
+# Maintainers and collaborators are exempt, because the pinned guidance cards
+# and any triage issues are theirs and must not count against a contributor
+# ceiling.
+
+on:
+  issues:
+    types:
+      - opened
+      - reopened
+
+permissions:
+  issues: write
+
+concurrency:
+  group: open-issue-cap-${{ github.event.issue.user.login }}
+  cancel-in-progress: false
+
+jobs:
+  cap:
+    name: Cap open issues per author
+    # OWNER, MEMBER, and COLLABORATOR are the association values GitHub reports
+    # for people with write access. Everyone else is a contributor.
+    if: >-
+      github.event.issue.author_association != 'OWNER' &&
+      github.event.issue.author_association != 'MEMBER' &&
+      github.event.issue.author_association != 'COLLABORATOR'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      # Matches the ceiling OpenClaw settled on. High enough that no genuine
+      # contributor will meet it, low enough that a runaway loop stops early.
+      OPEN_ISSUE_CAP: "20"
+      GH_TOKEN: ${{ github.token }}
+      AUTHOR: ${{ github.event.issue.user.login }}
+      NUMBER: ${{ github.event.issue.number }}
+      REPOSITORY: ${{ github.repository }}
+    steps:
+      - name: Count the author's open issues
+        id: count
+        shell: bash
+        run: |
+          # Issues only. GitHub's search API counts pull requests as issues, and
+          # this repository accepts no contributor pull requests anyway, so the
+          # type filter keeps the number meaning what it says.
+          open_count="$(gh api -X GET search/issues \
+            -f q="repo:${REPOSITORY} type:issue state:open author:${AUTHOR}" \
+            --jq '.total_count')"
+          echo "${AUTHOR} has ${open_count} open issues, cap is ${OPEN_ISSUE_CAP}"
+          # The decision is made here, in a shell that compares numbers, rather
+          # than in a workflow expression. Step outputs and env values are
+          # always strings in GitHub expressions, and relying on implicit
+          # coercion for the one comparison that decides whether to close
+          # somebody's issue is not worth the ambiguity.
+          if [ "${open_count}" -gt "${OPEN_ISSUE_CAP}" ]; then
+            echo "over_cap=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "over_cap=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Close the excess with an explanation
+        if: steps.count.outputs.over_cap == 'true'
+        shell: bash
+        run: |
+          # The comment matters as much as the close. Someone who hits this
+          # deserves to know it is a ceiling rather than a rejection, and how to
+          # get the issue looked at.
+          gh issue comment "${NUMBER}" --repo "${REPOSITORY}" --body "$(cat <<BODY
+          Closing this one automatically. You currently have more than ${OPEN_ISSUE_CAP} issues open here, which is the limit for a single author.
+
+          This is not a judgement on the issue and nothing is held against you. The limit exists because a coding agent can file faster than anyone can read, and a single misconfigured loop would otherwise bury the queue for everybody.
+
+          **What to do:** close or resolve some of your open issues, then reopen this one or file it again. If you believe the count is wrong, or you have a reason to need more open at once, say so here and a maintainer will reopen it.
+          BODY
+          )"
+          gh issue close "${NUMBER}" --repo "${REPOSITORY}" --reason "not planned"
