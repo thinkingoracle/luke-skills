@@ -1,5 +1,7 @@
 # Luke skills catalog
 
+![The catalog of things Luke can learn.](assets/luke-skills-cover-1280x640.jpg)
+
 Luke catalog skills give Luke a bounded recipe for answering a public
 information request. A V1 skill declares when it applies, which public host it
 may read, what it returns, and where it must stop. It cannot sign in, handle
