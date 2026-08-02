@@ -18,13 +18,17 @@ does not prove that public acquisition or intake is live.
 
 ## Workflow
 
-1. Confirm the requested task is read-only and uses a public host without
-   authentication. Redirect scripts, installers, credentials, private hosts,
-   local files, and external mutations out of catalog v1.
+1. Confirm the requested task is read-only. It may use a declared public host,
+   or omit the host only when every executable step is `web_search` and no
+   authentication is required. If sign-in is required, use only the
+   public-host-bound owned-browser shape: `delegate_web_action`,
+   `auth-assumption=owned_browser`, no fallback, and no credential collection.
+   Redirect scripts, installers, credential material, private hosts, local files,
+   and external mutations out of catalog v1.
 2. Collect:
    - a lowercase kebab-case slug;
    - a one-line purpose;
-   - the public host;
+   - the public host, if the skill is host-bound;
    - the public data the skill reads;
    - where the answer lands;
    - one positive-routing, negative-routing, failure, and redaction example.
@@ -58,6 +62,14 @@ does not prove that public acquisition or intake is live.
      --redaction-example "The page unexpectedly shows a visitor account token."
    ```
 
+   This walkthrough is host-bound. For a public-search skill whose executable
+   steps are entirely `web_search`, omit `--host`; the creator emits no fake
+   host or `path_prefix`. A missing host with any other capability fails closed.
+   For an authenticated local read, supply the public host and add
+   `--capability-target delegate_web_action --auth-assumption owned_browser`.
+   The creator emits an owned-browser-only adapter contract and refuses hosted
+   fallback.
+
 6. Validate the complete proposal bundle with the same validator used by CI:
 
    ```bash
@@ -76,6 +88,11 @@ does not prove that public acquisition or intake is live.
    maintainers control the single source-review lifecycle, post readable status
    on the public issue, and use a later catalog release to control publication.
    The user still reviews and trusts the exact bytes locally.
+
+   Owned-browser eligibility does not bypass mechanical validation, evaluation,
+   human safety review, exact-hash Trust, per-navigation approval, installation
+   review, or activation. The user signs in directly in Luke's isolated profile;
+   never ask for or place credentials in the proposal bundle.
 
 ## Output contract
 

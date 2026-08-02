@@ -4,12 +4,17 @@
 
 Luke catalog skills give Luke a bounded recipe for answering a public
 information request. A V1 skill declares when it applies, which public host it
-may read, what it returns, and where it must stop. It cannot sign in, handle
-credentials, change an external system, or install executable code.
+may read, or for host-free public search, which bounded intent it may match,
+what it returns, and where it must stop. An authenticated read is eligible only
+through Luke's isolated owned-browser profile; the user signs in there directly
+and the skill never receives credentials. A skill cannot change an external
+system or install executable code.
 
 For example, a release-notes skill may read a project's public release page
 and summarize a named version. The skill does not gain access to private pages
 and cannot publish, purchase, register, send, edit, upload, or delete anything.
+An owned-browser skill may read an approved signed-in page locally, but cannot
+fall back to a hosted browser or the user's everyday browser.
 
 Curated does not mean trusted. Repository review records exact bytes, declared
 boundaries, evidence, checks, and a disposition for one revision. It does not
@@ -53,13 +58,23 @@ Catalog V1 accepts only:
 
 - one inert, UTF-8 `SKILL.md` install payload per skill;
 - Luke schema version 1;
-- read-only behavior against declared public hosts;
-- no authentication or credential handling;
+- read-only behavior against declared public hosts, or host-free behavior only
+  when every step is `web_search`, no authentication is required, and the
+  routing intent is bounded;
+- authenticated reads only when every rule and step is public-host-bound, every
+  executable step is `delegate_web_action`, and `adapter_preferences` selects
+  only `owned_browser` with no fallback;
+- no credential collection or transport; the user signs in directly inside
+  Luke's isolated local browser profile;
 - no send, purchase, edit, upload, delete, install, or other external mutation;
 - no scripts, executables, dependencies, symlinks, hidden payloads, or
   installers; and
 - positive-routing, negative-routing, failure, and redaction evaluation
   evidence.
+
+Owned-browser eligibility is only a safe execution route. It does not replace
+maintainer evaluation, human safety review, exact-hash Trust, per-navigation
+approval, installation review, or activation.
 
 Ideas outside this boundary may still be useful. They are not V1-eligible and
 must not be represented as release-ready content.

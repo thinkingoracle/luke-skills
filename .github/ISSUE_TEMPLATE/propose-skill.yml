@@ -15,9 +15,11 @@ body:
         not need access to the maintainer source repository.
 
         Catalog V1 accepts one inert UTF-8 `SKILL.md`, Luke schema version 1,
-        public read-only access, and the required routing, failure, and redaction
-        evaluation evidence. Do not include secrets, credentials, private data,
-        browser sessions, or vulnerability details.
+        public-host-bound read-only access (or bounded host-free web search), and
+        the required routing, failure, and redaction evaluation evidence.
+        Authentication is eligible only through Luke's isolated owned browser.
+        Do not include secrets, credentials, private data, browser sessions,
+        or vulnerability details.
 
         Paste both complete files into their rendered source fields below. Use
         UTF-8, LF line endings, and exactly one final newline. Optional immutable
@@ -51,8 +53,8 @@ body:
     id: public-hosts
     attributes:
       label: Public hosts
-      description: List every exact public host the skill reads. Do not include private, loopback, local-file, or credential-bearing URLs.
-      placeholder: "Example: status.example.com"
+      description: List every exact public host the skill reads. For a host-free, web_search-only skill, enter "None: host-free public web_search only". Do not include private, loopback, local-file, or credential-bearing URLs.
+      placeholder: "Example: status.example.com, or: None: host-free public web_search only"
     validations:
       required: true
 
@@ -60,10 +62,11 @@ body:
     id: authentication-boundary
     attributes:
       label: Authentication boundary
-      description: V1 is eligible only when no login, credential, browser session, or private account data is required.
+      description: Authentication must be absent or confined to Luke's isolated owned browser. The user signs in locally; the skill never receives credentials and no hosted fallback is allowed.
       options:
         - No authentication or credentials are required
-        - Authentication or credentials are required, so this is outside V1
+        - Authentication uses only Luke's owned browser; the user signs in locally and no credentials are collected
+        - Authentication uses another browser, hosted service, or credential flow, so this is outside V1
     validations:
       required: true
 

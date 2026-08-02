@@ -98,25 +98,77 @@ def _yaml_string(value: str) -> str:
 
 
 def _render_skill(arguments: argparse.Namespace) -> str:
-    keywords = ", ".join(_yaml_string(keyword) for keyword in _intent_keywords(arguments.slug))
+    keywords = ", ".join(
+        _yaml_string(keyword) for keyword in _intent_keywords(arguments.slug)
+    )
+    owned_browser_auth = arguments.auth_assumption == "owned_browser"
+    if arguments.host is None:
+        routing_rule = f"  - intent_keywords: [{keywords}]"
+        first_step = "Search the public web for the requested information."
+        source_requirement = "every public source used"
+        failure_sentence = (
+            "Explain when public search results are unavailable, ambiguous, or "
+            "outside the read-only boundary."
+        )
+    else:
+        routing_rule = (
+            f"  - host: {arguments.host}\n"
+            "    path_prefix: /\n"
+            f"    intent_keywords: [{keywords}]"
+        )
+        first_step = (
+            f"Open or search the public information on `{arguments.host}`."
+        )
+        source_requirement = f"`{arguments.host}` as its source"
+        failure_sentence = (
+            "Explain when the public source is unavailable, ambiguous, or outside "
+            "the read-only boundary."
+        )
+    if owned_browser_auth:
+        step_host = f"\n    host: {arguments.host}"
+        adapter_preferences = (
+            "  preferred: owned_browser\n"
+            "  declined: [browserbase, frontmost_local, yutori]"
+        )
+        never_text = (
+            "Never request, capture, type, export, or transmit credentials. The "
+            "user signs in directly inside Luke's isolated owned-browser profile. "
+            "Never use a hosted or everyday-browser fallback."
+        )
+        redaction_text = (
+            "Omit credentials, tokens, personal data, account identifiers, and "
+            "private page content that is not required for the requested result."
+        )
+    else:
+        step_host = ""
+        adapter_preferences = (
+            "  preferred: browserbase\n"
+            "  fallback: owned_browser\n"
+            "  declined: []"
+        )
+        never_text = (
+            "Never authenticate, mutate external state, run installers, or collect "
+            "credentials."
+        )
+        redaction_text = (
+            "Omit credentials, tokens, personal data, private page content, and "
+            "unexpected account state. Report that the source crossed the declared "
+            "public-data boundary."
+        )
     return f"""---
 name: {arguments.slug}
 skill_id: browser-skill:{arguments.slug}
 description: {_yaml_string(arguments.description)}
 when_to_use:
-  - host: {arguments.host}
-    path_prefix: /
-    intent_keywords: [{keywords}]
-    require_auth: false
+{routing_rule}
+    require_auth: {str(owned_browser_auth).lower()}
     mutation_boundary: read_only
 steps:
   - caption: "Read the requested public information"
-    capability_target: {arguments.capability_target}
+    capability_target: {arguments.capability_target}{step_host}
     mutation_boundary: read_only
 adapter_preferences:
-  preferred: browserbase
-  fallback: owned_browser
-  declined: []
+{adapter_preferences}
 schema_version: 1
 ---
 
@@ -132,7 +184,7 @@ schema_version: 1
 
 ## Never
 
-Never authenticate, mutate external state, run installers, or collect credentials.
+{never_text}
 
 ## Lands in
 
@@ -140,25 +192,23 @@ Never authenticate, mutate external state, run installers, or collect credential
 
 ## Steps
 
-1. Open or search the public information on `{arguments.host}`.
+1. {first_step}
 2. Read only the information needed for the request.
 3. Return a concise answer with the public source identified.
 
 ## Success criteria
 
 - The answer addresses the requested public-information task.
-- The answer identifies `{arguments.host}` as its source.
+- The answer identifies {source_requirement}.
 - No external state changes.
 
 ## Failure behavior
 
-Explain when the public source is unavailable, ambiguous, or outside the
-read-only boundary. Do not request credentials as a workaround.
+{failure_sentence} Do not request credentials as a workaround.
 
 ## Redaction
 
-Omit credentials, tokens, personal data, private page content, and unexpected
-account state. Report that the source crossed the declared public-data boundary.
+{redaction_text}
 """
 
 
@@ -223,7 +273,6 @@ REQUIRED_ANSWER_FIELDS: tuple[str, ...] = (
     "output-root",
     "slug",
     "description",
-    "host",
     "data-read",
     "result-lands-in",
     "positive-example",
@@ -233,6 +282,7 @@ REQUIRED_ANSWER_FIELDS: tuple[str, ...] = (
 )
 
 OPTIONAL_ANSWER_FIELDS: tuple[str, ...] = (
+    "host",
     "capability-target",
     "version",
     "min-luke-version",
@@ -322,7 +372,7 @@ def apply_answers(arguments: argparse.Namespace) -> None:
     # a file, so they are checked here against the same tuples.
     for field, allowed in (
         ("capability-target", tuple(CONTRIBUTOR_CAPABILITIES)),
-        ("auth-assumption", ("none",)),
+        ("auth-assumption", ("none", "owned_browser")),
         ("mutation-boundary", ("read_only",)),
     ):
         value = getattr(arguments, field.replace("-", "_"), None)
@@ -336,6 +386,21 @@ def apply_answers(arguments: argparse.Namespace) -> None:
         attribute = field.replace("-", "_")
         if getattr(arguments, attribute, None) is None:
             setattr(arguments, attribute, default)
+
+    if arguments.auth_assumption == "owned_browser":
+        if arguments.host is None:
+            raise CreatorError(
+                "CREATOR_AUTH_HOST_REQUIRED",
+                "owned-browser authentication requires one explicit public host",
+            )
+        if arguments.capability_target != "delegate_web_action":
+            raise CreatorError(
+                "CREATOR_AUTH_CAPABILITY_INVALID",
+                (
+                    "owned-browser authentication requires "
+                    "capability-target=delegate_web_action"
+                ),
+            )
 
     missing = [
         field
@@ -365,7 +430,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output-root", type=Path)
     parser.add_argument("--slug")
     parser.add_argument("--description")
-    parser.add_argument("--host")
+    parser.add_argument(
+        "--host",
+        help=(
+            "Public DNS host for host-bound skills. Omit only for a read-only "
+            "web_search-only skill."
+        ),
+    )
     parser.add_argument("--data-read")
     parser.add_argument("--result-lands-in")
     parser.add_argument("--positive-example")
@@ -385,9 +456,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--min-luke-version", default=None)
     parser.add_argument(
         "--auth-assumption",
-        choices=("none",),
+        choices=("none", "owned_browser"),
         default=None,
-        help="Catalog v1 accepts public, unauthenticated tasks only.",
+        help=(
+            "Use owned_browser only for public-host-bound authenticated reads; "
+            "the user signs in locally and credentials are never collected."
+        ),
     )
     parser.add_argument(
         "--mutation-boundary",
@@ -669,7 +743,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         arguments.slug = _one_line(arguments.slug, "slug")
         arguments.description = _one_line(arguments.description, "description")
-        arguments.host = _one_line(arguments.host, "host").lower().rstrip(".")
+        if arguments.host is not None:
+            arguments.host = _one_line(arguments.host, "host").lower().rstrip(".")
         arguments.data_read = _one_line(arguments.data_read, "data-read").rstrip(".")
         arguments.result_lands_in = _one_line(
             arguments.result_lands_in, "result-lands-in"
@@ -687,8 +762,12 @@ def main(argv: list[str] | None = None) -> int:
             )
         if not SLUG_PATTERN.fullmatch(arguments.slug):
             raise ValueError("slug must be lowercase kebab case")
-        if not validate_public_host(arguments.host):
+        if arguments.host is not None and not validate_public_host(arguments.host):
             raise ValueError("host must be a public DNS host")
+        if arguments.host is None and arguments.capability_target != "web_search":
+            raise ValueError(
+                "host is required unless capability-target is web_search"
+            )
         if not SEMVER_PATTERN.fullmatch(arguments.version):
             raise ValueError("version must be canonical X.Y.Z SemVer")
         if not SEMVER_PATTERN.fullmatch(arguments.min_luke_version):

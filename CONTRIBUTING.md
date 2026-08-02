@@ -42,9 +42,12 @@ Do this:
    issue form, and this block files the same issue with gh. Either way
    the result is one public proposal issue and never a pull request.
 
-3. Check my idea first. If it needs a login, a credential, a private
-   page, or changes anything in the world, stop and tell me. It is not
-   eligible yet, and there is a better place to put it.
+3. Check my idea first. If it changes anything in the world, collects a
+   credential, reads a private origin, or needs a hosted or everyday browser
+   for signed-in content, stop and tell me. A signed-in read is eligible only
+   through Luke's isolated owned browser, bound to explicit public hosts, with
+   no fallback. The user signs in directly there and the skill never receives
+   the credential.
 
 4. Build both files with the creator, then run the validator until it
    passes clean. The validator needs --allow-draft-provenance or it
@@ -72,6 +75,14 @@ Do this:
    Every failure has a named CREATOR_ or CATALOG_ code. Read it; it
    says what to fix.
 
+   The example is host-bound. Omit `--host` only when every executable
+   capability is `web_search`; the creator rejects a host-free `fetch_url`,
+   delegated action, connector, sidecar, authenticated, or mutating shape.
+   For an authenticated read, keep `--host` and also pass
+   `--capability-target delegate_web_action --auth-assumption owned_browser`.
+   The creator emits the owned-browser-only shape with no fallback. This route
+   does not bypass validation, review, Trust, navigation approval, or activation.
+
 5. Write the whole submission yourself, as markdown, using these
    headings in this order: Proposed skill name and ID; User and need;
    Public hosts; Authentication boundary; Data boundary; Mutation
@@ -80,11 +91,12 @@ Do this:
    complete files in fenced blocks. You already know all of it because
    you wrote it. Do not ask me to retype any of it.
 
-   Two of those take fixed wording, not your own. Authentication
-   boundary is exactly "No authentication or credentials are required".
-   Mutation boundary is exactly "Read-only, with no external mutation".
-   If either is not true of my idea, it is not eligible; go back to
-   step 3.
+   Two of those take fixed wording, not your own. Authentication boundary is
+   either "No authentication or credentials are required" or
+   "Authentication uses only Luke's owned browser; the user signs in locally
+   and no credentials are collected". Mutation boundary is exactly
+   "Read-only, with no external mutation". If none of those exact boundaries
+   is true of my idea, it is not eligible; go back to step 3.
 
 6. Two things you must not answer for me: where the material came from
    and under what licence, and whether it contains anything private.
@@ -152,9 +164,13 @@ A V1 skill must:
 - solve a concrete user need by reading public information and reporting a
   result;
 - use Luke schema version 1;
-- declare every public host and the data it reads;
-- require no authentication and handle no credential, browser session, private
-  endpoint, or local file;
+- declare every public host and the data it reads, or omit the host only for a
+  bounded-intent, no-auth skill whose executable steps are entirely
+  `web_search`;
+- either require no authentication, or use only Luke's isolated owned-browser
+  profile with public-host-bound read-only `delegate_web_action` steps, no
+  fallback adapter, and no credential collection or transport;
+- never read a private endpoint or local file;
 - declare a read-only mutation boundary;
 - contain one inert, UTF-8 `SKILL.md` install payload;
 - include positive-routing, negative-routing, failure, and redaction evaluation
@@ -298,7 +314,9 @@ confirmation before source review can rely on the submitted bytes.
 The form also asks for:
 
 - the user and their need;
-- public hosts and authentication assumptions;
+- public hosts, or an explicit `None: host-free public web_search only`
+  declaration, and whether authentication is absent or confined to Luke's
+  owned browser;
 - data read and the read-only mutation boundary;
 - expected behavior and realistic examples;
 - local evaluation evidence;
@@ -307,6 +325,11 @@ The form also asks for:
 
 Do not put secrets, credentials, private data, browser sessions, or
 undisclosed vulnerability details in the issue.
+
+An authenticated proposal receives no shortcut. Owned-browser-only routing is
+checked mechanically and remains subject to the same evaluation, human safety
+review, exact-hash Trust, per-navigation approval, installation review, and
+activation gates as every other catalog skill.
 
 The issue is intake only. It cannot accept source, merge code, publish catalog
 bytes, install a skill, or grant local trust.
@@ -384,7 +407,8 @@ version.
 - Minor versions may add supported public hosts or variants without mutation
   authority.
 - Major versions cover purpose, authentication, capability, data-boundary, or
-  mutation-boundary changes.
+  mutation-boundary changes, including a change between host-bound and
+  host-free routing.
 
 Deprecation should name a replacement when one exists. A security revocation
 names the exact affected hash and must not silently substitute different

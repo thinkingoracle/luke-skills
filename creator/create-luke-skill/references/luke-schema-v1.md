@@ -7,8 +7,19 @@ Use this reference when editing creator output or diagnosing validator results.
 - One inert UTF-8 `skills/<slug>/SKILL.md` is the complete install payload.
 - The slug is lowercase kebab case. `name` equals the slug and `skill_id`
   equals `browser-skill:<slug>`.
-- Every routing rule declares `require_auth: false`, one public DNS host, and
-  `mutation_boundary: read_only`.
+- Every routing rule declares `mutation_boundary: read_only`.
+- `require_auth: true` is allowed only for a public-host-bound skill whose
+  steps are all read-only `delegate_web_action`, whose adapter preference is
+  `owned_browser` with no fallback, and whose declined adapters are exactly
+  `browserbase`, `frontmost_local`, and `yutori`. The user signs in directly in
+  Luke's isolated local profile; the artifact never contains credentials.
+- A rule normally declares one public DNS `host`. It may omit `host` only when
+  every executable step is read-only `web_search`; host-free `fetch_url`,
+  `delegate_web_action`, connector, sidecar, authenticated, or mutating skills
+  are rejected.
+- Every `intent_keywords` array is non-empty. For a host-free rule it is also
+  case-insensitively unique and bounded to at most 16 entries of at most 64
+  characters each.
 - Every step uses an allowed read-only capability target and
   `mutation_boundary: read_only`.
 - Catalog v1 does not accept scripts, installers, symlinks, executable payloads,
@@ -46,6 +57,36 @@ Allowed contributor capability targets are `web_search`, `fetch_url`, and
 `delegate_web_action`. Connector and local-sidecar targets are reserved for
 byte-faithful bundled mirrors.
 
+For a host-free public-search skill, omit both `host` and `path_prefix` from the
+routing rule. Omission is not wildcard fetch authority: the artifact remains
+limited to its declared `web_search` steps, and every public source used must be
+identified in the result.
+
+For an authenticated owned-browser read, every routing rule names a public
+host and every step repeats one of those hosts:
+
+```yaml
+when_to_use:
+  - host: open.spotify.com
+    path_prefix: /
+    intent_keywords: [spotify, playlists, trending]
+    require_auth: true
+    mutation_boundary: read_only
+steps:
+  - caption: "Read visible Spotify charts and trending playlists"
+    capability_target: delegate_web_action
+    host: open.spotify.com
+    mutation_boundary: read_only
+adapter_preferences:
+  preferred: owned_browser
+  declined: [browserbase, frontmost_local, yutori]
+```
+
+This route fails closed when Luke's owned browser is unavailable. It cannot use
+Browserbase, a hosted fetch/search provider, or the user's everyday browser.
+Eligibility does not bypass evaluation, human safety review, exact-hash Trust,
+per-navigation approval, installation review, or activation.
+
 ## Required evaluation fixture
 
 `evals/<slug>.json` records catalog metadata plus at least one case in each
@@ -75,7 +116,8 @@ and neither field grants local trust.
   task authority.
 - Minor: a new supported public host or variant without mutation authority.
 - Major: changed purpose, authentication assumption, capability, data
-  boundary, or mutation boundary.
+  boundary, mutation boundary, or a change between host-bound and host-free
+  routing.
 
 Changing bytes without changing the version is rejected against a prior index.
 IDs are never reused. Curation never activates a skill; Luke trust binds to the

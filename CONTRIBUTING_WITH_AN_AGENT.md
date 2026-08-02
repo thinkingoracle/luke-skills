@@ -28,10 +28,13 @@ on their own machine before it runs.
 
 **To propose a skill**, follow the sequence below.
 
-**If the idea needs a login, a credential, a private page, or changes anything in
-the outside world**, stop. It is not eligible today. Open the *Suggest a skill
-idea* issue instead and say what was wanted. That is genuinely useful: the list
-of things people wanted and could not have is how the boundary gets widened.
+**If the idea changes anything in the outside world, collects credentials, reads
+a private origin, or uses a hosted or everyday browser for signed-in content**,
+stop. It is not eligible today. A signed-in, read-only skill can be proposed only
+when every step is bound to an explicit public host and runs in Luke's isolated
+owned browser with no fallback. The person signs in directly there; the skill
+never receives the credential. Open the *Suggest a skill idea* issue for anything
+outside that route and say what was wanted.
 
 **If a published skill answered wrongly**, open *A published skill answered
 wrongly*. Read `catalog/index.json` for the exact version and `content_sha256`
@@ -46,12 +49,15 @@ or guidance did not work*, with the verbatim diagnostic.
 1. Clone at the exact release tag named in the pinned card, never `main`, and
    verify it with `git describe --tags --exact-match HEAD`.
 
-2. Confirm the idea reads a public page and does nothing else, before writing
-   anything.
+2. Confirm the idea is read-only and either reads public information without
+   authentication, or uses the exact public-host-bound owned-browser route above.
+   Host-free `web_search` is allowed only without authentication.
 
 3. Build both files with `creator/create-luke-skill/scripts/new_skill.py`, then
    run `creator/create-luke-skill/scripts/validate.py` with
    `--allow-draft-provenance` until it prints `validated 1 Luke catalog skill(s)`.
+   For the signed-in route, pass `--capability-target delegate_web_action` and
+   `--auth-assumption owned_browser` with an explicit `--host`.
    Every failure carries a named `CREATOR_` or `CATALOG_` code; read it.
 
 4. Write the submission with the proposal form's own headings, and state each
@@ -78,6 +84,9 @@ or guidance did not work*, with the verbatim diagnostic.
 - Answer the licence, provenance, or no-secrets attestations on someone's behalf.
 - Present a passing check as review. Conformance is not approval, and a
   maintainer reads every proposal.
+- Present the owned-browser route as a security clearance. It does not bypass
+  validation, evaluation, maintainer review, local Trust approval, navigation
+  approval, or activation gates.
 
 ## If something here was unclear
 

@@ -48,7 +48,13 @@ SECTIONS: tuple[tuple[str, str], ...] = (
 # Exact strings, because these two are dropdowns on the form and a paraphrase
 # reads as a different answer to the boundary question.
 FIXED_CHOICES: dict[str, tuple[str, ...]] = {
-    "authentication-boundary": ("No authentication or credentials are required",),
+    "authentication-boundary": (
+        "No authentication or credentials are required",
+        (
+            "Authentication uses only Luke's owned browser; the user signs in "
+            "locally and no credentials are collected"
+        ),
+    ),
     "mutation-boundary": ("Read-only, with no external mutation",),
 }
 
@@ -117,11 +123,12 @@ def render(answers: dict[str, object], slug: str, skill: str, evaluation: str) -
 
     for field, allowed in FIXED_CHOICES.items():
         if answers.get(field) not in allowed:
+            allowed_text = " or ".join(repr(value) for value in allowed)
             raise RenderError(
                 "RENDER_CHOICE_INVALID",
-                f"{field} must be exactly: {allowed[0]!r}. Anything else is a "
+                f"{field} must be exactly: {allowed_text}. Anything else is a "
                 "different answer to the boundary question, and V1 accepts only "
-                "this one.",
+                "the listed choices.",
             )
 
     if answers.get("attestations_confirmed_by_human") is not True:

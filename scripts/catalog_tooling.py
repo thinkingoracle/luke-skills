@@ -82,7 +82,13 @@ ALLOWED_CAPABILITY_TARGETS = frozenset(
         "web_search",
     }
 )
+OWNED_BROWSER_ADAPTER = "owned_browser"
+OWNED_BROWSER_DECLINED_ADAPTERS = frozenset(
+    {"browserbase", "frontmost_local", "yutori"}
+)
 MAX_SKILL_BYTES = 512 * 1024
+MAX_INTENT_KEYWORDS = 16
+MAX_INTENT_KEYWORD_CHARACTERS = 64
 PUBLIC_EVIDENCE_HOSTS = frozenset({"github.com", "raw.githubusercontent.com"})
 PUBLIC_EVIDENCE_TIMEOUT_SECONDS = 10
 
@@ -1095,6 +1101,51 @@ def _validate_frontmatter(
         )
     rules = frontmatter.get("when_to_use")
     role = evaluation.get("catalog_role")
+    steps = frontmatter.get("steps", [])
+    if not isinstance(steps, list):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_SKILL_SCHEMA_INVALID",
+                relative_path,
+                "steps must be an array when present",
+            )
+        )
+        steps = []
+    # Deliberately skill-wide: one non-search or mutating step keeps every
+    # host-free routing rule closed rather than weakening admission per rule.
+    host_free_web_search_steps = bool(steps) and all(
+        isinstance(step, dict)
+        and step.get("capability_target") == "web_search"
+        and step.get("mutation_boundary") == "read_only"
+        for step in steps
+    )
+    adapter_preferences = frontmatter.get("adapter_preferences")
+    owned_browser_only = False
+    if isinstance(adapter_preferences, dict):
+        declined_adapters = adapter_preferences.get("declined")
+        owned_browser_only = (
+            adapter_preferences.get("preferred") == OWNED_BROWSER_ADAPTER
+            and "fallback" not in adapter_preferences
+            and isinstance(declined_adapters, list)
+            and all(isinstance(adapter, str) for adapter in declined_adapters)
+            and len(declined_adapters) == len(set(declined_adapters))
+            and set(declined_adapters) == OWNED_BROWSER_DECLINED_ADAPTERS
+        )
+    auth_required = isinstance(rules, list) and any(
+        isinstance(rule, dict) and rule.get("require_auth") is True
+        for rule in rules
+    )
+    if auth_required and not owned_browser_only:
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_AUTH_OWNED_BROWSER_REQUIRED",
+                relative_path,
+                (
+                    "authenticated skills must prefer owned_browser, omit fallback, "
+                    "and decline browserbase, frontmost_local, and yutori"
+                ),
+            )
+        )
     if not isinstance(rules, list) or not rules:
         diagnostics.append(
             Diagnostic(
@@ -1123,11 +1174,12 @@ def _validate_frontmatter(
                 )
             )
         keywords = rule.get("intent_keywords")
-        if (
-            not isinstance(keywords, list)
-            or not keywords
-            or any(not isinstance(item, str) or not item.strip() for item in keywords)
-        ):
+        keywords_are_non_empty_strings = (
+            isinstance(keywords, list)
+            and bool(keywords)
+            and all(isinstance(item, str) and item.strip() for item in keywords)
+        )
+        if not keywords_are_non_empty_strings:
             diagnostics.append(
                 Diagnostic(
                     "CATALOG_SKILL_SCHEMA_INVALID",
@@ -1135,6 +1187,15 @@ def _validate_frontmatter(
                     "intent_keywords must be a non-empty string array",
                 )
             )
+        keywords_are_bounded = (
+            keywords_are_non_empty_strings
+            and len(keywords) <= MAX_INTENT_KEYWORDS
+            and all(
+                len(item.strip()) <= MAX_INTENT_KEYWORD_CHARACTERS
+                for item in keywords
+            )
+            and len({item.strip().casefold() for item in keywords}) == len(keywords)
+        )
         require_auth = rule.get("require_auth")
         if not isinstance(require_auth, bool):
             diagnostics.append(
@@ -1144,8 +1205,9 @@ def _validate_frontmatter(
                     "require_auth must be a boolean",
                 )
             )
+        host_is_omitted = "host" not in rule
         host = rule.get("host")
-        if host is not None:
+        if not host_is_omitted:
             if not isinstance(host, str) or not _is_public_host(host):
                 diagnostics.append(
                     Diagnostic(
@@ -1154,33 +1216,67 @@ def _validate_frontmatter(
                         f"when_to_use host {host!r} is not public",
                     )
                 )
+        if auth_required and (
+            require_auth is not True
+            or not isinstance(host, str)
+            or not _is_public_host(host)
+        ):
+            diagnostics.append(
+                Diagnostic(
+                    "CATALOG_AUTH_PUBLIC_HOST_REQUIRED",
+                    relative_path,
+                    (
+                        "every rule in an authenticated owned-browser skill must "
+                        "require authentication and name an explicit public host"
+                    ),
+                )
+            )
         if role != "bundled_mirror":
-            if require_auth is not False:
+            if (
+                host_is_omitted
+                and keywords_are_non_empty_strings
+                and not keywords_are_bounded
+            ):
                 diagnostics.append(
                     Diagnostic(
-                        "CATALOG_AUTH_FORBIDDEN",
+                        "CATALOG_INTENT_KEYWORDS_INVALID",
                         relative_path,
-                        "new-ID V1 skills must not require authentication",
+                        (
+                            "host-free intent_keywords must be unique after case "
+                            f"folding and contain at most {MAX_INTENT_KEYWORDS} "
+                            f"entries of at most {MAX_INTENT_KEYWORD_CHARACTERS} "
+                            "characters each"
+                        ),
                     )
                 )
-            if not isinstance(host, str) or not host:
+            if host_is_omitted and "path_prefix" in rule:
+                diagnostics.append(
+                    Diagnostic(
+                        "CATALOG_HOST_FREE_PATH_FORBIDDEN",
+                        relative_path,
+                        "a host-free web_search rule must omit path_prefix",
+                    )
+                )
+            host_free_rule_is_allowed = (
+                host_is_omitted
+                and host_free_web_search_steps
+                and rule.get("mutation_boundary") == "read_only"
+                and require_auth is False
+                and keywords_are_bounded
+                and "path_prefix" not in rule
+            )
+            if (not isinstance(host, str) or not host) and not host_free_rule_is_allowed:
                 diagnostics.append(
                     Diagnostic(
                         "CATALOG_PUBLIC_HOST_REQUIRED",
                         relative_path,
-                        "new-ID V1 skills require an explicit public host",
+                        (
+                            "new-ID V1 skills require an explicit public host unless "
+                            "every step is read-only web_search and the host-free rule "
+                            "has bounded intent_keywords with no authentication"
+                        ),
                     )
                 )
-    steps = frontmatter.get("steps", [])
-    if not isinstance(steps, list):
-        diagnostics.append(
-            Diagnostic(
-                "CATALOG_SKILL_SCHEMA_INVALID",
-                relative_path,
-                "steps must be an array when present",
-            )
-        )
-        steps = []
     sidecar_targets_present = "capability_targets" in evaluation
     sidecar_targets = evaluation.get("capability_targets")
     if sidecar_targets_present:
@@ -1288,6 +1384,39 @@ def _validate_frontmatter(
                     f"capability_target {target!r} is reserved for byte-faithful bundled mirrors",
                 )
             )
+        if auth_required:
+            step_host = step.get("host")
+            declared_rule_hosts = {
+                rule.get("host")
+                for rule in rules
+                if isinstance(rule, dict) and isinstance(rule.get("host"), str)
+            }
+            if target != "delegate_web_action":
+                diagnostics.append(
+                    Diagnostic(
+                        "CATALOG_AUTH_CAPABILITY_FORBIDDEN",
+                        relative_path,
+                        (
+                            "authenticated owned-browser skills may use only "
+                            "delegate_web_action steps"
+                        ),
+                    )
+                )
+            if (
+                not isinstance(step_host, str)
+                or not _is_public_host(step_host)
+                or step_host not in declared_rule_hosts
+            ):
+                diagnostics.append(
+                    Diagnostic(
+                        "CATALOG_AUTH_STEP_HOST_INVALID",
+                        relative_path,
+                        (
+                            "each authenticated owned-browser step must name a public "
+                            "host declared by when_to_use"
+                        ),
+                    )
+                )
     lowered_body = body.lower()
     if "## success criteria" not in lowered_body:
         diagnostics.append(
