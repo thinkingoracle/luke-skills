@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:video-lookup.",
+    "expected_sha256": "82e3e2cf42e4a938ec00fbc0ba0f075eaf72f621dcb17e53af2d7bf1b460ec98",
+    "id": "video-lookup-positive-routing",
+    "input": "Find me the video that actually answers what you asked, not a page about it.",
+    "input_sha256": "49fcc14797c15fa7bd47be16e9c727b2a2951b90c85f1f84904e2641e144bb93"
+  },
+  "evaluation_run_id": "df5d2257b11ffcace3f1b4f09f0e7a4d969f980501efeaeed50d2e4546105f65",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:10Z",
+    "request_sha256": "33babd3a6709bf11c46a233244a4043f493749eb54456a8e13bdda13aa5679d6",
+    "started_at": "2026-08-02T14:01:10Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "d73d6d0d44bdb90c11f03ff3b987fd4099e9ce1907254039a7db796add8204c4"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

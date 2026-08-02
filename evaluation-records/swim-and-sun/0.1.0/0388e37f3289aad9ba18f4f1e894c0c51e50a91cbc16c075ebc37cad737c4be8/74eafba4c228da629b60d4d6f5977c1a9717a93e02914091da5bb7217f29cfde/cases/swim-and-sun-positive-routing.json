@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:swim-and-sun.",
+    "expected_sha256": "3aa02ed1e19b45aca2e4f0d5e8d62a4440d64ead62ed5173adfff3f09b0430f0",
+    "id": "swim-and-sun-positive-routing",
+    "input": "Find me water worth getting to this week, lakes, coast, springs and pools.",
+    "input_sha256": "4256499efdb396422483e3ec366cb75c800c325aa4384ddff2d777fd374423f4"
+  },
+  "evaluation_run_id": "74eafba4c228da629b60d4d6f5977c1a9717a93e02914091da5bb7217f29cfde",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "b11a055935faedacd95c5519a76a66f6bb220a4250f67815f38a645d7aedcdfa",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "8ef60919f2dd3c09be89924584b64ea24ca1a58d58a70066cbca006190791c68"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

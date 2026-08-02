@@ -1,0 +1,38 @@
+{
+  "case": {
+    "category": "failure",
+    "expected": "Hold the request if Luke's owned browser, the user's local sign-in, or per-navigation approval is unavailable; do not fall back to a hosted or everyday browser and do not request credentials.",
+    "expected_sha256": "ec9c666f0b633f5255ef5a4842ff8465c8413f28d7299327cc8745839fb57b72",
+    "id": "trending-playlists-failure",
+    "input": "Luke's owned browser or its approved signed-in Spotify session is unavailable.",
+    "input_sha256": "a9442c9d9425ee463fb4382ec2ecf77d691ee9dde5d23b0fc46c97b83cafa507"
+  },
+  "evaluation_run_id": "af6b65a94b8fa0bf7b00dfd30c2e490efdd53c8932d5db5f5e7030f5fe0eefda",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "skill_source:failure_behavior",
+    "skill_source:never"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "cd639cc8637b088ce6017809d8aff6d7cf748c162a9a927b9c9212283da8f23e",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 484,
+    "stdout_sha256": "40682a53d5b88794e222ebafeee6ee6818eebf7961699a8b12dfde03a24d8cee"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the source declares fail-soft behavior; failure handling remains inside explicit refusal boundaries.",
+  "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+  "schema_version": 1
+}

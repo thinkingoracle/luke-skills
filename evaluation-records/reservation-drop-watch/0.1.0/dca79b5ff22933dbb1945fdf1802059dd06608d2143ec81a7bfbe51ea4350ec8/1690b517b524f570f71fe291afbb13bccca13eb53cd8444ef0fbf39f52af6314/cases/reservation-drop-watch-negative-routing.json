@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "negative_routing",
+    "expected": "Do not select browser-skill:reservation-drop-watch; the request requires authentication or external mutation.",
+    "expected_sha256": "f0089d80bc4bc1b024e8b347d04226208a9884ebadeaf7237105c8ef6ef06d0a",
+    "id": "reservation-drop-watch-negative-routing",
+    "input": "Sign in and book, buy, reserve, or change something for me.",
+    "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc"
+  },
+  "evaluation_run_id": "1690b517b524f570f71fe291afbb13bccca13eb53cd8444ef0fbf39f52af6314",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:never",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "6c82ed2f478c56f916f3285555fc9ea2fbb8547c449f2e3116d7eacbf60a6094",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 597,
+    "stdout_sha256": "64ca8037b66b462e9f9139cf8f613acee45c68915647e8eac635b6a289e1a995"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture refuses selection or a forbidden route for the declared skill; the source states explicit refusal boundaries; the source excludes mutation at the routing boundary.",
+  "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+  "schema_version": 1
+}

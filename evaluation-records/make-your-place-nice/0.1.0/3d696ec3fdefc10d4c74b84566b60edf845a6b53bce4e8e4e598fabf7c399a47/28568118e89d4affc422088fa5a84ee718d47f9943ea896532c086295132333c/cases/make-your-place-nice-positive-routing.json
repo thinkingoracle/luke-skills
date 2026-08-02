@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:make-your-place-nice.",
+    "expected_sha256": "cdd495b61d9dc3cc85bc7cb41fd15bfc6240a182a340ededa08f5bd091a30fcb",
+    "id": "make-your-place-nice-positive-routing",
+    "input": "Find me one small thing to change about your place this week.",
+    "input_sha256": "e489947a14302136cd1f08953ba9ad2e2f05892badf58131edc591bd640b7400"
+  },
+  "evaluation_run_id": "28568118e89d4affc422088fa5a84ee718d47f9943ea896532c086295132333c",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:19Z",
+    "request_sha256": "171b4b8f36be1b28aec7b90b3fd7ab7849bc72911fc1644bb82a6b4aa58e4e18",
+    "started_at": "2026-08-02T14:01:19Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 556,
+    "stdout_sha256": "0e2e17e7ddadb67579c97df6302cbd5f6c130ce0e6086fa9610a755078d56054"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "negative_routing",
+    "expected": "Do not select browser-skill:work-on-my-side-project; the request requires authentication or external mutation.",
+    "expected_sha256": "6e963fabb87d3b3343ea347a1abd58c9e9a6ce54c51e195439a85c2b9dcc53d5",
+    "id": "work-on-my-side-project-negative-routing",
+    "input": "Sign in and book, buy, reserve, or change something for me.",
+    "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc"
+  },
+  "evaluation_run_id": "fbc9ddc704db0df0abef4a74c4a2fc846d5f568c58d364d4d8e3e05136af07f2",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:never",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:13Z",
+    "request_sha256": "888520449988f0ff4d24b62f0c1e4f9a8b27fbc775a1c827b3057ac36fdfc5ad",
+    "started_at": "2026-08-02T14:01:13Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 598,
+    "stdout_sha256": "05e8000ebedf444da10fa836abb3866a1d533e525975ed7c36bdbce520412bba"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture refuses selection or a forbidden route for the declared skill; the source states explicit refusal boundaries; the source excludes mutation at the routing boundary.",
+  "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+  "schema_version": 1
+}

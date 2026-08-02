@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:summer-in-europe.",
+    "expected_sha256": "f56b9e83a127261d9f58856f0e329a27f6d0ec3d5c15e25cc95e1e08f451700f",
+    "id": "summer-in-europe-positive-routing",
+    "input": "Find me where to be, when to go, and what is on while you are there.",
+    "input_sha256": "056eb3fcf3bf95e5ec9123dad55df9aa4e591f37780da30a8386c75eb3cf5d95"
+  },
+  "evaluation_run_id": "90e80195d4c849f2fe47fd764ce83411735359b0ba917408c76e1d0e533c7e10",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "e9d8fe55c882cc069b6982ffe9e91d2c542e39f6e8cd03346fbebd1e9977ae13",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 552,
+    "stdout_sha256": "c62cb01e02054d423eeb517b1ef18a57ada2b868620ee1157ff8f7437a7d8e51"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

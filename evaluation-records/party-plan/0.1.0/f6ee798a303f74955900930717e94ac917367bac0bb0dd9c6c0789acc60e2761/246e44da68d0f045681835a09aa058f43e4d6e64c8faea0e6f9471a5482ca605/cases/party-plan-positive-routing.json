@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:party-plan.",
+    "expected_sha256": "ecb7c8187e89993be0373ba7932b58c23a5b37977e67e2b8960878f5469cb15f",
+    "id": "party-plan-positive-routing",
+    "input": "Find me one party plan, start to finish, with a timeline and a shopping list.",
+    "input_sha256": "446df486358911b7031fb0381a5082da1bea52565e372a83666019182f4772aa"
+  },
+  "evaluation_run_id": "246e44da68d0f045681835a09aa058f43e4d6e64c8faea0e6f9471a5482ca605",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:20Z",
+    "request_sha256": "1bb0e18e0cb1cc1726761460c9be511dc09e6c03317f272ba07e432eee7e5fd1",
+    "started_at": "2026-08-02T14:01:20Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 546,
+    "stdout_sha256": "50c51bafe5a313ffacd212dfd7cfae29473993b36d1e09609404642e53fcaee8"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

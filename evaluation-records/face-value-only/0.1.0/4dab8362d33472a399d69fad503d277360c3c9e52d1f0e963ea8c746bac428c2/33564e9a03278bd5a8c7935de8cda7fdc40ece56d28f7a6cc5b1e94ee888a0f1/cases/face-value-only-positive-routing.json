@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:face-value-only.",
+    "expected_sha256": "d8a85bc65434e73985792a1ccedfb3ec3535c6fbaae4de8ae815d23f4febd73f",
+    "id": "face-value-only-positive-routing",
+    "input": "Find me getting into a sold out show at the price on the ticket.",
+    "input_sha256": "1626813bbc0a2eb4303318229b17b89d8f9ddec6fa125bc971e4e3c33b713e56"
+  },
+  "evaluation_run_id": "33564e9a03278bd5a8c7935de8cda7fdc40ece56d28f7a6cc5b1e94ee888a0f1",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:16Z",
+    "request_sha256": "ae41b690d388ebf0537919149c6bdcd3651d238fcf9750e525cbbc2dbb4096a5",
+    "started_at": "2026-08-02T14:01:16Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 551,
+    "stdout_sha256": "65375bb9124f3753fda4ca5eeb3d5da0a3d40dd46cef8647530a15744bacedc3"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

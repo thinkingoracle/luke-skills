@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:market-day.",
+    "expected_sha256": "55b53a87b6c28e9943d037542cb20142b52d07ad6bd3562b1ce90e5ec9ac0431",
+    "id": "market-day-positive-routing",
+    "input": "Find me your farmers market, the good stalls, and the hour prices drop.",
+    "input_sha256": "67ff3e3b69b7f2ae9ebdfe0be66322e3cad701424ebb158c5c8287b1d278e03d"
+  },
+  "evaluation_run_id": "eb64c0fde7b95be4492286b7de883455f6c2716e36b63103119fc21c0c3ce567",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:19Z",
+    "request_sha256": "80863383293cd7ba0d2ee5626e905e233d10c3f7303f991297d70679f0fea57f",
+    "started_at": "2026-08-02T14:01:19Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 546,
+    "stdout_sha256": "66d824d0b2223c7969a6acdec20d6bf6f7adb618a79e3081369d2ee45a17a469"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

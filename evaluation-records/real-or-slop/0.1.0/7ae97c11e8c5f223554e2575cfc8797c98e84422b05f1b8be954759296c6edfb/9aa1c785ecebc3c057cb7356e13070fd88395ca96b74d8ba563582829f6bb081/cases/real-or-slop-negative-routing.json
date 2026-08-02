@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "negative_routing",
+    "expected": "Do not select browser-skill:real-or-slop; the request requires authentication or external mutation.",
+    "expected_sha256": "347d5a615ce119c0a193ca5675876c1eb42170e5b8f3fc6617ba5c3ed08ef0a0",
+    "id": "real-or-slop-negative-routing",
+    "input": "Sign in and book, buy, reserve, or change something for me.",
+    "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc"
+  },
+  "evaluation_run_id": "9aa1c785ecebc3c057cb7356e13070fd88395ca96b74d8ba563582829f6bb081",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:never",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:21Z",
+    "request_sha256": "19ff1079130cd8580e4bbea7bb9da4dd92d8d63bf323f205f38e6d200e1bd428",
+    "started_at": "2026-08-02T14:01:21Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 587,
+    "stdout_sha256": "0c958c2467992d6090245cbb2dd021b051203229f40e4f60704ed384b7e894ba"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture refuses selection or a forbidden route for the declared skill; the source states explicit refusal boundaries; the source excludes mutation at the routing boundary.",
+  "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+  "schema_version": 1
+}

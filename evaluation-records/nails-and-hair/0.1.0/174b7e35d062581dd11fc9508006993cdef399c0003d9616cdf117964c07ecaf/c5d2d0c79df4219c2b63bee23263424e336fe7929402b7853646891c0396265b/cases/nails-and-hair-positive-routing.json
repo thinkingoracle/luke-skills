@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:nails-and-hair.",
+    "expected_sha256": "54724ef9dfa7b7333579a4d8678da927971351a2cf86594d51876bf02f026822",
+    "id": "nails-and-hair-positive-routing",
+    "input": "Find me what's good right now, and who near you actually does it well.",
+    "input_sha256": "be9c9d9a8bbd8ae6047c71f9e0970dfc2b29c637aac3d8d2291dc9de6f71bc21"
+  },
+  "evaluation_run_id": "c5d2d0c79df4219c2b63bee23263424e336fe7929402b7853646891c0396265b",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:19Z",
+    "request_sha256": "53bc8e95bfdf04d2a018200ee584e88fe3e166ceb5b5c3fa642d4d78b1da1d5d",
+    "started_at": "2026-08-02T14:01:19Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 550,
+    "stdout_sha256": "f8809f288b7c9c4938f9858018395f63ce5c88f8cf3731718c318bcdf36d729c"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

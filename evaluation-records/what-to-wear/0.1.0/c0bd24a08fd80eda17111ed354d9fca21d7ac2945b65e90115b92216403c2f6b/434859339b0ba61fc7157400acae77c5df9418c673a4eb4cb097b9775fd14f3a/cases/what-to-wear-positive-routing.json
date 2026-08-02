@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:what-to-wear.",
+    "expected_sha256": "0102311970e9dfb16b2e828c2382493545f345a874e816fca2ea7166d94fd511",
+    "id": "what-to-wear-positive-routing",
+    "input": "Find me an outfit for the exact thing you have on, built from what you own.",
+    "input_sha256": "6f2d235a4c76a9c9db50dd66a1963061b3c9124091388d1786f4566524800d3b"
+  },
+  "evaluation_run_id": "434859339b0ba61fc7157400acae77c5df9418c673a4eb4cb097b9775fd14f3a",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:11Z",
+    "request_sha256": "e2ca8af5d58fc648ab4b4ff770d8a146faeca7cb0e2bc09763bf4ff9a7e3b649",
+    "started_at": "2026-08-02T14:01:11Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "d8d198cf0a2675d2de653156dd0b404ba7977218ad202d9b2f83cbf271517ad4"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

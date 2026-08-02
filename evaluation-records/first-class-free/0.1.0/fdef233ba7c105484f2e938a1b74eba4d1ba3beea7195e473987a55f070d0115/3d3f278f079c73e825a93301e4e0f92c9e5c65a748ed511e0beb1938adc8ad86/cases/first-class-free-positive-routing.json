@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:first-class-free.",
+    "expected_sha256": "5932c08ebbc85337756d4f7f469645116221bceda5e194aa2b04ca8f32da6ab3",
+    "id": "first-class-free-positive-routing",
+    "input": "Find me run clubs, climbing gyms and studios you can try for nothing.",
+    "input_sha256": "500002eaf256fb4c0acd5239de1be60aeb175b5db75280e4d72570489bb33861"
+  },
+  "evaluation_run_id": "3d3f278f079c73e825a93301e4e0f92c9e5c65a748ed511e0beb1938adc8ad86",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:16Z",
+    "request_sha256": "66c6048daf5f5be9568cb8d3ff4d82ebd7ea724785183bf469858cb336a022a9",
+    "started_at": "2026-08-02T14:01:16Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 552,
+    "stdout_sha256": "140dc72b7078f821e38f53bd8ec3ba36db4d3e49ce157ee71090e4459905fc2e"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

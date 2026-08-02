@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:podcast-fetcher.",
+    "expected_sha256": "870dea1e42222274ecc4db3222051b23989bc0b84a487630cd9430fc29464947",
+    "id": "podcast-fetcher-positive-routing",
+    "input": "Find me the episode you half remember, found by guest, topic or that one line.",
+    "input_sha256": "98f991ce3e44693cf9bd55cdf8af7e76a9d00f1553b6afa9cbe21d91fd186089"
+  },
+  "evaluation_run_id": "84b62ee3f5174c6d9cc6f39ab7ce422a88910e42f362a3595b89f30ceb83d19d",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:21Z",
+    "request_sha256": "d3872f3c58f7daa159ab229421582b286f4dc4b6fff27ebad765ed5eb83fb4c2",
+    "started_at": "2026-08-02T14:01:21Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 551,
+    "stdout_sha256": "f2d91655fa418fd8e1c082a71f1f74b6435bf4485fa46aa38bd0feb4db253c15"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

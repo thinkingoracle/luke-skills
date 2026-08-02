@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/deep-dive-failure.json",
+      "case_evidence_sha256": "95154e70580734d64f7a2eb3e0b8aea45bf96576451a5ba25ffa69f9aa9994ca",
+      "case_id": "deep-dive-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:15Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "f35f8fdecfbe2cb29e5fed0d689abaf21cdec96eff050371b9ab78665961fb5e",
+      "started_at": "2026-08-02T14:01:15Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 475,
+      "stdout_sha256": "aca6913ea3cbd54a4c554ab0c4db63a733c50a69e67bb9b9243983a85ceb1c8f"
+    },
+    {
+      "case_evidence_path": "cases/deep-dive-negative-routing.json",
+      "case_evidence_sha256": "741d32ff26915690f639bfe984f0b814a686db5333f1ecdb0eb12794640532b2",
+      "case_id": "deep-dive-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "1252787a919ac661861a56f58231a30807fc57fd30dfe6ab478bad07064299fe",
+      "finished_at": "2026-08-02T14:01:15Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "5a0c6aa81dac62977392d496a0fa09b4aaa1ca5ecdb371b01aec62c53df0c09f",
+      "started_at": "2026-08-02T14:01:15Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 584,
+      "stdout_sha256": "37dcc95c634810b9f9239477affdb564444b893b69bd5e61c6a87b4ce3780782"
+    },
+    {
+      "case_evidence_path": "cases/deep-dive-positive-routing.json",
+      "case_evidence_sha256": "9f50951dff9b77f36bf8fb2eceb04bc082fdf01819238bc2073d9452409f73a7",
+      "case_id": "deep-dive-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "ee0a1caf3937c4288c484d86ad4f42438dac2dbea5e16798b64d468272e06917",
+      "finished_at": "2026-08-02T14:01:15Z",
+      "input_sha256": "0f09ae9e7a29a41cc08a01a21b27dd679a57d324349a3010e67fbd2284f1c50a",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "dba0270d1e21203c2a1736f58e28ef584826f3819fe59d8c6090af5788c659f5",
+      "started_at": "2026-08-02T14:01:15Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 545,
+      "stdout_sha256": "7c9d553eeeb35255c19db2c97a019cf16953fc64040b10f56273c430099d5534"
+    },
+    {
+      "case_evidence_path": "cases/deep-dive-redaction.json",
+      "case_evidence_sha256": "d61112c43cdc891dbe678716d7690748d973f1505f528cbb3797aef3fb32ef8c",
+      "case_id": "deep-dive-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:15Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "45d30c9d22e71d64ec5094c64e83a5ef3df1e55ffc69f97acc483cb96a95412c",
+      "started_at": "2026-08-02T14:01:15Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 471,
+      "stdout_sha256": "7e99ac8e50542e0980f5fd55cff405dc49d02764f765212113558583a5ba920b"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:15Z",
+  "evaluation_run_id": "a662ba53b3d68f5c3a0c8cfe66d77c0b8c96cbca6f1f073c11ee17f769979b38",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__27/4ec359abd89c0523ba41841cc097af9b11069f7a9529848179d0c3d00cfa5f84/a662ba53b3d68f5c3a0c8cfe66d77c0b8c96cbca6f1f073c11ee17f769979b38",
+  "expires_at": "2026-08-09T14:01:15Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1765,
+      "path": "evals/deep-dive.json",
+      "sha256": "b7f0817d7b02d167d00a8d8d309f13dc7c257974b034201388cf863170974e20"
+    },
+    "intake_result_sha256": "bd72e2814eb1afd912794f232e16771d346c7f3bbb6a49085a2ad26eaeaba5ab",
+    "proposal": {
+      "body_byte_count": 8792,
+      "body_sha256": "9efaa1af1d840c9b695ec71a0a82fdcd3390350b9c8782fe742766bf3b51223a",
+      "identity_sha256": "4ec359abd89c0523ba41841cc097af9b11069f7a9529848179d0c3d00cfa5f84",
+      "number": 27,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:26Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/27"
+    },
+    "skill": {
+      "byte_count": 3110,
+      "path": "skills/deep-dive/SKILL.md",
+      "sha256": "cbb27be804fb3393363e60015047a72c3356ced3a82cdabd3b049a51a855fdae"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

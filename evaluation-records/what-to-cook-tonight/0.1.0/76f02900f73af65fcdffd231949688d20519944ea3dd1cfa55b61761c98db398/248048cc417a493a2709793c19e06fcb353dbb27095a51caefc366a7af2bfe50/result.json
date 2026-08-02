@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/what-to-cook-tonight-failure.json",
+      "case_evidence_sha256": "fd17243f943823a5d1c578e002f277188276609b2bc7cbe197a4464ef3e2295f",
+      "case_id": "what-to-cook-tonight-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "6b09df28580285bb07e343888d9fb3dd41e443ce93f896324ac14c393727f8fc",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 486,
+      "stdout_sha256": "59c89e24ed7822281bce473c1e805c01addc810f3a5b36ccec7a09d491bd7b6d"
+    },
+    {
+      "case_evidence_path": "cases/what-to-cook-tonight-negative-routing.json",
+      "case_evidence_sha256": "7a68e4b42dbff43c24a86025103f6f454a7d1b0b841eb69be80d382d1a8fe1cf",
+      "case_id": "what-to-cook-tonight-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "f19de8a7852b83de330c7de3b4a87b60b46b08c8b6ca702b4a16fe73407ab1b6",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "2e1ef8b9a49d3c4835d08a2e9fecd9fda43f4074dd4e829c992fc675b18010b3",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 595,
+      "stdout_sha256": "111398937523388aecde002d70593bcdae19da29d7bb258cd4b921192f452041"
+    },
+    {
+      "case_evidence_path": "cases/what-to-cook-tonight-positive-routing.json",
+      "case_evidence_sha256": "945b42c7df790d30f8ccb8f0386f4a64c1c231b09a9748fa008661b0ec6c4484",
+      "case_id": "what-to-cook-tonight-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "fb6fbaa1914d895267d4c656ab179240cb303b0c159e26f6c7831c8c9ac2dc5e",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "e9189a9f02a71c0e9b4c39891d09fa7542d132f7ef5383a25c4d8bb7e97c7044",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "bcdf593eb13b0438daad4c4be1cf51b7d0ca24e8ec8dc00b57d56ab4cf27dc61",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 556,
+      "stdout_sha256": "771f8a61fe49f7f305e7e5ce2517b8d1ed9135d77a8e2be8572542679977c7ed"
+    },
+    {
+      "case_evidence_path": "cases/what-to-cook-tonight-redaction.json",
+      "case_evidence_sha256": "7767f960c39c0f90e6951aed7f9911a850dd1027e79de8e6fb089bec2d4fc649",
+      "case_id": "what-to-cook-tonight-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "92a97904b1207c19be085eca82290018db06d607feb46a474accd8a3085f4bca",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 482,
+      "stdout_sha256": "83fb6af246ce594c34a0886a3c8e4dadd1024363c5b1a04c37431b471af51fce"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:11Z",
+  "evaluation_run_id": "248048cc417a493a2709793c19e06fcb353dbb27095a51caefc366a7af2bfe50",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__107/eb742dbe9d32b79bc8779e0e75dc15f85cfd74ea0b9c2db1059670cb94efa297/248048cc417a493a2709793c19e06fcb353dbb27095a51caefc366a7af2bfe50",
+  "expires_at": "2026-08-09T14:01:11Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1845,
+      "path": "evals/what-to-cook-tonight.json",
+      "sha256": "40b4dfa360dd555a25644160167d09b6549b92cd53b2ebd2040aada9b5a31b44"
+    },
+    "intake_result_sha256": "f3307864ec189ffd957a45a00551b9f55f632e2238b31f476b81b88a81467cb5",
+    "proposal": {
+      "body_byte_count": 7934,
+      "body_sha256": "4539d35facc65071dc574fa18b89ecdfd191702dbad90b2a94881d42bf2c2198",
+      "identity_sha256": "eb742dbe9d32b79bc8779e0e75dc15f85cfd74ea0b9c2db1059670cb94efa297",
+      "number": 107,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:35:37Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/107"
+    },
+    "skill": {
+      "byte_count": 2623,
+      "path": "skills/what-to-cook-tonight/SKILL.md",
+      "sha256": "76f02900f73af65fcdffd231949688d20519944ea3dd1cfa55b61761c98db398"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

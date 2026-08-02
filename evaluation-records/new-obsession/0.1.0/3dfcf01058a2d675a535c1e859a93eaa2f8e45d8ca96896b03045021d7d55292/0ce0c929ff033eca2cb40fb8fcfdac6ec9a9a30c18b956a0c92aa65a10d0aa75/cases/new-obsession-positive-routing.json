@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:new-obsession.",
+    "expected_sha256": "a079a6f6a94c437734d0f2a2640b96e102a719d10ffc5d852d8e55334db7ee96",
+    "id": "new-obsession-positive-routing",
+    "input": "Find me one hobby, skill or rabbit hole worth falling into this month.",
+    "input_sha256": "68109865afd04b4309f49ac87cb74f38765991e97c0811b6d18b1a2edd1a923d"
+  },
+  "evaluation_run_id": "0ce0c929ff033eca2cb40fb8fcfdac6ec9a9a30c18b956a0c92aa65a10d0aa75",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:20Z",
+    "request_sha256": "dc8abf7088f7b1f395601f55734b15731fa11c3212d08f9445417e0cb9b42fb9",
+    "started_at": "2026-08-02T14:01:20Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "428a6f48ebe68efbd6e420de5f67dedf5ff282fd58765cb8e21f460faaa2e417"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

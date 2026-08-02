@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:residency-radar.",
+    "expected_sha256": "f806291632f055e597ceaf36b3b46c1d5120d0ad57c91364b1a782ee0be9b74d",
+    "id": "residency-radar-positive-routing",
+    "input": "Find me the weekly nights that never get announced because they are always on.",
+    "input_sha256": "67a79d101a7dca3428931775bad1e3f8cbd258e74fa4a9539e7b5cdf15b34d63"
+  },
+  "evaluation_run_id": "1270c03596dbc9b9c8cabee3618815a19ac62dfd4a256dadcdeb32b62703bcf2",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "5f2c38e1605bbeb03b1c4f874908aa4acdb78b224fb82c115e398885fc09664f",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 551,
+    "stdout_sha256": "2e9360848257e660713ec07f35d9dae91f2d3a196b36727f6acb1b1d6292e03b"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

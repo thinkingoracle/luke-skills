@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:restaurant-week-play.",
+    "expected_sha256": "d22a91e4e29e03e1e3c0398c5874de83a6a9edce4d2725f64e88def53e099db0",
+    "id": "restaurant-week-play-positive-routing",
+    "input": "Find me which restaurant week menus are a real deal and which are not.",
+    "input_sha256": "82c4efc00c830fda1a008a7c07d35147d720f8c7e5438213e4eef06337736b2f"
+  },
+  "evaluation_run_id": "22f9f36ae0bc86d1d0dace0fcc1c6ce5710301335f0af2455c9705883761d76e",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "d8cdeb7cfb0dec82a5c8205f19a43bd4de71b5dd42df7f2b63d871cb9e541d98",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 556,
+    "stdout_sha256": "592540fafc73bca06891dac7c20fd5901763c7ba2c7603dc4edf66cd9bd69acf"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

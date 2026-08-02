@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:spa-day.",
+    "expected_sha256": "a6d4162feb82fe41a1197929118b7577c0006a94a3fcd29902f8b1e4bd90dd0c",
+    "id": "spa-day-positive-routing",
+    "input": "Find me where to go do nothing for a few hours.",
+    "input_sha256": "f777bd68ec7546059aa6ece089c3d38cd3ef460a0637984c3ace31518fe1279a"
+  },
+  "evaluation_run_id": "d05ab8161a94d46f27cd7c2f2fd43bc06f74e4f68b716c0d897ce41880a342b9",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "95e128c402771523c3967d69f78f5375d0d48213123aa43840b9bdc334724d4b",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 543,
+    "stdout_sha256": "b52124ca247365f8fa731052640f74950d6142f37a4bcf19ae26c60340eed786"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

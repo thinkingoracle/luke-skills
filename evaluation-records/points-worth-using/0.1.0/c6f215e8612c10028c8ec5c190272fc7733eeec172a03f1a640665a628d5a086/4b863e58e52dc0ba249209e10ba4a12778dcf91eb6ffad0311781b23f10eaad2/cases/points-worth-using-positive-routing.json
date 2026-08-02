@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:points-worth-using.",
+    "expected_sha256": "ed8bde692aede103b1e5b05762e37feaba07aa37d2c1ef8573ace60712960a1a",
+    "id": "points-worth-using-positive-routing",
+    "input": "Find me whether the points you already have are worth spending on this trip.",
+    "input_sha256": "1f6cc559b0f72f44d384019dab5a25ed95bbecfe844fadc91701b38171b9a3c4"
+  },
+  "evaluation_run_id": "4b863e58e52dc0ba249209e10ba4a12778dcf91eb6ffad0311781b23f10eaad2",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:21Z",
+    "request_sha256": "ed6d0e1ddcccfb67dde95250f758d4c6ca1ec7f04b48bdb17574f6167aaad2a7",
+    "started_at": "2026-08-02T14:01:21Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 554,
+    "stdout_sha256": "6c8272a8b797efd478cd2cfeea65153a9c10123678899c446796bd9e664911ab"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

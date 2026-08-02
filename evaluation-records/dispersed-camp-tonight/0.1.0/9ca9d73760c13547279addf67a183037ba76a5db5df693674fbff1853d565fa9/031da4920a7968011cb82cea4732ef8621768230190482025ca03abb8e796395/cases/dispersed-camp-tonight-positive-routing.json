@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:dispersed-camp-tonight.",
+    "expected_sha256": "af5c42a077f63545e996c6fc49ea7dc8d8772548f8530f226387baad521d452b",
+    "id": "dispersed-camp-tonight-positive-routing",
+    "input": "Find me free legal camping on public land tonight, no booking, no gate.",
+    "input_sha256": "185a469c5d5eeb7dd618e3163a672c3eb3fc360ef233218b4ef39bdd43abdd33"
+  },
+  "evaluation_run_id": "031da4920a7968011cb82cea4732ef8621768230190482025ca03abb8e796395",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:16Z",
+    "request_sha256": "ab679f382b0620d31a220792994377651f5b2750aeab9cfc4f103dfea0c29651",
+    "started_at": "2026-08-02T14:01:16Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 558,
+    "stdout_sha256": "68f3eb2e95e849b6bb56296c67bbb32a3a5037acc7948b8ab8c6a4919f3b3f8d"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

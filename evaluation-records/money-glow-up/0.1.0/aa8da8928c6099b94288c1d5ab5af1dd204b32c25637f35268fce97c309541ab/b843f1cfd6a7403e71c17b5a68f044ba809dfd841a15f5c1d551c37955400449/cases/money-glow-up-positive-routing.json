@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:money-glow-up.",
+    "expected_sha256": "c8024c00a48707818ed72cafad6391604fc41c31de237beff89adf9acebeb4ff",
+    "id": "money-glow-up-positive-routing",
+    "input": "Find me one move this week that makes you better off, in plain words.",
+    "input_sha256": "f9afa57e7989a36b864208c3537af9dc009410bccb22b6ecc66ae760a123286c"
+  },
+  "evaluation_run_id": "b843f1cfd6a7403e71c17b5a68f044ba809dfd841a15f5c1d551c37955400449",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:19Z",
+    "request_sha256": "4dcc69e68f12d79c76338997c0350798c697d60f011cdf1f6fcc272f0a2e5023",
+    "started_at": "2026-08-02T14:01:19Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "754af937ea0251073d9cae43f1aea0713d4929467077b89aa39ed78328ded383"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

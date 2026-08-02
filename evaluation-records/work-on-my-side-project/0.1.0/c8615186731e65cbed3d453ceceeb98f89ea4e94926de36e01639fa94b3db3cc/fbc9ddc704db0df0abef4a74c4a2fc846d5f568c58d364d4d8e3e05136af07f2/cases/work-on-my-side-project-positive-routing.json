@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:work-on-my-side-project.",
+    "expected_sha256": "2e5b971e382d3689a0be5315b2e5291565c939e587fd6c1193280688f49ce56b",
+    "id": "work-on-my-side-project-positive-routing",
+    "input": "Find me one concrete step this week on the thing you are building on the side.",
+    "input_sha256": "2f68fa3cbc521bfc4410653d407385573e586c9b13db12a341631c02e601120a"
+  },
+  "evaluation_run_id": "fbc9ddc704db0df0abef4a74c4a2fc846d5f568c58d364d4d8e3e05136af07f2",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:13Z",
+    "request_sha256": "36d7d969f8e2664f4c26332617812f8c26a8f1ab08dc8e66b83621f0a807fb22",
+    "started_at": "2026-08-02T14:01:13Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 559,
+    "stdout_sha256": "7083564d94b6e9978ec8004b534b9ac89c50a3ce72a4dcd17bef9a6b97dc1cf1"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:no-cover-tonight.",
+    "expected_sha256": "2d6739dd7362824b632451a69aed935744f6f268cf0f9005b3c31691966d6c2f",
+    "id": "no-cover-tonight-positive-routing",
+    "input": "Find me where the door is genuinely free, and where free is the setup.",
+    "input_sha256": "c4d5831669d13febe06a610c1c40d8967885747cceb21e602504dd12f295b236"
+  },
+  "evaluation_run_id": "2300d88adfae66d69ce30dbe551d18fe22ee47fc4998b869f7f2e9c6d66d0d7f",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:20Z",
+    "request_sha256": "8c4c3244833cd143a355e20790e7d26f640fe2fde77e331edd94ec09c9abccb0",
+    "started_at": "2026-08-02T14:01:20Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 552,
+    "stdout_sha256": "1e33ced34f82747259ec42345b768a30b05d55a598348266e19398e848d56378"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

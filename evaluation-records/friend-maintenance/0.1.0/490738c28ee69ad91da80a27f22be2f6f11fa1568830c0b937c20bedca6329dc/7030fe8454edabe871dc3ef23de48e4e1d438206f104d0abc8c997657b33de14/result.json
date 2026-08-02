@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/friend-maintenance-failure.json",
+      "case_evidence_sha256": "f45a7bc1ab307746e8ee5218c4c94d3ae8e31f1a2db4a32446786429246b5f46",
+      "case_id": "friend-maintenance-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "8ede5dc641f0f13797c26e61087955e682c340134ea0988af339c17d5ef09b6f",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 484,
+      "stdout_sha256": "312a2e0fafb64749aa253f1f597b1e475949161264f551ee1957e09e01d23bd5"
+    },
+    {
+      "case_evidence_path": "cases/friend-maintenance-negative-routing.json",
+      "case_evidence_sha256": "245d9ac35b6e658dd9a0ddca0d01d0fc9bebb345b82cda7194f0ec5b19e87761",
+      "case_id": "friend-maintenance-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "21bf1438e0f6bbf20c263f5c3f13fd9b046caf27e3ce083c45687fe1554010b2",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "822df2c2427fe73841487cd56c111839bafe19ad64b6fa010cde1ac8e821353e",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 593,
+      "stdout_sha256": "083249b69f3e043c8f2c2c3fff2aa0391d7a001a978af247c02998e8141e5a0e"
+    },
+    {
+      "case_evidence_path": "cases/friend-maintenance-positive-routing.json",
+      "case_evidence_sha256": "b57f9d0b3d9b78a22e09934d465cb98800bdf19993d75041d63e5bd7f5bb8710",
+      "case_id": "friend-maintenance-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "376354ec15f3f82a2762a41d96cf5f274c278fc24be8233995941657834a9569",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "58b8d85085a44aaf65e3b7ff893e9002ab5b568c7700d29f4efc0c74731ccdac",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "a344e64c7a51f700120091a7d805e9a0f37566b3936264d1c05e2b11c3b6e4cd",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 554,
+      "stdout_sha256": "c301b4e639cc98e02e9244d75097637480d9d742cadf3e314d0bfab61e9d9665"
+    },
+    {
+      "case_evidence_path": "cases/friend-maintenance-redaction.json",
+      "case_evidence_sha256": "2d318fc82bddb0983a95576bdd01ff3a215dc2d2eb94bdac529c878a03e24715",
+      "case_id": "friend-maintenance-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "d98026aa4f2dd184b2feab1d816e6b289d377dc7db3b2e809a1281e6b85fe862",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 480,
+      "stdout_sha256": "4f6c3191f9fb20e8cb7237347966bd66d7dc88f6f678f0efc9400e2a8e90ac42"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:17Z",
+  "evaluation_run_id": "7030fe8454edabe871dc3ef23de48e4e1d438206f104d0abc8c997657b33de14",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__37/a89ea197ff90d1b047f68d936d2aeb7d9025b68f40586d850ba78c1520f9aee5/7030fe8454edabe871dc3ef23de48e4e1d438206f104d0abc8c997657b33de14",
+  "expires_at": "2026-08-09T14:01:17Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1826,
+      "path": "evals/friend-maintenance.json",
+      "sha256": "e52f2a14fd4116026cb61c6042da7e70bea5897d28b7e894646e0cfe4bf4aecd"
+    },
+    "intake_result_sha256": "073ade549b1fc6a28e18d1d8ab6059170b2a4d526347fe6c5fb1da208d18105c",
+    "proposal": {
+      "body_byte_count": 7982,
+      "body_sha256": "540b70f383f51ef009a6d1b31bf74673b10bf8844c71bc9ed4c819006d0e5c40",
+      "identity_sha256": "a89ea197ff90d1b047f68d936d2aeb7d9025b68f40586d850ba78c1520f9aee5",
+      "number": 37,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:32Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/37"
+    },
+    "skill": {
+      "byte_count": 2651,
+      "path": "skills/friend-maintenance/SKILL.md",
+      "sha256": "490738c28ee69ad91da80a27f22be2f6f11fa1568830c0b937c20bedca6329dc"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

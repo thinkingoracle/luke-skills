@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:trending-playlists and route the read only through Luke's owned browser for open.spotify.com after per-navigation approval.",
+    "expected_sha256": "41996acd2a3f1d527311ac85fba30c5ce56e88b1610a860b7e4beca326b32a94",
+    "id": "trending-playlists-positive-routing",
+    "input": "Use my signed-in Spotify session to find what is climbing the charts and which playlists everyone is on right now.",
+    "input_sha256": "402a17df07f91e29536b9abd58e31f47b91ace0eaa9ccffb4b1d98b34f9b3064"
+  },
+  "evaluation_run_id": "af6b65a94b8fa0bf7b00dfd30c2e490efdd53c8932d5db5f5e7030f5fe0eefda",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "8c565ab2523a27f280b50949ffbef5776cedddf7ae250bf5dc9ffa4ea2dd0ca0",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 554,
+    "stdout_sha256": "5acc0c211d76b957cbb0658ffc2c6031a8f6e15c158903ff1e1f3b728ed6951f"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

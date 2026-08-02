@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:crypto-pulse.",
+    "expected_sha256": "31b11fcab25e77c1ddbb9fd396e2783ded30c09789caedf2856ef53df2932864",
+    "id": "crypto-pulse-positive-routing",
+    "input": "Find me where BTC and ETH are sitting, and what actually moved the market.",
+    "input_sha256": "1094354287eefeff31ed1c0792bcb58ab0859eba419a4899dc81ac806bf1ec12"
+  },
+  "evaluation_run_id": "a471450a30161b688a26976e0fb7ce159cfc962d80506c0816f3477154d9257f",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:15Z",
+    "request_sha256": "430234693ff7fc7267be4ad11f54d1267013dc12aa316a072b3148dbf77edb76",
+    "started_at": "2026-08-02T14:01:15Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "b822aa00694b5102648c047640e7513a5ee6c089e599ee87486bcdb67727d605"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

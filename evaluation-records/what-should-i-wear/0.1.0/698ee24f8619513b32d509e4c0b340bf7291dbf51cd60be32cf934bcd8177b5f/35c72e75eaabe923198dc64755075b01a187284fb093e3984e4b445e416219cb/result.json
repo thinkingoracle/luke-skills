@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/what-should-i-wear-failure.json",
+      "case_evidence_sha256": "f4af5fb5ef0d80275aed72a5e89fb20558c10514ab74234a8b3a017c185591d0",
+      "case_id": "what-should-i-wear-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "15d383ecaf2c59c717040e9bcb12c435e6e6065982d299bcf3cce256bc44903c",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 484,
+      "stdout_sha256": "fcf9dbe7cb5e89c32f39af803a3c8300d5e93f59f9e58a4add7fc09598a05898"
+    },
+    {
+      "case_evidence_path": "cases/what-should-i-wear-negative-routing.json",
+      "case_evidence_sha256": "d7fcc8c2dea3c2600fdac6211ff1a22526531f108eb68cee2084bedc6ad54f5f",
+      "case_id": "what-should-i-wear-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "989b51e70be291be395e9321376b5e8d44fa285daa543792625de39bd4d9c44f",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "3243f615d2c0e813b75fed332b401ed16ebee110f513541247774c40ae1c26a5",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 593,
+      "stdout_sha256": "b5cef46748bd2418a4e0163d3aa874755d7972cdefe21e4336377be00c858b63"
+    },
+    {
+      "case_evidence_path": "cases/what-should-i-wear-positive-routing.json",
+      "case_evidence_sha256": "42717138b724c3efb8575f05f63782b91206f8feabbf8d2b816309c34d018681",
+      "case_id": "what-should-i-wear-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "6ebe850e443acfbaac3e6c4556881e1681beb30005f2ca38549521c725af197f",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "cafe9bea72424e0619393ec073927054e2321dbe01e556bda07e09d916a39680",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "a0aa75bedff0fdb13862b2478db2fe71780f4c6241817fc139352205fa1a08c6",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 554,
+      "stdout_sha256": "cb350abaa2c7c7f240e286a3f76f0ae8eb78425bec7a4bc6ddf6690cb5a2b507"
+    },
+    {
+      "case_evidence_path": "cases/what-should-i-wear-redaction.json",
+      "case_evidence_sha256": "c3132c0f45078f1424acc3a5f326d8d39de9938816600470aa0cd17c7ee59402",
+      "case_id": "what-should-i-wear-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:11Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "2a477075308d1c45a7dd1d3c3974d612d3ae6c9a38a0d1d7a2ca87e2fe114372",
+      "started_at": "2026-08-02T14:01:11Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 480,
+      "stdout_sha256": "300fbc3e107561140e8feac7ac0cfad222813bf51e35b94735adf10eb2244cfc"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:11Z",
+  "evaluation_run_id": "35c72e75eaabe923198dc64755075b01a187284fb093e3984e4b445e416219cb",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__105/79b06ecba3140e2468ddb338cb4b7964a53a2160944eefdda8d1ee3db11fa61b/35c72e75eaabe923198dc64755075b01a187284fb093e3984e4b445e416219cb",
+  "expires_at": "2026-08-09T14:01:11Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1810,
+      "path": "evals/what-should-i-wear.json",
+      "sha256": "f112544504b3a4448aec0e9c56c235f4b0ddf5fb35ab4334aca700282b2d0502"
+    },
+    "intake_result_sha256": "aa3419c03110bd494406ac8b2bb9a70de7a6a154a019637b1af91abd410aa934",
+    "proposal": {
+      "body_byte_count": 7822,
+      "body_sha256": "518370adf000b64bd4fdd2ce94a96158b471634a6bf85332cc3996e6ec345e80",
+      "identity_sha256": "79b06ecba3140e2468ddb338cb4b7964a53a2160944eefdda8d1ee3db11fa61b",
+      "number": 105,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:35:28Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/105"
+    },
+    "skill": {
+      "byte_count": 2526,
+      "path": "skills/what-should-i-wear/SKILL.md",
+      "sha256": "698ee24f8619513b32d509e4c0b340bf7291dbf51cd60be32cf934bcd8177b5f"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:dinner-party.",
+    "expected_sha256": "da6b64c0452d86f9f56080675c3207dda89865e21a39571e0b19d22c5aee13be",
+    "id": "dinner-party-positive-routing",
+    "input": "Find me a menu that works together, prepped in order, with the shopping list done.",
+    "input_sha256": "6a96df51b851afeea485386aa9afb6d623f176e1c83fb32c5f7b6bf364c5fdde"
+  },
+  "evaluation_run_id": "cbdbc7d7f000908306df0bdd34706b4ec8781f599a08db461874131db6dd66fe",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:16Z",
+    "request_sha256": "d87f6927e31b92b0c0b04afebb096028a0c389104170d6cf31de49955184ffdf",
+    "started_at": "2026-08-02T14:01:15Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "d8e78022c884260a86dec97a1fee524ea6384ac266742c5d63450263278e55de"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

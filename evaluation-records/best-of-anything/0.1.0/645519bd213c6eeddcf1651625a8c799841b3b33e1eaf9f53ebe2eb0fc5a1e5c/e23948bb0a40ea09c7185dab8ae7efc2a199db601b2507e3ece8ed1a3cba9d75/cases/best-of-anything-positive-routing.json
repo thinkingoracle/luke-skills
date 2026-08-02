@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:best-of-anything.",
+    "expected_sha256": "c0d66912b048f055a09cdc055e016664a4c4b274de27448d5eefef94fe66a4da",
+    "id": "best-of-anything-positive-routing",
+    "input": "Find me the actual best one, and why, not a list of ten with links.",
+    "input_sha256": "3ee404531576226b01bd0bd7ab39d52b9bc5df3aceb8bca1f610ddac9f44f62a"
+  },
+  "evaluation_run_id": "e23948bb0a40ea09c7185dab8ae7efc2a199db601b2507e3ece8ed1a3cba9d75",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:12Z",
+    "request_sha256": "4122a76674a18e477d54c0c658f7e2ac5f35e1b1e9539abf6effe74664d775c4",
+    "started_at": "2026-08-02T14:01:11Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 552,
+    "stdout_sha256": "a094cde53757071e5c143e885a7f5e5781a9869afe6410fae8a585e0ce7a7a74"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:road-trip-shuffle.",
+    "expected_sha256": "ed7d764c70021edf77fc3cfd0f8af77cd846df5a4d2e5043ce6f1d16385872fd",
+    "id": "road-trip-shuffle-positive-routing",
+    "input": "Find me a drive worth doing this weekend with the stops that make it good.",
+    "input_sha256": "372cb1efec0e301925582e99262757ffe18cb5c6adca109f295216dcc4d73a04"
+  },
+  "evaluation_run_id": "2e9d1e4bedd9e68a39beb8facf036fa9cfa98252db2b0d8383de0b75847be3e2",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "85c22eaff997a34da67c8e91c298267c0acc9d942ec6c46655b95020003f6faf",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 553,
+    "stdout_sha256": "31c1737a6393494cb247f025ded145084fd5860585a38058c4aad06456c21028"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

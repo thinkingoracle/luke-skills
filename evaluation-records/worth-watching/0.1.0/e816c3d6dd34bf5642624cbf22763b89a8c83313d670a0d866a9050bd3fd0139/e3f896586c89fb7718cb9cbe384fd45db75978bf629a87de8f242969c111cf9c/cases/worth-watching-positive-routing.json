@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:worth-watching.",
+    "expected_sha256": "3476458aa31bd2ad8f5fc2d7a5737e6e2017d6fedb0aedc3d6c3e0d520ec1aed",
+    "id": "worth-watching-positive-routing",
+    "input": "Find me what just landed on streaming that people are actually loving.",
+    "input_sha256": "5f1dfc9bab28fd129545dbb33f7891f74f90470f72bc70259cc6769aed12b065"
+  },
+  "evaluation_run_id": "e3f896586c89fb7718cb9cbe384fd45db75978bf629a87de8f242969c111cf9c",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:13Z",
+    "request_sha256": "1f4c889f349b2bd84077625d83eb24d38971c5600b4276f2e464683951f6b8ee",
+    "started_at": "2026-08-02T14:01:13Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 550,
+    "stdout_sha256": "01d3782ac25a5ef3627152ff4d74de67e1d8b4591ffdb505a9793c28b0439e66"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:golden-hour.",
+    "expected_sha256": "9f1e5e85b608826d01daed00d81e23f7ccb01369cb8054c6a8852dc244745705",
+    "id": "golden-hour-positive-routing",
+    "input": "Find me where to be at sunset tonight, and what time to leave.",
+    "input_sha256": "42aa677d969c8f8b5c1489983d4a7dd61b3c9999e8998a7a23f30c338b2f234e"
+  },
+  "evaluation_run_id": "43e41cf0928e8c5e96530f236122c33f692103e22a0a7e65a70167a995083b2b",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:17Z",
+    "request_sha256": "cacb734a0c631c70ada29d332755772b6dfc62d8332b576a44dffbb6e0c8024b",
+    "started_at": "2026-08-02T14:01:17Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 547,
+    "stdout_sha256": "d6a5f63a9b283e117879bcafb30df3068539618f5ab8247a1fe5307882b1688c"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:tour-watch.",
+    "expected_sha256": "c425a9a7cc3eb0bd47ac7f3440bf238cd44a8a692f50182e012e9c637792086a",
+    "id": "tour-watch-positive-routing",
+    "input": "Find me new tour dates and presales for the artists you actually listen to.",
+    "input_sha256": "61f042a7ceb6de08f2a80316b1afe179c1669451e58771c3e24297924c8360c1"
+  },
+  "evaluation_run_id": "e1d156faf21ddb02061655e95cb8ea536cc2a2b6512e7a55c29f9cd78050ef41",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "39cd9fc33f24fa43a02a401e27cad3a764381a51c5dcc68f497ed53c719817b0",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 546,
+    "stdout_sha256": "c750b7f9073014a0aba7c45ab6e99b10d72091c6949075bf29b78764d0f4b9f0"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

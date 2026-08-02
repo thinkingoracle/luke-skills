@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:campsite-drop-watch.",
+    "expected_sha256": "754e9109a2c42dacaec66e3c0e3daff5c054db3e8c312556a0a0fbbfa5187e7a",
+    "id": "campsite-drop-watch-positive-routing",
+    "input": "Find me the campsite you thought was sold out, and the exact morning it drops.",
+    "input_sha256": "9b3970558941d9dd19885dfe76bd74a8e653a324ca14e79d7eacc2a97c0387f2"
+  },
+  "evaluation_run_id": "8f8cd99c3b13d0a87ae939d35be370e08b18377ff418c116344977edfe800a67",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:14Z",
+    "request_sha256": "19c139fc92de5d7eb2876e735041814d37935d82eae5ff543b5b6d9fe28f1cd9",
+    "started_at": "2026-08-02T14:01:14Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 555,
+    "stdout_sha256": "96829f8efa0bd9ade97c0b73bc3fb5d27ef70f9190e931d00322e166416257d5"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

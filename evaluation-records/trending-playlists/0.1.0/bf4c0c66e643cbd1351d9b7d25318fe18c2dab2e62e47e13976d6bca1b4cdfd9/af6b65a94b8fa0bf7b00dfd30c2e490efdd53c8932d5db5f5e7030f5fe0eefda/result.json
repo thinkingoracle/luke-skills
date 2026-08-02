@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/trending-playlists-failure.json",
+      "case_evidence_sha256": "314c2f4261fae55929e18a202ebcd2de4ecfa8837ee8fecce76dd9bd12bfaf7e",
+      "case_id": "trending-playlists-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "ec9c666f0b633f5255ef5a4842ff8465c8413f28d7299327cc8745839fb57b72",
+      "finished_at": "2026-08-02T14:01:24Z",
+      "input_sha256": "a9442c9d9425ee463fb4382ec2ecf77d691ee9dde5d23b0fc46c97b83cafa507",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "cd639cc8637b088ce6017809d8aff6d7cf748c162a9a927b9c9212283da8f23e",
+      "started_at": "2026-08-02T14:01:24Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 484,
+      "stdout_sha256": "40682a53d5b88794e222ebafeee6ee6818eebf7961699a8b12dfde03a24d8cee"
+    },
+    {
+      "case_evidence_path": "cases/trending-playlists-negative-routing.json",
+      "case_evidence_sha256": "905e0910401afaa537b4b4eb15371881d67352dc9ad506e7c82d8bc5277519ad",
+      "case_id": "trending-playlists-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "437168c5414f3306326a4c8e52600770b74fa378ea488fdfd9adf893be39237e",
+      "finished_at": "2026-08-02T14:01:24Z",
+      "input_sha256": "fb460106c4a157b820c7d22f1e575b439dcc0c425ccf11afc5a58c8aeb513b7c",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "666ba9af192c662fbf3d4ec103fb16713d5eaf9fc10ec9b072d5d84e8a9b9556",
+      "started_at": "2026-08-02T14:01:24Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 593,
+      "stdout_sha256": "e76e468af5cf1f0e90abc3fe23afc85061b3b9086d14604037d1bcbba61aff5c"
+    },
+    {
+      "case_evidence_path": "cases/trending-playlists-positive-routing.json",
+      "case_evidence_sha256": "c343a97d2036808920fe6cb05f72a3dd6f69d71825507af243b912a6903a529a",
+      "case_id": "trending-playlists-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "41996acd2a3f1d527311ac85fba30c5ce56e88b1610a860b7e4beca326b32a94",
+      "finished_at": "2026-08-02T14:01:24Z",
+      "input_sha256": "402a17df07f91e29536b9abd58e31f47b91ace0eaa9ccffb4b1d98b34f9b3064",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "8c565ab2523a27f280b50949ffbef5776cedddf7ae250bf5dc9ffa4ea2dd0ca0",
+      "started_at": "2026-08-02T14:01:24Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 554,
+      "stdout_sha256": "5acc0c211d76b957cbb0658ffc2c6031a8f6e15c158903ff1e1f3b728ed6951f"
+    },
+    {
+      "case_evidence_path": "cases/trending-playlists-redaction.json",
+      "case_evidence_sha256": "f584219cf26be1396de379faeee84792d0ce14349f24a822571cb070ce3dd0c0",
+      "case_id": "trending-playlists-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "04993601be6b888df2ed67829201dc518a61319f263e099cb7af57a2936dda85",
+      "finished_at": "2026-08-02T14:01:24Z",
+      "input_sha256": "45309867cdba24bd7c30126083b05f767d0d1d970e04bf491aa554bf8c5cbf5f",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "af84b5a96251a19e888b1cdadedf090bccd0e58f8e26dac58838d4a8b8849da8",
+      "started_at": "2026-08-02T14:01:24Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 480,
+      "stdout_sha256": "859375b3883b47ef9543b4633707f4fb879ed5371d884230b4124eb3fb3df848"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:24Z",
+  "evaluation_run_id": "af6b65a94b8fa0bf7b00dfd30c2e490efdd53c8932d5db5f5e7030f5fe0eefda",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__95/d77d884b5200c39e5547dabbb8fcc356e803924ee595e4d42f94dccfc6a62d07/af6b65a94b8fa0bf7b00dfd30c2e490efdd53c8932d5db5f5e7030f5fe0eefda",
+  "expires_at": "2026-08-09T14:01:24Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 2327,
+      "path": "evals/trending-playlists.json",
+      "sha256": "3a73e2290adedef4cc44d9f5db54c2ae60602603f8f5f84486764fce63af2ad8"
+    },
+    "intake_result_sha256": "5697db797777bc6ae41ff0598d8218fe389f42d0b4f2232f3549b66a1f35288f",
+    "proposal": {
+      "body_byte_count": 10157,
+      "body_sha256": "81112a9b6c5a38a16dc3a5e3ce1bfa756de179d50ade5b539fbc2ed28a2460a6",
+      "identity_sha256": "d77d884b5200c39e5547dabbb8fcc356e803924ee595e4d42f94dccfc6a62d07",
+      "number": 95,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T03:07:24Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/95"
+    },
+    "skill": {
+      "byte_count": 3152,
+      "path": "skills/trending-playlists/SKILL.md",
+      "sha256": "bf4c0c66e643cbd1351d9b7d25318fe18c2dab2e62e47e13976d6bca1b4cdfd9"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

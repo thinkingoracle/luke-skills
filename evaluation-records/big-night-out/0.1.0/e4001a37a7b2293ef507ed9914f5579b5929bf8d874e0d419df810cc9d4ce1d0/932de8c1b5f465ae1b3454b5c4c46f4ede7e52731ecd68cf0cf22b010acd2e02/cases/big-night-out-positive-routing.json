@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:big-night-out.",
+    "expected_sha256": "c78280b4a682f91d16c584ac0947dac7f1dab8f00e64e044801161ac30173531",
+    "id": "big-night-out-positive-routing",
+    "input": "Find me three or four places, in the right order, with the travel time worked out.",
+    "input_sha256": "21c9f13da8fe6a5089405dbffef2d913e7f22e4f8e689f45add096443a8320e7"
+  },
+  "evaluation_run_id": "932de8c1b5f465ae1b3454b5c4c46f4ede7e52731ecd68cf0cf22b010acd2e02",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:13Z",
+    "request_sha256": "82dccc29be651bc618f8a972bb2f862b7bf85400d7a4dbfa713c31367df14309",
+    "started_at": "2026-08-02T14:01:13Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "33071645f2ee3f7eda7c43f06873026a71988e40365198e43b564aa207e0e8ca"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

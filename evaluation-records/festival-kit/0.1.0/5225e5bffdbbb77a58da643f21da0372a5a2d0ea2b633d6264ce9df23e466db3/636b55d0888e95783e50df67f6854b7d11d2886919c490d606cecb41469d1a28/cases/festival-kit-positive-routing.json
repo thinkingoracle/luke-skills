@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:festival-kit.",
+    "expected_sha256": "d5aaabf6b00647a94cc2ab7d8870334bc29534a7c44a26f8f01c42c15e640723",
+    "id": "festival-kit-positive-routing",
+    "input": "Find me what to bring, what to book, and the thing everyone forgets.",
+    "input_sha256": "af32a5c1f720358e1b113c8be4f4d5228e6e6887c836bb2ab0b0ac8f6b089e80"
+  },
+  "evaluation_run_id": "636b55d0888e95783e50df67f6854b7d11d2886919c490d606cecb41469d1a28",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:16Z",
+    "request_sha256": "f4cbd2c089c44de007bc3056e9f9035ad46dfdfc675ab2cf964d27d562b0baa3",
+    "started_at": "2026-08-02T14:01:16Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "d057020b80585f676cf69eefab2ecfdc94345b89227a191d03a2946d721b26b4"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

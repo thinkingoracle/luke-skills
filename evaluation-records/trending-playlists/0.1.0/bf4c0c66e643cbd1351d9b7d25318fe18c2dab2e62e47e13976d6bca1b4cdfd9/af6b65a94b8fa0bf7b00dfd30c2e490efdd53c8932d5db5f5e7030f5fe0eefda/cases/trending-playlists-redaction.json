@@ -1,0 +1,38 @@
+{
+  "case": {
+    "category": "redaction",
+    "expected": "Omit account details, listening history, saved libraries, query strings, credentials, tokens, and browser-session material; return only the redacted public track, artist, chart movement, and playlist result.",
+    "expected_sha256": "04993601be6b888df2ed67829201dc518a61319f263e099cb7af57a2936dda85",
+    "id": "trending-playlists-redaction",
+    "input": "The visible Spotify page includes account details, listening history, saved libraries, and browser-session material alongside the chart.",
+    "input_sha256": "45309867cdba24bd7c30126083b05f767d0d1d970e04bf491aa554bf8c5cbf5f"
+  },
+  "evaluation_run_id": "af6b65a94b8fa0bf7b00dfd30c2e490efdd53c8932d5db5f5e7030f5fe0eefda",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "skill_source:redaction",
+    "fixture:expected"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "af84b5a96251a19e888b1cdadedf090bccd0e58f8e26dac58838d4a8b8849da8",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 480,
+    "stdout_sha256": "859375b3883b47ef9543b4633707f4fb879ed5371d884230b4124eb3fb3df848"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the source declares an output-redaction boundary; the expected behavior removes boundary-crossing data.",
+  "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+  "schema_version": 1
+}

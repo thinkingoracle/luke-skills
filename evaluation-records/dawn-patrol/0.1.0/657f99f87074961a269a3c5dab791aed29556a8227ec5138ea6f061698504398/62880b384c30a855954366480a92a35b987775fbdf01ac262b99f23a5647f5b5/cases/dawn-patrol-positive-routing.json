@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:dawn-patrol.",
+    "expected_sha256": "0b5201340890329e2fda881e9fe51a6a3d3a0281c8951447267683d627c7438e",
+    "id": "dawn-patrol-positive-routing",
+    "input": "Find me whether it is worth getting up, and which beach to point the car at.",
+    "input_sha256": "d2b0f05b8c8a1242156132884e358cb58663c21b1e7c758e8bc01285c81a9a46"
+  },
+  "evaluation_run_id": "62880b384c30a855954366480a92a35b987775fbdf01ac262b99f23a5647f5b5",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:15Z",
+    "request_sha256": "835fcfb7bfe74febff315a9d6d782d084a93a8e277ea3e709a53aa682e6942c1",
+    "started_at": "2026-08-02T14:01:15Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 547,
+    "stdout_sha256": "60dd1f5ba6539350c7220c6256ffeeccbf23717b3c4535a0352e4d2170b5ddff"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

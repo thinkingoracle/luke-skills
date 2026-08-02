@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/golden-hour-failure.json",
+      "case_evidence_sha256": "8a69e29f280effed856f05a4b2e73eeb1dfe8029d7354d46abd519183d44c681",
+      "case_id": "golden-hour-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "1e9e051ffe2dcc601ac74815f053c07eddb1def3eae03a1acab788a8e584a33f",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 477,
+      "stdout_sha256": "80e4b390bae6e83ca278d25f99be91bd549198cff7c17e0bc58c30f99fcbbf94"
+    },
+    {
+      "case_evidence_path": "cases/golden-hour-negative-routing.json",
+      "case_evidence_sha256": "19379ed9b6561fdad9ace582bfeb9477f48c6ebf0fd4f8b9071c56390556b7ae",
+      "case_id": "golden-hour-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "a6408402c584e25c44c85d0c10732f20d5154d658f94b6f3a0f2016c7e474ddf",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "52a3164f2f765a38280cf552ad25b924a7928cb32e1a4a372cd16086fcc2d47f",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 586,
+      "stdout_sha256": "2e95692d21cf6267aade0a78727a89359b8b396716665b96bf14251e6d2fd924"
+    },
+    {
+      "case_evidence_path": "cases/golden-hour-positive-routing.json",
+      "case_evidence_sha256": "c4115d645b2346db5946ad2ad50089c724fd4d9b1e840677019ed92465d82196",
+      "case_id": "golden-hour-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "9f1e5e85b608826d01daed00d81e23f7ccb01369cb8054c6a8852dc244745705",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "42aa677d969c8f8b5c1489983d4a7dd61b3c9999e8998a7a23f30c338b2f234e",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "cacb734a0c631c70ada29d332755772b6dfc62d8332b576a44dffbb6e0c8024b",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 547,
+      "stdout_sha256": "d6a5f63a9b283e117879bcafb30df3068539618f5ab8247a1fe5307882b1688c"
+    },
+    {
+      "case_evidence_path": "cases/golden-hour-redaction.json",
+      "case_evidence_sha256": "e86dc59604eff23615ca6442c0fc7d70cbd86fe275ecebf57232889690cea8d2",
+      "case_id": "golden-hour-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "5cc46010aebf65bc064c109a385b44177f2a863de201695dd6942e3b5906d6f7",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 473,
+      "stdout_sha256": "e4b5edd53005d87afc9c08ecb37c7569c032bb5a6995d03d3979edaaf55184af"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:17Z",
+  "evaluation_run_id": "43e41cf0928e8c5e96530f236122c33f692103e22a0a7e65a70167a995083b2b",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__39/df4018f6a660c0e798cb40ab9c47cca64e686994df2387d1e100fe493edbe9ae/43e41cf0928e8c5e96530f236122c33f692103e22a0a7e65a70167a995083b2b",
+  "expires_at": "2026-08-09T14:01:17Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1759,
+      "path": "evals/golden-hour.json",
+      "sha256": "a2c71bdd23e94d909c9d34705cee9abbc83f4b5a3826a073fe4a84ee85cf314f"
+    },
+    "intake_result_sha256": "29a6210c3717c713354457832b524a6d986d2847409f50ac18f7a9c0edf78c72",
+    "proposal": {
+      "body_byte_count": 7655,
+      "body_sha256": "24e933b519aefa54a2f84f0bc2a78379ea523ba8d8aacd8fdc243477749ed4e5",
+      "identity_sha256": "df4018f6a660c0e798cb40ab9c47cca64e686994df2387d1e100fe493edbe9ae",
+      "number": 39,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:33Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/39"
+    },
+    "skill": {
+      "byte_count": 2499,
+      "path": "skills/golden-hour/SKILL.md",
+      "sha256": "cc903f31c8594540263d18186f087c7057fd607a0556bb5f31eb0fda0ae2f101"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

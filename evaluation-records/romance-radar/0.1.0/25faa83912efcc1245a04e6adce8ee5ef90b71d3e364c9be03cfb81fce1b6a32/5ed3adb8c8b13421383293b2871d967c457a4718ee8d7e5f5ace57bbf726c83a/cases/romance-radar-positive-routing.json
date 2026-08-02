@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:romance-radar.",
+    "expected_sha256": "37c3085e7bcca22f630f84ed44d6252e3540dd2a3a722f02fa47c637c3ea1c0b",
+    "id": "romance-radar-positive-routing",
+    "input": "Find me something to do together that is better than another dinner.",
+    "input_sha256": "9281552be9978e316d50c4c0651d92c3056448798eca266e86b79df2263020cb"
+  },
+  "evaluation_run_id": "5ed3adb8c8b13421383293b2871d967c457a4718ee8d7e5f5ace57bbf726c83a",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "41809fba231fcd6cc3ec8bc5eb1e7326eedea909d6634533293a67aa34fe5bc8",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "5995f05fc1f3e922bb175ccad3ae64daf5b940f175ab1b0d5a09b4e63bdb8472"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:group-trip-herder.",
+    "expected_sha256": "aa9c8cf6add6a9ed278b6ff6d93b789b5e4b9187c8da86fe0358bfe47d9a3268",
+    "id": "group-trip-herder-positive-routing",
+    "input": "Find me the trip six people will actually agree to, with the dates already picked.",
+    "input_sha256": "01d0f411008c436ade7efb6851aef497c24f06db0465e57ea9f358f672dc2534"
+  },
+  "evaluation_run_id": "48141254adc0dd0d5648f4cc50083746963379d713933f5801567893a553aeb5",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:17Z",
+    "request_sha256": "257b16504676ca73211e5d34fb2b236c75ee581ee6926c98cdaa73a7cae961b5",
+    "started_at": "2026-08-02T14:01:17Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 553,
+    "stdout_sha256": "9c1cbef78fb581b0b69fb24bedde84ee8fc6f7d591cb1aceafc513ec8be1df78"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

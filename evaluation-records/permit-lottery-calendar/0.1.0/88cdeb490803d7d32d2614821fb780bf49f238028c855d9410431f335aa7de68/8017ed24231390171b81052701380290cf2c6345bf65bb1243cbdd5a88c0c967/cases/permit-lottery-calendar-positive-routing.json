@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:permit-lottery-calendar.",
+    "expected_sha256": "4153a29cbaaad5b8c6287f095fa5873d0b8a1d5bf64fad1e9ff892889ab1d711",
+    "id": "permit-lottery-calendar-positive-routing",
+    "input": "Find me the permit lottery closing next, and the back door if you missed it.",
+    "input_sha256": "dcec0bb91b107f4e1799a8a38e4efcd7d8ed3af0a0f20b4a28f1fa745ff69680"
+  },
+  "evaluation_run_id": "8017ed24231390171b81052701380290cf2c6345bf65bb1243cbdd5a88c0c967",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:21Z",
+    "request_sha256": "51dc38d90a4edc9c8d7d7fec601057d41922a54d312df18ecba498c2edc80d68",
+    "started_at": "2026-08-02T14:01:21Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 559,
+    "stdout_sha256": "37cb0639e08020d1623aecfbfe9e295e05628c0e1f6c54b26135be7daeb56b87"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

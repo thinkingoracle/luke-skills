@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:booktok.",
+    "expected_sha256": "b9a11f63816b6695e444667714044deb16959d60f5ace4faf176edb91998e238",
+    "id": "booktok-positive-routing",
+    "input": "Find me what people are actually reading right now, and which one to start.",
+    "input_sha256": "b1f74bf4d643b9a74281be9e4a81a7c51f74df76c2c6cc662edb82f3937ac5bf"
+  },
+  "evaluation_run_id": "2e88f675298b5c9cf9d26d87aca776e6eaf364bad19d469f8cebbe23ccfc65ad",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:14Z",
+    "request_sha256": "48bbae05dea1c2aa598e2da09257f390c9be89960eb2652ee538d088b46f4e00",
+    "started_at": "2026-08-02T14:01:14Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 543,
+    "stdout_sha256": "86cfca0ef0745387a10650c37b223e6ac5cdb14572b2fcfd2fbdbe943edf8ced"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

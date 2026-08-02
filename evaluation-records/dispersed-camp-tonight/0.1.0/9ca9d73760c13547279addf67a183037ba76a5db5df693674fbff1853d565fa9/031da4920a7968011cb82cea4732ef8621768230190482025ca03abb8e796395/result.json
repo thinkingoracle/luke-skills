@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/dispersed-camp-tonight-failure.json",
+      "case_evidence_sha256": "6048024c09af944fbf91799d304c08cc34cb9877773c530fc8494bc3e13e9ccc",
+      "case_id": "dispersed-camp-tonight-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "ec90bd45c16b03a92aa0089246b69e5ae4f13ef2eaaf7c50795d35e2d4c5c9ad",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 488,
+      "stdout_sha256": "f7ad73490b95dce1db0dcf0f97566b758cae1b66d63f9d009159b859adea8db2"
+    },
+    {
+      "case_evidence_path": "cases/dispersed-camp-tonight-negative-routing.json",
+      "case_evidence_sha256": "d79bbaaaa472a34dbe0a30792ec6f26cc1a466185e5a9bfb1fa01b0fc30e7292",
+      "case_id": "dispersed-camp-tonight-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "94b476f0e471056876d5b894deeeed2d76ae48b4180d022890984182a818ddfe",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "fdf05a85944cb919ccc0625906c0a4b3117587d26ea00307f8d71a8d15bddb9f",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 597,
+      "stdout_sha256": "44b01d2d9f512f29864dbc1f8b486b8c541e3a1fa9e150390326a1ac3f8701d6"
+    },
+    {
+      "case_evidence_path": "cases/dispersed-camp-tonight-positive-routing.json",
+      "case_evidence_sha256": "7b24a208fcf0f6b35df6787be150a9230a8fe1810a51103a17e0a25703438c78",
+      "case_id": "dispersed-camp-tonight-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "af5c42a077f63545e996c6fc49ea7dc8d8772548f8530f226387baad521d452b",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "185a469c5d5eeb7dd618e3163a672c3eb3fc360ef233218b4ef39bdd43abdd33",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "ab679f382b0620d31a220792994377651f5b2750aeab9cfc4f103dfea0c29651",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 558,
+      "stdout_sha256": "68f3eb2e95e849b6bb56296c67bbb32a3a5037acc7948b8ab8c6a4919f3b3f8d"
+    },
+    {
+      "case_evidence_path": "cases/dispersed-camp-tonight-redaction.json",
+      "case_evidence_sha256": "b7898d3069c17ef9ae869bb9f87e76175267d42a764f8f37ee695d6909d77454",
+      "case_id": "dispersed-camp-tonight-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "6374abfe5e2178afc811989ed510d19da8bf7a40d8819013d25344cf229cb238",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 484,
+      "stdout_sha256": "b1ba8264510f730525a03e69a59a8f0fb4add5e8db1c6f6042e74e02d0cfc94f"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:16Z",
+  "evaluation_run_id": "031da4920a7968011cb82cea4732ef8621768230190482025ca03abb8e796395",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__29/665116a76da78fb6999bac4c21fee05947b13f0341ef042a2421ec5b340cd2e1/031da4920a7968011cb82cea4732ef8621768230190482025ca03abb8e796395",
+  "expires_at": "2026-08-09T14:01:16Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1856,
+      "path": "evals/dispersed-camp-tonight.json",
+      "sha256": "7401d9c8603c443a682109f19ff1d5e08a74af29c44f4de5591f7c408ae48fd0"
+    },
+    "intake_result_sha256": "e49c7f61a4b13e60c910e20707ff556bff260509e537aa9e219790b6b79cf887",
+    "proposal": {
+      "body_byte_count": 10810,
+      "body_sha256": "9773027b393c55c319b73972d537cea73bf21455aff0d55f23cea9e10176ce6f",
+      "identity_sha256": "665116a76da78fb6999bac4c21fee05947b13f0341ef042a2421ec5b340cd2e1",
+      "number": 29,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:26Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/29"
+    },
+    "skill": {
+      "byte_count": 4004,
+      "path": "skills/dispersed-camp-tonight/SKILL.md",
+      "sha256": "9ca9d73760c13547279addf67a183037ba76a5db5df693674fbff1853d565fa9"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

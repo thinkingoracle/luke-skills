@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:deep-dive.",
+    "expected_sha256": "ee0a1caf3937c4288c484d86ad4f42438dac2dbea5e16798b64d468272e06917",
+    "id": "deep-dive-positive-routing",
+    "input": "Find me goes deep on the thing you are obsessed with and brings back the good stuff.",
+    "input_sha256": "0f09ae9e7a29a41cc08a01a21b27dd679a57d324349a3010e67fbd2284f1c50a"
+  },
+  "evaluation_run_id": "a662ba53b3d68f5c3a0c8cfe66d77c0b8c96cbca6f1f073c11ee17f769979b38",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:15Z",
+    "request_sha256": "dba0270d1e21203c2a1736f58e28ef584826f3819fe59d8c6090af5788c659f5",
+    "started_at": "2026-08-02T14:01:15Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 545,
+    "stdout_sha256": "7c9d553eeeb35255c19db2c97a019cf16953fc64040b10f56273c430099d5534"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

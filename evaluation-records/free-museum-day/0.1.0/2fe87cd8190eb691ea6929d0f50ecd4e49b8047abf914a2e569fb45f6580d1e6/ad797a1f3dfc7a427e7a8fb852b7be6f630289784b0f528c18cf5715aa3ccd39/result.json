@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/free-museum-day-failure.json",
+      "case_evidence_sha256": "fdf0c3cfed42be59b082e8653df7db268ac52c4c1c4fcc64386068d823ff8c52",
+      "case_id": "free-museum-day-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "92fe7157e5fd46b5e68711b2bb1cd57626234cc25525ecfca26583c2d2c307f3",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 481,
+      "stdout_sha256": "9b66ba6b1980c4c29ef9bd5b2b5807b76583be980ead5e1e7a757103dab15ba7"
+    },
+    {
+      "case_evidence_path": "cases/free-museum-day-negative-routing.json",
+      "case_evidence_sha256": "6bc9b2cbab033a3f376f12e5b6c253ca5f40667f31273984047b65e4d6ef2e79",
+      "case_id": "free-museum-day-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7d702151167949ba5032fae47c782aded24332b63169a2d0e66e238d8e1c5b44",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "d0100dec44c53a85b9b3bae629add9651cfedb98be3f17cf5f536bcbdfa1362a",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 590,
+      "stdout_sha256": "abdce4e55e439f336fe59f2556fb25305c62519d174c239badb20a7bc0ba5a1d"
+    },
+    {
+      "case_evidence_path": "cases/free-museum-day-positive-routing.json",
+      "case_evidence_sha256": "f9a6757c2f71f600470b53c7a0198bdfa3f5d5dd5967f28f6942e81fc863b75d",
+      "case_id": "free-museum-day-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "e123985ef766dd34c14f35af9e2ec1f8e8e87ae4a6f22ed1258bba8a418a68c3",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "2cda64cb5c260207aead40e523f893190f013fc2ef22f689d6237e215b621e6a",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "7b28b7732fb14ea39efd945c3251addb8bdeaf041f4cb523bda6a6618b10c1bd",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 551,
+      "stdout_sha256": "1938fa069289c3e7a01d331854de282fb44793d150bca30ab7dbc04035093f8f"
+    },
+    {
+      "case_evidence_path": "cases/free-museum-day-redaction.json",
+      "case_evidence_sha256": "c8a5cb1efba82c563b4afc4f49bdc244ebc060c441cf619e7cdcd28adda370e1",
+      "case_id": "free-museum-day-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:17Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "39afa7cf50b668aaf6fb16401d7717f6865793294f5fe8b542725a5e643123cd",
+      "started_at": "2026-08-02T14:01:17Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 477,
+      "stdout_sha256": "242d2451c8c85d56671145f7a2d21469ccf5542272987b3fd1b40bbefa98aa40"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:16Z",
+  "evaluation_run_id": "ad797a1f3dfc7a427e7a8fb852b7be6f630289784b0f528c18cf5715aa3ccd39",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__36/83f8ebc24b50a4a980c3b4b4ab9828e6ba18851ccd50742de3df8c301742ead8/ad797a1f3dfc7a427e7a8fb852b7be6f630289784b0f528c18cf5715aa3ccd39",
+  "expires_at": "2026-08-09T14:01:16Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1797,
+      "path": "evals/free-museum-day.json",
+      "sha256": "6a84044fcb4603bfb5509620905555abadae0e7dcf2f18dbcf8cb1c398ad0372"
+    },
+    "intake_result_sha256": "145b974f5c1365228f7a25f7ef4e568811fe27e62ccfc9210271e81738bbece9",
+    "proposal": {
+      "body_byte_count": 9739,
+      "body_sha256": "5c2a4c35f464476328c717640129acaef4470e1ca459d80e257bbad02b9148b3",
+      "identity_sha256": "83f8ebc24b50a4a980c3b4b4ab9828e6ba18851ccd50742de3df8c301742ead8",
+      "number": 36,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:30Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/36"
+    },
+    "skill": {
+      "byte_count": 3530,
+      "path": "skills/free-museum-day/SKILL.md",
+      "sha256": "2fe87cd8190eb691ea6929d0f50ecd4e49b8047abf914a2e569fb45f6580d1e6"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

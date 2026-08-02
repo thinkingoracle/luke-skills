@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:what-should-i-learn.",
+    "expected_sha256": "81417419e1f7bd69e2820ff162e1ec2b89cac8e7575c4bce3c6af9ce19a9e07e",
+    "id": "what-should-i-learn-positive-routing",
+    "input": "Find me one skill worth learning right now in your field, and where to start today.",
+    "input_sha256": "48bdc5aa641e040b680c024861faff98bb2795c4171b6b89766446e1219a2890"
+  },
+  "evaluation_run_id": "2aae5ff8910d3daf58001d270cf8164bb09509aba1cf5d2b286ae07f5a1e04a8",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:11Z",
+    "request_sha256": "3e3c97fb8f0eb5c970b7ca4c34c8017d52b1547c27c98841ebacaaf0d494fd20",
+    "started_at": "2026-08-02T14:01:11Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 555,
+    "stdout_sha256": "0f34afa5bf2731c74a7655cef843160f199341c0a2a7995f4492f85daae19c22"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

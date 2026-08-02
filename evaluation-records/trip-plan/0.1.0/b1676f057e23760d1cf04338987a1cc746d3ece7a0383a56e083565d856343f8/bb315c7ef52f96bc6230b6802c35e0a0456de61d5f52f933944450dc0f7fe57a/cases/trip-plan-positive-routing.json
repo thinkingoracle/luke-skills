@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:trip-plan.",
+    "expected_sha256": "569095e91c0e5ce89d10c6e30c95af06af4837243c29fe352e3ea1c837fd4584",
+    "id": "trip-plan-positive-routing",
+    "input": "Find me a real trip decided: where, when, roughly what it costs, book this first.",
+    "input_sha256": "5832f12e9d281b7a553d77a271a1c7d60284272bbf38d3c5b04c264a6a4af05d"
+  },
+  "evaluation_run_id": "bb315c7ef52f96bc6230b6802c35e0a0456de61d5f52f933944450dc0f7fe57a",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "0f24658cdecce8d23fd991d4fbb2dff8585b1565fbc6384bc5f30fdead75bfd0",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 545,
+    "stdout_sha256": "cfb597ce46bdcd1cc4631621cd68f698ef6b9de961bf190280e04e435fea0440"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/events-in-town-failure.json",
+      "case_evidence_sha256": "fd5c51d480df087c9da419b8d29d76cd3e9196dcecd80082ffc1359731e69c67",
+      "case_id": "events-in-town-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "7356c4a4ad7f1c583f21465f91b0344554aadf6e36d759b03322f0aded5f09e4",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 480,
+      "stdout_sha256": "9ebd70a932d1fc5e9f5234d081c60b405e522def2c90d4f2a24e15cc3d7e9b45"
+    },
+    {
+      "case_evidence_path": "cases/events-in-town-negative-routing.json",
+      "case_evidence_sha256": "2e7e1d2994f7d3c9aa2bf43e3f484f937fe8906ebdffc84202d559d3a079ff2e",
+      "case_id": "events-in-town-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "ae7808ea69ef8c1864b49175ae9b214adae6a4e3388d3bc1bcf6243711fe339c",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "3affca9ddc9d0e8678f1e8b28b122ee4a02f33d16a6703778617cecf9a87fc95",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 589,
+      "stdout_sha256": "d72667ddcd83a8a6f7954b1415c7ccda4ef76cfac9b13070e63cb9ffccd7e063"
+    },
+    {
+      "case_evidence_path": "cases/events-in-town-positive-routing.json",
+      "case_evidence_sha256": "a8247d8f7b12486709e2dbc4a5d3543e09cecc0102d94e4422cd534158ef8bca",
+      "case_id": "events-in-town-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "e3830af68cda15dd306ca0144fbca0443b6a931fef0f33ab70b2bff78a8acd2e",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "7ad0b5eb46ee031911d21fa78c02b223ce3dd4d057b10dff77c4e822e27efc4f",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "3e1a458dcbc37046c3e1878414eab9e1fa8b361fe452a4605049386c62fd4a17",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 550,
+      "stdout_sha256": "f01dab1737e82dedbd46e62ecb204577dcf2986369b1a06e14c9cb3c26a69a3f"
+    },
+    {
+      "case_evidence_path": "cases/events-in-town-redaction.json",
+      "case_evidence_sha256": "106f837a21890b18ddc5a873308f10aa85814bc4ce0120bdcd8a0a9d6de4b753",
+      "case_id": "events-in-town-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:16Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "7e4a4e4e32b071846db0b0aac2179a3d5314042a46616f75722ade5a38615d17",
+      "started_at": "2026-08-02T14:01:16Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 476,
+      "stdout_sha256": "8f5181d5e536617bd457dfbbd2e635ab4c48442bab3fc7c3231d5a19f077432a"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:16Z",
+  "evaluation_run_id": "9a32311031e1984a54d0c493a3b899e3f8efffaefc91dea3c92ab5dc9ec1ee60",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__30/94a68c7c5a437563f54b7e0df8228506bdd10b7bce25fe8f12d03ecad3f08e15/9a32311031e1984a54d0c493a3b899e3f8efffaefc91dea3c92ab5dc9ec1ee60",
+  "expires_at": "2026-08-09T14:01:16Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1785,
+      "path": "evals/events-in-town.json",
+      "sha256": "4ce7c0c86b4563e751dcd8aeef675fc6136447919bfae5eae3aa43439017dbb1"
+    },
+    "intake_result_sha256": "7b76dcfbe6874a9f2a52ac011eb582027f9d35a5a5876f7689a110b028182440",
+    "proposal": {
+      "body_byte_count": 7575,
+      "body_sha256": "7121e83ea9d6ea3a5b8be1e83a2ff62c51a174bda440df38e772878de07a0602",
+      "identity_sha256": "94a68c7c5a437563f54b7e0df8228506bdd10b7bce25fe8f12d03ecad3f08e15",
+      "number": 30,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:34:27Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/30"
+    },
+    "skill": {
+      "byte_count": 2465,
+      "path": "skills/events-in-town/SKILL.md",
+      "sha256": "c3443acc88b26758603df4ab356caa19b1eb56f149bd5f3abb6e1ac8e9508334"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

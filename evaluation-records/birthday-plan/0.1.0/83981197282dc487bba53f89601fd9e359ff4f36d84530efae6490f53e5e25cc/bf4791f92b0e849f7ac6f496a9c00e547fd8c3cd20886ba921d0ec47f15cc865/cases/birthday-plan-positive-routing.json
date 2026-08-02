@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:birthday-plan.",
+    "expected_sha256": "0b6f95981e00fcf3af895b871b89cc064fe0bf43db985e25aff8c735e6912eaa",
+    "id": "birthday-plan-positive-routing",
+    "input": "Find me their birthday, planned properly, cake and surprise logistics included.",
+    "input_sha256": "d9b5c324dd6c1fe6e48df2ee0ed72f1883dfaa7fe39454abfe5f62b01616c4b7"
+  },
+  "evaluation_run_id": "bf4791f92b0e849f7ac6f496a9c00e547fd8c3cd20886ba921d0ec47f15cc865",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:13Z",
+    "request_sha256": "3774b8491a8b09908a04dfce4ea99eda7c457c4e960a5ce3c83103298028d12e",
+    "started_at": "2026-08-02T14:01:13Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "0e24876e721bd62e8f9cccd1b205ead38ef808da56f5c55b819c38823ac99980"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

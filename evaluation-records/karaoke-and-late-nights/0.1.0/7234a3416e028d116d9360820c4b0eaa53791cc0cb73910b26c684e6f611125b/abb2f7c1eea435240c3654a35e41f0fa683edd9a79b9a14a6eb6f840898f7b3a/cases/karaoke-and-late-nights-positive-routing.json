@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:karaoke-and-late-nights.",
+    "expected_sha256": "746e83970ba06489ea9945a66727d0b0a3dd264488e903b32a2a90b1a820e018",
+    "id": "karaoke-and-late-nights-positive-routing",
+    "input": "Find me where the night keeps going, karaoke, late food and dancing.",
+    "input_sha256": "fcc02fd74002421cd3c42a18ad2cb964cb483c6d653e7fc3e3a0f3ebb9a03c59"
+  },
+  "evaluation_run_id": "abb2f7c1eea435240c3654a35e41f0fa683edd9a79b9a14a6eb6f840898f7b3a",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:18Z",
+    "request_sha256": "d83b6fe7f8e6fe3a067d378e62d71180dd7a273a3f8b5aa5fa95f17c806dcf12",
+    "started_at": "2026-08-02T14:01:18Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 559,
+    "stdout_sha256": "0762ec72ea88f9c32d011d8610eed295b8a6f1779d83358d4fbe0fa7ce222d5f"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

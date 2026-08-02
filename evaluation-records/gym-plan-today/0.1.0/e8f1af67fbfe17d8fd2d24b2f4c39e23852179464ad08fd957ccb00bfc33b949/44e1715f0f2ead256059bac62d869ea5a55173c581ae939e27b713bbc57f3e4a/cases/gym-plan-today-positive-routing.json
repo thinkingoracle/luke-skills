@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:gym-plan-today.",
+    "expected_sha256": "5343945d2883c6c124543d7525c1bd755f98f00c1a6d009c5558fc967de7422f",
+    "id": "gym-plan-today-positive-routing",
+    "input": "Find me today's session, already decided, based on what you did recently.",
+    "input_sha256": "985baf3f13ac5ca57c814e3ff378be4824c8a3409e053fecc35a73ec1fedc0dc"
+  },
+  "evaluation_run_id": "44e1715f0f2ead256059bac62d869ea5a55173c581ae939e27b713bbc57f3e4a",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:18Z",
+    "request_sha256": "d1729678a87c51ac7155b21a64bfec831a43d302c8b8217ae859e58a42c42b69",
+    "started_at": "2026-08-02T14:01:18Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 550,
+    "stdout_sha256": "5ba983063560ef60d287ef274df3cac44878523056dbce2aa13e251d8cf34828"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

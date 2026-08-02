@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:trail-today.",
+    "expected_sha256": "8b9742a3b60f4819df62ff942755d4363e44d7622147411fbecada4b7ccb7aa4",
+    "id": "trail-today-positive-routing",
+    "input": "Find me a hike, ride or run near you that fits the time you actually have.",
+    "input_sha256": "568fdf0bf70f84f6084bba80a597d06433b423c83cc0c6a8d22848a0e69d9636"
+  },
+  "evaluation_run_id": "1c6785f88e03320a607c607fbd2ff19a467751035a7bcc471499ab71e28dfbc3",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:24Z",
+    "request_sha256": "be50f19535a7bf5233bed7b2c2f8f8ad1bd31a7d1c8fae56a615fb27d892cf2d",
+    "started_at": "2026-08-02T14:01:24Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 547,
+    "stdout_sha256": "aaa51e450cb868e4b61a0e39aeda04a157273651472a7c1cc9e929a84687508d"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

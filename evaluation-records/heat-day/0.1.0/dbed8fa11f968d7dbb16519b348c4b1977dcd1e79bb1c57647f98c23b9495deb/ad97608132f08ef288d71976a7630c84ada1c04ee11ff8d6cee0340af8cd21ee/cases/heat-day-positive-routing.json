@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:heat-day.",
+    "expected_sha256": "a4216d5f4ba048306c63137a3acf8a272b6bb4e1d75cc2a8db2d2d6cf18cbf0b",
+    "id": "heat-day-positive-routing",
+    "input": "Find me it's hot. Here's where to be, and what to wear getting there.",
+    "input_sha256": "32912e78ce85ebd6a39420e8e10515f2355c51bba96891e3967137a742fe55b4"
+  },
+  "evaluation_run_id": "ad97608132f08ef288d71976a7630c84ada1c04ee11ff8d6cee0340af8cd21ee",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:18Z",
+    "request_sha256": "81adf3e2981e397d8bbe6ace3d8a60254a94dd6843fd8be70283f14cf5bcc6e3",
+    "started_at": "2026-08-02T14:01:18Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 544,
+    "stdout_sha256": "3fc52b679ab6393efc14157b4f88135f044762a9cb5831e4146f7b50f73c95e6"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

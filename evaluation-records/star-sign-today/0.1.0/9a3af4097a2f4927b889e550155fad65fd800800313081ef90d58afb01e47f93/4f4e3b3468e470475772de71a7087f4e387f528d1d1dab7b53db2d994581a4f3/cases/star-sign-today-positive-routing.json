@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:star-sign-today.",
+    "expected_sha256": "ed7611c5189308e8f5b2bad118e9851ef09f0373bbc6447dfef61ca695c18f0e",
+    "id": "star-sign-today-positive-routing",
+    "input": "Find me a light daily horoscope, read for fun with your morning coffee.",
+    "input_sha256": "de6fd27a07e6f509e5a14fea55b47132ee7755f8fe31aa190f75aac4c38cda21"
+  },
+  "evaluation_run_id": "4f4e3b3468e470475772de71a7087f4e387f528d1d1dab7b53db2d994581a4f3",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "67fd304ac9a81fced98b60bd53730ae9517d5ccb7a345cda71980fe563d392e1",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 551,
+    "stdout_sha256": "563440f96aff2ca2f27d205dbe8dc3f038ba52bcc694c82d95a35460b24bfb9c"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

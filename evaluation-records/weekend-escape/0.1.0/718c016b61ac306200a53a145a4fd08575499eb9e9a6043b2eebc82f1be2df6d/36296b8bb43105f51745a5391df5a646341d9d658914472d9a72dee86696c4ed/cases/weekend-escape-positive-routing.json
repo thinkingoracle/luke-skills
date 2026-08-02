@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:weekend-escape.",
+    "expected_sha256": "8674f36dafa788d10013941c33c8ec96d6fce378870d2a7c1eb87de1c1d49138",
+    "id": "weekend-escape-positive-routing",
+    "input": "Find me a road trip or overnight within a few hours, decided Friday.",
+    "input_sha256": "b7070a098834c633efc49438cc71b32267c8f9d0aec2b7fde7536e9fc2fd5d5a"
+  },
+  "evaluation_run_id": "36296b8bb43105f51745a5391df5a646341d9d658914472d9a72dee86696c4ed",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:10Z",
+    "request_sha256": "d9717979a1c05906043b6a15ff198a2f961a9ef905e6df4ef6fce67174b442a6",
+    "started_at": "2026-08-02T14:01:10Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 550,
+    "stdout_sha256": "b5acfe7610e00f5f738dceb06e30327fb04c3d79e82496272e9e6568ebb0c9fa"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

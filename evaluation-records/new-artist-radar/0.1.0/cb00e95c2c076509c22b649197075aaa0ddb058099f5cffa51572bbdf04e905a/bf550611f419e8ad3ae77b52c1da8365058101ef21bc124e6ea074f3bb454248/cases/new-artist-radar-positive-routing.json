@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:new-artist-radar.",
+    "expected_sha256": "2e13d865ff1312b8cf9bb5d2fe892e8b66fe0b35266b0212c4a78bcc26687484",
+    "id": "new-artist-radar-positive-routing",
+    "input": "Find me one artist you have not heard yet who fits what you already play.",
+    "input_sha256": "54a5a0b23df2791191a16e40c94fd8efc50ad0a8523200390b21a698544385aa"
+  },
+  "evaluation_run_id": "bf550611f419e8ad3ae77b52c1da8365058101ef21bc124e6ea074f3bb454248",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:19Z",
+    "request_sha256": "90a1ff082f303b1a45d9bca4f8010873d8a80996398e5b9934465a66c54e995a",
+    "started_at": "2026-08-02T14:01:19Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 552,
+    "stdout_sha256": "4a313c32e7169d91aa58df2a0bc5467995c8219609dab7e68932839bdd2a6a3e"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

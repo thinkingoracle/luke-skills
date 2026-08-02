@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:reservation-drop-watch.",
+    "expected_sha256": "209e5d83e161f2130c06190457e478c705c4701c4cc3472d09d8a1635595b791",
+    "id": "reservation-drop-watch-positive-routing",
+    "input": "Find me the exact minute your hard to book place releases tables.",
+    "input_sha256": "e1831a75f332964bc0eb8528fecc4fb4960f4db4c7fbd5b39080a61dc0ca231f"
+  },
+  "evaluation_run_id": "1690b517b524f570f71fe291afbb13bccca13eb53cd8444ef0fbf39f52af6314",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:22Z",
+    "request_sha256": "71c7595f18356ea3734b738cc158cade33cdd6122316ce495f969ec1b7ad76e0",
+    "started_at": "2026-08-02T14:01:22Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 558,
+    "stdout_sha256": "05b9e337c6e6eda6d6689d3ab59c485ceec6a3c1360c404575e58f9efeb7b840"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

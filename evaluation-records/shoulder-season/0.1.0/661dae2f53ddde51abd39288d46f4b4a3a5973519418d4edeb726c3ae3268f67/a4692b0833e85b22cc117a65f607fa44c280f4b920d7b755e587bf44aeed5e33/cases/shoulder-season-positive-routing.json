@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:shoulder-season.",
+    "expected_sha256": "02276b976897e36d6be478dfcab77adcd9305732f8a78c7f0f6c461993d4efe7",
+    "id": "shoulder-season-positive-routing",
+    "input": "Find me the weeks a place is at its best while the prices have already dropped.",
+    "input_sha256": "cd672fe1b4d0096d277184af7f011e4d043475f343900af121c2bb0cf9354c94"
+  },
+  "evaluation_run_id": "a4692b0833e85b22cc117a65f607fa44c280f4b920d7b755e587bf44aeed5e33",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "51614ce1b1d50f3621d084d7e4f9b3d3796b0ccb2faca30984ef9882667c3ba3",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 551,
+    "stdout_sha256": "21d077035e4145b1f5341143dfa23d8b9d4584916dc62e9e69a5b24387f6453c"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

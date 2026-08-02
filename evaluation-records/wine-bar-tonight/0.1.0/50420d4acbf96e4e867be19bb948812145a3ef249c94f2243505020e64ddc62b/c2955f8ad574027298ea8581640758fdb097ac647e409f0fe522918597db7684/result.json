@@ -1,0 +1,215 @@
+{
+  "acceptance_created": false,
+  "authority_created": false,
+  "case_results": [
+    {
+      "case_evidence_path": "cases/wine-bar-tonight-failure.json",
+      "case_evidence_sha256": "ffbbf377e4f9704c6b1dfced26f3c18b162d5ee3fe03792d0a28a678023cecc5",
+      "case_id": "wine-bar-tonight-failure",
+      "category": "failure",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "7c3768dba1da8101f5ee7e906a8d9282766cac072246008a40791bd1153e402d",
+      "finished_at": "2026-08-02T14:01:13Z",
+      "input_sha256": "04688677363ae5bf2ae344a676e32b35b617bc025c37237a8bd9eb3defdebfd8",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "5e07583e26f11255ec7dd4758bdcd956bd2ee303fb1821637465fe8b90ba41c3",
+      "request_sha256": "ad4731a4cf3cebdb209c7ba8ae62b260e9a907d21b845302d96cb31564afd5d0",
+      "started_at": "2026-08-02T14:01:12Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 482,
+      "stdout_sha256": "1e1c48bdd9205bf22537fb7bf3599555cf3ff4224a7491919c3b3fefc470e461"
+    },
+    {
+      "case_evidence_path": "cases/wine-bar-tonight-negative-routing.json",
+      "case_evidence_sha256": "b8d8f9fc5d68b80a55333d310910e33b6dc1e5020c73162b2a634070bd812561",
+      "case_id": "wine-bar-tonight-negative-routing",
+      "category": "negative_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "41144f426169c66d44077ec0e85c1adbc140746ca16656f072e97f542a9a84d6",
+      "finished_at": "2026-08-02T14:01:13Z",
+      "input_sha256": "9f394ace7cccc1b5d565b6cb7ca0857c3e096aece7e0ff6d86987195feb518bc",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "078681cb9a210ebf522167d36b1ca5896f55f6267c4c9e3c8c9867d60540720e",
+      "request_sha256": "0608443d15a4c4e9c7b3e9e086eb0267e49a3f3f7f212dc8c88cc5f094d81fcb",
+      "started_at": "2026-08-02T14:01:13Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 591,
+      "stdout_sha256": "b0ec4e1bf50859d36d95e6f26ee8b23e66743aa18c225b5bf2592daa66dfff26"
+    },
+    {
+      "case_evidence_path": "cases/wine-bar-tonight-positive-routing.json",
+      "case_evidence_sha256": "9193465f2475d2d2efefaef1ea1dda993455a8e2acd6b9a3716d4096fdd5c0ae",
+      "case_id": "wine-bar-tonight-positive-routing",
+      "category": "positive_routing",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "16cc6c7f801e849cf70b84a60df15d03671c605c4a78390d5fa0c85ae2a3a8ce",
+      "finished_at": "2026-08-02T14:01:13Z",
+      "input_sha256": "56ab495628beb67fa2379b98bf19926583f9b5c2d3df9b39a56f061c3cb4befe",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+      "request_sha256": "d5643a821c8abd679fb4839c9c3df94b613cb764c4baefd4a742ac5e52568ef3",
+      "started_at": "2026-08-02T14:01:13Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 552,
+      "stdout_sha256": "7178095f8fe273ea53f8f21ddc0c0d7d158147cf5fe6e2f150a0bd42bda344e0"
+    },
+    {
+      "case_evidence_path": "cases/wine-bar-tonight-redaction.json",
+      "case_evidence_sha256": "647f7d738d04ca9231eae0cef455aa1556b64b5a6d446a8ace5f4701459fc435",
+      "case_id": "wine-bar-tonight-redaction",
+      "category": "redaction",
+      "evaluator_exit_code": 0,
+      "execution_status": "completed",
+      "expected_sha256": "d3cdded9bdc5f1e329899ec6f14fed31f9eec7179ff72566ced835174250c8c5",
+      "finished_at": "2026-08-02T14:01:13Z",
+      "input_sha256": "ba230f9ee64f4abd8a94ad487a5ca58c2de180da50c853526c2e57be0a765cf0",
+      "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+      "outcome": "pass",
+      "rationale_sha256": "a7154856e2637446a2498be24dfc22432fc7bf3f805057aa9c850d5ddceab2ab",
+      "request_sha256": "e1fcfc34c82eea61655650910212f3eb6b0b2e16062eab8c1ae4afb3bf7bb54d",
+      "started_at": "2026-08-02T14:01:13Z",
+      "stderr_byte_count": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_byte_count": 478,
+      "stdout_sha256": "af128f3b5c2580efdeaeb69cbd9fd6f0c0e551072b7ffd8d0faaa6b04fee953c"
+    }
+  ],
+  "diagnostics": [],
+  "evaluated_at": "2026-08-02T14:01:12Z",
+  "evaluation_run_id": "c2955f8ad574027298ea8581640758fdb097ac647e409f0fe522918597db7684",
+  "evidence_path": "proposals/thinkingoracle__luke-skills__117/70ec7ee71e31eac15c2b509a99605c1e86b69e4f83089222b5fe3803ddf2cec3/c2955f8ad574027298ea8581640758fdb097ac647e409f0fe522918597db7684",
+  "expires_at": "2026-08-09T14:01:12Z",
+  "freshness_seconds": 604800,
+  "human_review_status": "pending",
+  "intake_evidence": {
+    "evaluation": {
+      "byte_count": 1811,
+      "path": "evals/wine-bar-tonight.json",
+      "sha256": "87506f13bbbbd3f8155e6c15678e3850eefcb6f2011e17cacb1e9430b61a9a21"
+    },
+    "intake_result_sha256": "2bca4da47900f97c341131bce3bdbeeb65c235baeb110631bfef6394f3e099b9",
+    "proposal": {
+      "body_byte_count": 10413,
+      "body_sha256": "64a60748c1ef1b2a6afdc525bff2826b7f405fba563b94670f18234c78015e81",
+      "identity_sha256": "70ec7ee71e31eac15c2b509a99605c1e86b69e4f83089222b5fe3803ddf2cec3",
+      "number": 117,
+      "repository": "thinkingoracle/luke-skills",
+      "updated_at": "2026-08-02T00:35:39Z",
+      "url": "https://github.com/thinkingoracle/luke-skills/issues/117"
+    },
+    "skill": {
+      "byte_count": 3838,
+      "path": "skills/wine-bar-tonight/SKILL.md",
+      "sha256": "50420d4acbf96e4e867be19bb948812145a3ef249c94f2243505020e64ddc62b"
+    },
+    "validators": {
+      "current": {
+        "command": [
+          "python3",
+          "<current:b4be237af42d>/catalog/luke-skills/scripts/validate_catalog.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "5c8d9029d3f358c0b7cceca7129c4d7a9038ed225be392332ebfc4581ac39ab6",
+        "name": "current",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "b4be237af42d16cbfc0edb4522877e045bbda3cf",
+          "path": "catalog/luke-skills/scripts/validate_catalog.py",
+          "sha256": "b0d283df93d0608a71ae230ae91a11ecbe42d4f809e6c09a48a5f8afbe093fc5"
+        }
+      },
+      "governed": {
+        "command": [
+          "python3",
+          "<governed:019f84b2a096>/creator/create-luke-skill/scripts/validate.py",
+          "--catalog-root",
+          "<proposal>/submitted",
+          "--allow-draft-provenance"
+        ],
+        "exit_code": 0,
+        "identity_sha256": "469b2a34e4437db81854191796cee5afdc43c753af47ef265f49edfff1da0b13",
+        "name": "governed",
+        "stdout_sha256": "56fed50602554200de338d03ed9b1d133a7f56b6ca187eb55f89cc2f3d0bdf55",
+        "tool": {
+          "checkout_commit": "019f84b2a09623fba6d3ee35dc7187abeefddfbc",
+          "path": "creator/create-luke-skill/scripts/validate.py",
+          "release_tag": "luke-skills-v0.1.4",
+          "sha256": "6e9b492df5ccec1cf7de876ac4096c649894c15312ae155173788bd5752e2ec3"
+        }
+      }
+    }
+  },
+  "invalidation": {
+    "reasons": [
+      "proposal_snapshot_changed",
+      "skill_bytes_changed",
+      "evaluation_bytes_changed",
+      "validator_identity_changed",
+      "evaluation_policy_changed",
+      "evaluator_implementation_changed",
+      "runner_implementation_changed",
+      "freshness_expired"
+    ],
+    "returns_to": "human_review_pending"
+  },
+  "kind": "luke_shelf_evaluation",
+  "outcome_counts": {
+    "fail": 0,
+    "pass": 4
+  },
+  "policy": {
+    "allowed_outcomes": [
+      "fail",
+      "pass"
+    ],
+    "evaluator_protocol": "luke-shelf-evaluator-v1",
+    "freshness_seconds": 604800,
+    "max_stderr_bytes": 65536,
+    "max_stdout_bytes": 262144,
+    "path": "catalog/luke-skills-internal/evaluation_policy_v1.json",
+    "policy_id": "luke-shelf-evaluation",
+    "policy_version": "1.0.0",
+    "rubric_version": "routing-failure-redaction-v1",
+    "schema_version": 1,
+    "sha256": "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9",
+    "supported_categories": [
+      "failure",
+      "negative_routing",
+      "positive_routing",
+      "redaction"
+    ],
+    "timeout_seconds": 30
+  },
+  "release_descriptor_generated": false,
+  "schema_version": 1,
+  "state": "evaluation_recorded",
+  "tool": {
+    "evaluator": {
+      "byte_count": 3995,
+      "command": [
+        "python3",
+        "<local-evaluator>"
+      ],
+      "path": "<local-evaluator>",
+      "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+    },
+    "python_version": "3.14.5",
+    "runner": {
+      "path": "catalog/luke-skills-internal/scripts/record_evaluations.py",
+      "sha256": "f221f57195b22a8ae67914d32d81e02af37b9025fa0c12fcb8f30596bb1080fb",
+      "version": "1.1.0"
+    }
+  }
+}

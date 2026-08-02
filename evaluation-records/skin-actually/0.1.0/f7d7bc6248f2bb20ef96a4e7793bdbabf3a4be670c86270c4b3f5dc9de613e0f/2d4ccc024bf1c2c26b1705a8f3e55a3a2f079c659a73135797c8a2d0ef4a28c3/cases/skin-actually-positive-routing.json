@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:skin-actually.",
+    "expected_sha256": "f9e458cf4a837f65269a651bb6e605e992ce15aaeb8fe3c7a15793edb48588d2",
+    "id": "skin-actually-positive-routing",
+    "input": "Find me what is actually worth trying in the ingredients you are curious about.",
+    "input_sha256": "5ec1cacb127cd32ea252ad710f49b17603c558209bd0fecb3a9532227aeaf88c"
+  },
+  "evaluation_run_id": "2d4ccc024bf1c2c26b1705a8f3e55a3a2f079c659a73135797c8a2d0ef4a28c3",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:23Z",
+    "request_sha256": "f5035cfbcf0971d4caf27a49f0c4f830ab50815fbe5797664925d8d541a55bb5",
+    "started_at": "2026-08-02T14:01:23Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 549,
+    "stdout_sha256": "9b6f034973b85b75604e8c4962e4669d7b47dc9f29a4d8149420b4dcee091544"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

@@ -1,0 +1,39 @@
+{
+  "case": {
+    "category": "positive_routing",
+    "expected": "Select browser-skill:house-guests.",
+    "expected_sha256": "e86075961855f8efc90a3f20e3b44defcdf0430ef27aea7891e1370f9fd30a65",
+    "id": "house-guests-positive-routing",
+    "input": "Find me people are staying: what to sort before they land, and what to do with them.",
+    "input_sha256": "9a2a4978162232bd0f8b24083af7e83fbd6106697dba8b5f05dc4b84ed567bef"
+  },
+  "evaluation_run_id": "896d276e00802c40c7363ffeebea2499a8383d8a0db6bcf3f3b1dc140478034c",
+  "evaluator": {
+    "byte_count": 3995,
+    "path": "<local-evaluator>",
+    "sha256": "97a30a66c96c1288f4a23b4197c9de358de9f996c22ba8650c170cc7db33d854"
+  },
+  "evidence_refs": [
+    "skill_source:skill_id",
+    "fixture:expected",
+    "skill_source:when_to_use",
+    "skill_source:mutation_boundary"
+  ],
+  "execution": {
+    "evaluator_exit_code": 0,
+    "finished_at": "2026-08-02T14:01:18Z",
+    "request_sha256": "8b7ff568bffaf257cfce040740b66d054b7497601c33cd815fbe227f76f98238",
+    "started_at": "2026-08-02T14:01:18Z",
+    "stderr_byte_count": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_byte_count": 548,
+    "stdout_sha256": "61f1d734f39c888541fb575e47841497b6f77a7bfec5bffa5dd41e8254ef2877"
+  },
+  "kind": "luke_shelf_evaluation_case",
+  "observed_output": "The fixture aligns with the exact source identity and declared boundary for its category.",
+  "observed_output_sha256": "2a6aff5ba235261105d33eb71433f97ce1eaa74c30e26a72a0452e501ea26079",
+  "outcome": "pass",
+  "rationale": "the exact source declares a skill identity; the fixture selects the exact declared identity; the source declares bounded routing rules; the routed behavior remains read-only.",
+  "rationale_sha256": "83c0b1adc0da908361baaba77f43e513be7ed441d2752d834fb2991a82366dae",
+  "schema_version": 1
+}

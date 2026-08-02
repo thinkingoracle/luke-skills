@@ -9,6 +9,7 @@ import json
 import re
 import stat
 from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable, Iterable
 from urllib.error import HTTPError, URLError
@@ -51,7 +52,7 @@ REQUIRED_VALIDATION_CHECKS = (
     "routing_failure_redaction_cases",
     "source_security_profile_luke_skill_unicode_v1",
 )
-REVIEW_RECORD_FIELDS = frozenset(
+REVIEW_RECORD_V1_FIELDS = frozenset(
     {
         "artifact_path",
         "content_sha256",
@@ -61,6 +62,109 @@ REVIEW_RECORD_FIELDS = frozenset(
         "skill_id",
         "validation_checks",
         "version",
+    }
+)
+REVIEW_RECORD_V2_FIELDS = frozenset(
+    {
+        "artifact_path",
+        "canonical_record_path",
+        "checklist",
+        "checklist_policy",
+        "content_byte_count",
+        "content_sha256",
+        "decision_at",
+        "evaluation",
+        "proposal_snapshot",
+        "proposal_url",
+        "review_decision",
+        "review_record_identity_sha256",
+        "review_record_schema_version",
+        "review_tool",
+        "reviewer_github_login",
+        "skill_id",
+        "validation_checks",
+        "validators",
+        "version",
+    }
+)
+REVIEW_CHECKLIST_DIMENSIONS = (
+    "semantic_usefulness",
+    "factual_behavioral_accuracy",
+    "duplication_selection_rationale",
+    "routing_trigger_breadth",
+    "capability_boundary",
+    "host_source_boundary",
+    "read_only_mutation_boundary",
+    "authentication_boundary",
+    "data_access_boundary",
+    "provenance",
+    "right_and_licence_to_publish",
+    "source_quality_terms_basis",
+    "privacy_redaction",
+    "safety_abuse_considerations",
+    "maintenance_owner",
+    "freshness_expiry",
+    "re_review_triggers",
+)
+REVIEW_CHECKLIST_POLICY_ID = "luke-shelf-human-review"
+REVIEW_CHECKLIST_POLICY_VERSION = "1.0.0"
+REVIEW_CHECKLIST_POLICY_SHA256 = (
+    "0b3a721cb18bf26c1dfaad137e17e05ce5e738b436002258c820035e775faf1f"
+)
+EVALUATION_POLICY_V1_SHA256 = (
+    "e8b26b0a729129caf73a2c1b74c61e8a0fbae3082bf77370bdfe4d98cc076aa9"
+)
+EVALUATION_POLICY_V1_FRESHNESS_SECONDS = 604800
+EVALUATION_RESULT_V1_FIELDS = frozenset(
+    {
+        "acceptance_created",
+        "authority_created",
+        "case_results",
+        "diagnostics",
+        "evaluated_at",
+        "evaluation_run_id",
+        "evidence_path",
+        "expires_at",
+        "freshness_seconds",
+        "human_review_status",
+        "intake_evidence",
+        "invalidation",
+        "kind",
+        "outcome_counts",
+        "policy",
+        "release_descriptor_generated",
+        "schema_version",
+        "state",
+        "tool",
+    }
+)
+EVALUATION_CASE_V1_FIELDS = frozenset(
+    {
+        "case",
+        "evaluation_run_id",
+        "evaluator",
+        "evidence_refs",
+        "execution",
+        "kind",
+        "observed_output",
+        "observed_output_sha256",
+        "outcome",
+        "rationale",
+        "rationale_sha256",
+        "schema_version",
+    }
+)
+PORTABLE_EVALUATOR_PATH = "<local-evaluator>"
+PORTABLE_EVALUATION_POLICY_PATH = (
+    "catalog/luke-skills-internal/evaluation_policy_v1.json"
+)
+LEGACY_V1_REVIEW_RECORDS = frozenset(
+    {
+        (
+            "browser-skill:public-release-notes-read",
+            "0.1.0",
+            "ac683e64883a288929c59fabd8f29136154c0e4ff3ee47ab6f60727a350af10c",
+        )
     }
 )
 REVIEW_DECISION = "accepted_candidate"
@@ -102,6 +206,10 @@ SECRET_PATTERNS = (
         r"(?im)^\s*(?:api[_-]?key|access[_-]?token|secret|password)\s*:\s*"
         r"(?!<|\[|\$\{|\{\{)(?=\S).{8,}$"
     ),
+)
+PRIVATE_PATH_PATTERNS = (
+    re.compile(r"(?:^|[\s\"'])/(?:Users|home|tmp|var/folders|private/(?:tmp|var))/[^\s\"']+"),
+    re.compile(r"\b[A-Za-z]:\\Users\\[^\s\"']+"),
 )
 URL_PATTERN = re.compile(r"https?://[^\s<>()\"']+")
 
@@ -938,11 +1046,657 @@ def _validate_evaluation(
         )
 
 
+def _review_record_identity(record: dict[str, Any]) -> str:
+    identity = {
+        key: value
+        for key, value in record.items()
+        if key != "review_record_identity_sha256"
+    }
+    content = (json.dumps(identity, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    return hashlib.sha256(content).hexdigest()
+
+
+def _parse_review_utc(value: object) -> datetime | None:
+    if not isinstance(value, str) or not re.fullmatch(
+        r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z", value
+    ):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError:
+        return None
+    if parsed.utcoffset() != timezone.utc.utcoffset(parsed):
+        return None
+    return parsed
+
+
+def _canonical_json_sha256(value: object) -> str:
+    content = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    return hashlib.sha256(content).hexdigest()
+
+
+def _read_bound_json(path: Path, *, label: str) -> tuple[dict[str, Any], bytes]:
+    if path.is_symlink() or not path.is_file() or _is_executable(path):
+        raise ValueError(f"{label} must be a regular non-executable file")
+    content = path.read_bytes()
+    if len(content) > 8 * 1024 * 1024:
+        raise ValueError(f"{label} exceeds the evidence size limit")
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f"{label} contains duplicate key {key!r}")
+            result[key] = value
+        return result
+
+    try:
+        raw_text = content.decode("utf-8", errors="strict")
+        parsed = json.loads(
+            raw_text,
+            object_pairs_hook=unique_object,
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise ValueError(f"{label} is not valid UTF-8 JSON: {error}") from error
+    if not isinstance(parsed, dict):
+        raise ValueError(f"{label} must be a JSON object")
+    sensitive_findings: list[Diagnostic] = []
+    _validate_urls_and_secrets(raw_text, label, sensitive_findings)
+    if sensitive_findings:
+        raise ValueError(
+            f"{label} failed public evidence safety checks: "
+            f"{sensitive_findings[0].code}"
+        )
+    if any(pattern.search(raw_text) is not None for pattern in PRIVATE_PATH_PATTERNS):
+        raise ValueError(f"{label} contains a private workstation path")
+    return parsed, content
+
+
+def _validate_bound_evaluation_result(
+    catalog_root: Path,
+    *,
+    evidence: dict[str, Any],
+    slug: str,
+    version: str,
+    content_sha256: str,
+    content_byte_count: int,
+    evaluation: dict[str, Any],
+    evaluation_bytes: bytes,
+    proposal: object,
+    validators: object,
+) -> dict[str, Any]:
+    run_id = evidence.get("evaluation_run_id")
+    expected_result_path = (
+        f"evaluation-records/{slug}/{version}/{content_sha256}/{run_id}/result.json"
+    )
+    if evidence.get("result_path") != expected_result_path:
+        raise ValueError("evaluation result path is not canonical")
+    result_path = catalog_root / Path(*expected_result_path.split("/"))
+    result, result_bytes = _read_bound_json(
+        result_path, label="bound evaluation result"
+    )
+    if hashlib.sha256(result_bytes).hexdigest() != evidence.get(
+        "evaluation_result_sha256"
+    ):
+        raise ValueError("evaluation result bytes do not match the review record")
+    if (
+        set(result) != EVALUATION_RESULT_V1_FIELDS
+        or result.get("kind") != "luke_shelf_evaluation"
+        or result.get("schema_version") != 1
+        or result.get("state") != "evaluation_recorded"
+        or result.get("diagnostics") != []
+        or result.get("acceptance_created") is not False
+        or result.get("authority_created") is not False
+        or result.get("human_review_status") != "pending"
+        or result.get("release_descriptor_generated") is not False
+    ):
+        raise ValueError("bound evaluation result schema or authority is invalid")
+
+    evaluated_at = _parse_review_utc(result.get("evaluated_at"))
+    expires_at = _parse_review_utc(result.get("expires_at"))
+    if (
+        evaluated_at is None
+        or expires_at is None
+        or result.get("freshness_seconds")
+        != EVALUATION_POLICY_V1_FRESHNESS_SECONDS
+        or expires_at
+        != evaluated_at + timedelta(seconds=EVALUATION_POLICY_V1_FRESHNESS_SECONDS)
+    ):
+        raise ValueError("bound evaluation freshness window is invalid")
+
+    intake = result.get("intake_evidence")
+    if not isinstance(intake, dict) or set(intake) != {
+        "evaluation",
+        "intake_result_sha256",
+        "proposal",
+        "skill",
+        "validators",
+    }:
+        raise ValueError("bound evaluation intake evidence is incomplete")
+    intake_result_sha = intake.get("intake_result_sha256")
+    if (
+        not isinstance(intake_result_sha, str)
+        or SHA256_PATTERN.fullmatch(intake_result_sha) is None
+        or intake.get("evaluation")
+        != {
+            "byte_count": len(evaluation_bytes),
+            "path": f"evals/{slug}.json",
+            "sha256": hashlib.sha256(evaluation_bytes).hexdigest(),
+        }
+        or intake.get("skill")
+        != {
+            "byte_count": content_byte_count,
+            "path": f"skills/{slug}/SKILL.md",
+            "sha256": content_sha256,
+        }
+        or intake.get("proposal") != proposal
+        or intake.get("validators") != validators
+    ):
+        raise ValueError("bound evaluation intake identities conflict with the catalog")
+
+    policy = result.get("policy")
+    expected_policy = {
+        "allowed_outcomes": ["fail", "pass"],
+        "evaluator_protocol": "luke-shelf-evaluator-v1",
+        "freshness_seconds": EVALUATION_POLICY_V1_FRESHNESS_SECONDS,
+        "max_stderr_bytes": 65536,
+        "max_stdout_bytes": 262144,
+        "path": PORTABLE_EVALUATION_POLICY_PATH,
+        "policy_id": "luke-shelf-evaluation",
+        "policy_version": "1.0.0",
+        "rubric_version": "routing-failure-redaction-v1",
+        "schema_version": 1,
+        "sha256": EVALUATION_POLICY_V1_SHA256,
+        "supported_categories": [
+            "failure",
+            "negative_routing",
+            "positive_routing",
+            "redaction",
+        ],
+        "timeout_seconds": 30,
+    }
+    if policy != expected_policy:
+        raise ValueError("bound evaluation policy identity is invalid")
+
+    tool = result.get("tool")
+    evaluator = tool.get("evaluator") if isinstance(tool, dict) else None
+    runner = tool.get("runner") if isinstance(tool, dict) else None
+    if (
+        not isinstance(tool, dict)
+        or set(tool) != {"evaluator", "python_version", "runner"}
+        or not isinstance(tool.get("python_version"), str)
+        or not isinstance(evaluator, dict)
+        or set(evaluator) != {"byte_count", "command", "path", "sha256"}
+        or not isinstance(evaluator.get("byte_count"), int)
+        or isinstance(evaluator.get("byte_count"), bool)
+        or evaluator.get("byte_count", 0) < 1
+        or evaluator.get("path") != PORTABLE_EVALUATOR_PATH
+        or evaluator.get("command")
+        not in (["python3", PORTABLE_EVALUATOR_PATH], [PORTABLE_EVALUATOR_PATH])
+        or evaluator.get("sha256") != evidence.get("evaluator_sha256")
+        or not isinstance(runner, dict)
+        or runner.get("path")
+        != "catalog/luke-skills-internal/scripts/record_evaluations.py"
+        or runner.get("version") != "1.1.0"
+        or runner.get("sha256") != evidence.get("runner_sha256")
+    ):
+        raise ValueError("bound evaluation implementation identity is invalid")
+
+    expected_run_id = _canonical_json_sha256(
+        {
+            "evaluated_at": result.get("evaluated_at"),
+            "evaluator_sha256": evaluator.get("sha256"),
+            "intake_result_sha256": intake_result_sha,
+            "policy_sha256": policy.get("sha256"),
+            "script_sha256": runner.get("sha256"),
+        }
+    )
+    if result.get("evaluation_run_id") != expected_run_id or run_id != expected_run_id:
+        raise ValueError("bound evaluation run identity is invalid")
+
+    fixture_cases = evaluation.get("cases")
+    if not isinstance(fixture_cases, list):
+        raise ValueError("catalog evaluation cases are unavailable")
+    expected_cases = {
+        item.get("id"): item
+        for item in fixture_cases
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    case_results = result.get("case_results")
+    if not isinstance(case_results, list) or len(case_results) != len(expected_cases):
+        raise ValueError("bound evaluation case result set is incomplete")
+    case_hashes: list[str] = []
+    seen_case_ids: set[str] = set()
+    outcome_counts = {"fail": 0, "pass": 0}
+    for summary in case_results:
+        if not isinstance(summary, dict):
+            raise ValueError("bound evaluation case summary is invalid")
+        case_id = summary.get("case_id")
+        case = expected_cases.get(case_id)
+        relative = summary.get("case_evidence_path")
+        expected_hash = summary.get("case_evidence_sha256")
+        if (
+            not isinstance(case_id, str)
+            or case_id in seen_case_ids
+            or not isinstance(case, dict)
+            or summary.get("category") != case.get("category")
+            or summary.get("execution_status") != "completed"
+            or not isinstance(relative, str)
+            or re.fullmatch(r"cases/[a-z0-9][a-z0-9._-]{0,127}\.json", relative)
+            is None
+            or relative != f"cases/{case_id}.json"
+            or not isinstance(expected_hash, str)
+            or SHA256_PATTERN.fullmatch(expected_hash) is None
+        ):
+            raise ValueError("bound evaluation case summary conflicts with the fixture")
+        case_path = result_path.parent / Path(*relative.split("/"))
+        case_evidence, case_bytes = _read_bound_json(
+            case_path, label=f"bound evaluation case {case_id}"
+        )
+        evaluator_identity = case_evidence.get("evaluator")
+        outcome = case_evidence.get("outcome")
+        expected_case_record = {
+            **case,
+            "expected_sha256": hashlib.sha256(
+                str(case.get("expected", "")).encode("utf-8")
+            ).hexdigest(),
+            "input_sha256": hashlib.sha256(
+                str(case.get("input", "")).encode("utf-8")
+            ).hexdigest(),
+        }
+        observed_output = case_evidence.get("observed_output")
+        rationale = case_evidence.get("rationale")
+        if (
+            hashlib.sha256(case_bytes).hexdigest() != expected_hash
+            or set(case_evidence) != EVALUATION_CASE_V1_FIELDS
+            or case_evidence.get("kind") != "luke_shelf_evaluation_case"
+            or case_evidence.get("schema_version") != 1
+            or case_evidence.get("evaluation_run_id") != expected_run_id
+            or case_evidence.get("case") != expected_case_record
+            or not isinstance(evaluator_identity, dict)
+            or evaluator_identity
+            != {
+                "byte_count": evaluator["byte_count"],
+                "path": PORTABLE_EVALUATOR_PATH,
+                "sha256": evaluator["sha256"],
+            }
+            or outcome not in {"fail", "pass"}
+            or summary.get("outcome") != outcome
+            or not isinstance(observed_output, str)
+            or not observed_output.strip()
+            or not isinstance(rationale, str)
+            or not rationale.strip()
+            or not isinstance(case_evidence.get("evidence_refs"), list)
+            or not case_evidence.get("evidence_refs")
+            or hashlib.sha256(
+                observed_output.encode("utf-8")
+            ).hexdigest()
+            != case_evidence.get("observed_output_sha256")
+            or hashlib.sha256(
+                rationale.encode("utf-8")
+            ).hexdigest()
+            != case_evidence.get("rationale_sha256")
+        ):
+            raise ValueError("bound evaluation case evidence identity is invalid")
+        case_hashes.append(expected_hash)
+        seen_case_ids.add(case_id)
+        outcome_counts[outcome] += 1
+    if seen_case_ids != set(expected_cases) or result.get("outcome_counts") != outcome_counts:
+        raise ValueError("bound evaluation case evidence is incomplete")
+    if case_hashes != evidence.get("case_evidence_sha256"):
+        raise ValueError("review record case hashes differ from bound evaluation evidence")
+    return result
+
+
+def _validate_review_record_v2(
+    record: dict[str, Any],
+    *,
+    catalog_root: Path,
+    slug: str,
+    version: str,
+    content_sha256: str,
+    content_byte_count: int,
+    evaluation: dict[str, Any],
+    evaluation_bytes: bytes,
+    relative_path: str,
+    diagnostics: list[Diagnostic],
+) -> None:
+    expected = {
+        "artifact_path": f"skills/{slug}/SKILL.md",
+        "canonical_record_path": (
+            f"review-records/{slug}/{version}/{content_sha256}.md"
+        ),
+        "content_byte_count": content_byte_count,
+        "content_sha256": content_sha256,
+        "proposal_url": evaluation.get("proposal_url"),
+        "review_decision": evaluation.get("review_decision"),
+        "review_record_schema_version": 2,
+        "skill_id": f"browser-skill:{slug}",
+        "validation_checks": evaluation.get("validation_checks"),
+        "version": version,
+    }
+    for field_name, expected_value in expected.items():
+        if record.get(field_name) != expected_value:
+            diagnostics.append(
+                Diagnostic(
+                    "CATALOG_AUTHORITY_MISMATCH",
+                    relative_path,
+                    (
+                        f"{field_name} conflicts with exact source/evaluation "
+                        f"authority; expected {expected_value!r}"
+                    ),
+                )
+            )
+
+    policy = record.get("checklist_policy")
+    if policy != {
+        "policy_id": REVIEW_CHECKLIST_POLICY_ID,
+        "policy_version": REVIEW_CHECKLIST_POLICY_VERSION,
+        "sha256": REVIEW_CHECKLIST_POLICY_SHA256,
+    }:
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_CHECKLIST_POLICY_INVALID",
+                relative_path,
+                "review record does not bind the governed checklist policy",
+            )
+        )
+
+    checklist = record.get("checklist")
+    if not isinstance(checklist, dict) or set(checklist) != set(
+        REVIEW_CHECKLIST_DIMENSIONS
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_CHECKLIST_INVALID",
+                relative_path,
+                "review checklist dimensions are missing or unknown",
+            )
+        )
+    else:
+        for dimension in REVIEW_CHECKLIST_DIMENSIONS:
+            row = checklist.get(dimension)
+            if (
+                not isinstance(row, dict)
+                or set(row) != {"outcome", "rationale"}
+                # Mirrors the accepted-candidate rule enforced by the producer.
+                or row.get("outcome") not in {"pass", "not_applicable"}
+                or not isinstance(row.get("rationale"), str)
+                or not row["rationale"].strip()
+            ):
+                diagnostics.append(
+                    Diagnostic(
+                        "CATALOG_REVIEW_CHECKLIST_INVALID",
+                        relative_path,
+                        f"accepted checklist row {dimension} is incomplete",
+                    )
+                )
+
+    proposal = record.get("proposal_snapshot")
+    proposal_fields = {
+        "body_byte_count",
+        "body_sha256",
+        "identity_sha256",
+        "number",
+        "repository",
+        "updated_at",
+        "url",
+    }
+    if (
+        not isinstance(proposal, dict)
+        or set(proposal) != proposal_fields
+        or proposal.get("url") != evaluation.get("proposal_url")
+        or proposal.get("repository") != "thinkingoracle/luke-skills"
+        or proposal.get("url")
+        != f"https://github.com/thinkingoracle/luke-skills/issues/{proposal.get('number')}"
+        or not isinstance(proposal.get("body_byte_count"), int)
+        or isinstance(proposal.get("body_byte_count"), bool)
+        or proposal.get("body_byte_count", 0) < 1
+        or not isinstance(proposal.get("number"), int)
+        or isinstance(proposal.get("number"), bool)
+        or proposal.get("number", 0) < 1
+        or not isinstance(proposal.get("body_sha256"), str)
+        or SHA256_PATTERN.fullmatch(proposal.get("body_sha256", "")) is None
+        or not isinstance(proposal.get("identity_sha256"), str)
+        or SHA256_PATTERN.fullmatch(proposal.get("identity_sha256", "")) is None
+        or _parse_review_utc(proposal.get("updated_at")) is None
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_PROPOSAL_IDENTITY_INVALID",
+                relative_path,
+                "proposal snapshot identity is incomplete or conflicting",
+            )
+        )
+
+    evidence = record.get("evaluation")
+    evidence_fields = {
+        "byte_count",
+        "case_evidence_sha256",
+        "evaluated_at",
+        "evaluation_result_sha256",
+        "evaluation_run_id",
+        "evaluator_sha256",
+        "expires_at",
+        "path",
+        "policy_id",
+        "policy_sha256",
+        "policy_version",
+        "rubric_version",
+        "runner_sha256",
+        "result_path",
+        "sha256",
+    }
+    evaluation_valid = isinstance(evidence, dict) and set(evidence) == evidence_fields
+    bound_evaluation: dict[str, Any] | None = None
+    evaluation_failure_detail = (
+        "evaluation evidence is incomplete or conflicts with bound run bytes"
+    )
+    if evaluation_valid:
+        case_hashes = evidence.get("case_evidence_sha256")
+        evaluated_at = _parse_review_utc(evidence.get("evaluated_at"))
+        expires_at = _parse_review_utc(evidence.get("expires_at"))
+        evaluation_valid = (
+            evidence.get("path") == f"evals/{slug}.json"
+            and evidence.get("byte_count") == len(evaluation_bytes)
+            and evidence.get("sha256")
+            == hashlib.sha256(evaluation_bytes).hexdigest()
+            and evidence.get("policy_id") == "luke-shelf-evaluation"
+            and evidence.get("policy_version") == "1.0.0"
+            and evidence.get("rubric_version") == "routing-failure-redaction-v1"
+            and evidence.get("policy_sha256") == EVALUATION_POLICY_V1_SHA256
+            and isinstance(case_hashes, list)
+            and len(case_hashes) == 4
+            and len(set(case_hashes)) == 4
+            and all(
+                isinstance(item, str) and SHA256_PATTERN.fullmatch(item)
+                for item in case_hashes
+            )
+            and all(
+                isinstance(evidence.get(field), str)
+                and SHA256_PATTERN.fullmatch(evidence.get(field, ""))
+                for field in (
+                    "evaluation_result_sha256",
+                    "evaluation_run_id",
+                    "evaluator_sha256",
+                    "runner_sha256",
+                )
+            )
+            and evaluated_at is not None
+            and expires_at is not None
+            and evaluated_at < expires_at
+        )
+    if evaluation_valid:
+        try:
+            bound_evaluation = _validate_bound_evaluation_result(
+                catalog_root,
+                evidence=evidence,
+                slug=slug,
+                version=version,
+                content_sha256=content_sha256,
+                content_byte_count=content_byte_count,
+                evaluation=evaluation,
+                evaluation_bytes=evaluation_bytes,
+                proposal=record.get("proposal_snapshot"),
+                validators=record.get("validators"),
+            )
+            bound_tool = bound_evaluation["tool"]
+            evaluation_valid = (
+                evidence.get("evaluated_at") == bound_evaluation.get("evaluated_at")
+                and evidence.get("expires_at") == bound_evaluation.get("expires_at")
+                and evidence.get("evaluation_run_id")
+                == bound_evaluation.get("evaluation_run_id")
+                and evidence.get("evaluator_sha256")
+                == bound_tool["evaluator"]["sha256"]
+                and evidence.get("runner_sha256")
+                == bound_tool["runner"]["sha256"]
+            )
+        except (KeyError, OSError, ValueError) as error:
+            evaluation_valid = False
+            evaluation_failure_detail = str(error)
+    if not evaluation_valid:
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_EVALUATION_IDENTITY_INVALID",
+                relative_path,
+                evaluation_failure_detail,
+            )
+        )
+
+    decision_at = _parse_review_utc(record.get("decision_at"))
+    reviewer = record.get("reviewer_github_login")
+    bound_evaluated_at = (
+        _parse_review_utc(bound_evaluation.get("evaluated_at"))
+        if isinstance(bound_evaluation, dict)
+        else None
+    )
+    bound_expires_at = (
+        _parse_review_utc(bound_evaluation.get("expires_at"))
+        if isinstance(bound_evaluation, dict)
+        else None
+    )
+    if (
+        decision_at is None
+        or not isinstance(reviewer, str)
+        or re.fullmatch(
+            r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?", reviewer
+        )
+        is None
+        or bound_evaluated_at is None
+        or bound_expires_at is None
+        or decision_at < bound_evaluated_at
+        or decision_at >= bound_expires_at
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_HUMAN_AUTHORITY_INVALID",
+                relative_path,
+                "reviewer identity or fresh decision time is invalid",
+            )
+        )
+
+    validators = record.get("validators")
+    validators_valid = isinstance(validators, dict) and set(validators) == {
+        "current",
+        "governed",
+    }
+    if validators_valid:
+        for name in ("current", "governed"):
+            validator = validators.get(name)
+            tool = validator.get("tool") if isinstance(validator, dict) else None
+            if (
+                not isinstance(validator, dict)
+                or set(validator)
+                != {
+                    "command",
+                    "exit_code",
+                    "identity_sha256",
+                    "name",
+                    "stdout_sha256",
+                    "tool",
+                }
+                or validator.get("name") != name
+                or validator.get("exit_code") != 0
+                or not isinstance(validator.get("command"), list)
+                or not validator.get("command")
+                or not all(
+                    isinstance(item, str) and item
+                    for item in validator.get("command", [])
+                )
+                or not isinstance(validator.get("identity_sha256"), str)
+                or SHA256_PATTERN.fullmatch(validator.get("identity_sha256", ""))
+                is None
+                or not isinstance(validator.get("stdout_sha256"), str)
+                or SHA256_PATTERN.fullmatch(validator.get("stdout_sha256", ""))
+                is None
+                or not isinstance(tool, dict)
+                or not isinstance(tool.get("checkout_commit"), str)
+                or COMMIT_PATTERN.fullmatch(tool.get("checkout_commit", "")) is None
+                or not isinstance(tool.get("sha256"), str)
+                or SHA256_PATTERN.fullmatch(tool.get("sha256", "")) is None
+            ):
+                validators_valid = False
+                continue
+            identity = {
+                "command": validator["command"],
+                "exit_code": 0,
+                "name": name,
+                "stdout_sha256": validator["stdout_sha256"],
+                "tool": tool,
+            }
+            if validator["identity_sha256"] != hashlib.sha256(
+                (json.dumps(identity, indent=2, sort_keys=True) + "\n").encode(
+                    "utf-8"
+                )
+            ).hexdigest():
+                validators_valid = False
+    if not validators_valid:
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_VALIDATOR_IDENTITY_INVALID",
+                relative_path,
+                "governed/current validator identities are incomplete",
+            )
+        )
+
+    recorded_identity = record.get("review_record_identity_sha256")
+    if (
+        not isinstance(recorded_identity, str)
+        or recorded_identity != _review_record_identity(record)
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_RECORD_IDENTITY_INVALID",
+                relative_path,
+                "review-record identity does not match machine front matter",
+            )
+        )
+
+    review_tool = record.get("review_tool")
+    if (
+        not isinstance(review_tool, dict)
+        or set(review_tool) != {"path", "sha256", "version"}
+        or review_tool.get("path")
+        != "catalog/luke-skills-internal/scripts/prepare_review_record.py"
+        or review_tool.get("version") != "1.1.0"
+        or not isinstance(review_tool.get("sha256"), str)
+        or SHA256_PATTERN.fullmatch(review_tool.get("sha256", "")) is None
+    ):
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_TOOL_IDENTITY_INVALID",
+                relative_path,
+                "review tooling identity is incomplete",
+            )
+        )
+
+
 def _load_review_record(
     catalog_root: Path,
     *,
     slug: str,
     content_sha256: str,
+    content_byte_count: int,
     evaluation: dict[str, Any],
     allow_draft_provenance: bool,
     diagnostics: list[Diagnostic],
@@ -996,8 +1750,22 @@ def _load_review_record(
         )
         return path, None
 
-    unknown_fields = sorted(record.keys() - REVIEW_RECORD_FIELDS)
-    missing_fields = sorted(REVIEW_RECORD_FIELDS - record.keys())
+    schema_version = record.get("review_record_schema_version")
+    if schema_version == 1:
+        allowed_fields = REVIEW_RECORD_V1_FIELDS
+    elif schema_version == 2:
+        allowed_fields = REVIEW_RECORD_V2_FIELDS
+    else:
+        allowed_fields = frozenset()
+        diagnostics.append(
+            Diagnostic(
+                "CATALOG_REVIEW_RECORD_INVALID",
+                relative_path,
+                "review_record_schema_version must be integer 1 or 2",
+            )
+        )
+    unknown_fields = sorted(record.keys() - allowed_fields)
+    missing_fields = sorted(allowed_fields - record.keys())
     if unknown_fields or missing_fields:
         details: list[str] = []
         if missing_fields:
@@ -1012,18 +1780,20 @@ def _load_review_record(
             )
         )
 
-    expected = {
-        "artifact_path": f"skills/{slug}/SKILL.md",
-        "content_sha256": content_sha256,
-        "proposal_url": evaluation.get("proposal_url"),
-        "review_decision": evaluation.get("review_decision"),
-        "review_record_schema_version": 1,
-        "skill_id": f"browser-skill:{slug}",
-        "validation_checks": evaluation.get("validation_checks"),
-        "version": version,
-    }
-    for field_name, expected_value in expected.items():
-        if record.get(field_name) != expected_value:
+    if schema_version == 1:
+        expected = {
+            "artifact_path": f"skills/{slug}/SKILL.md",
+            "content_sha256": content_sha256,
+            "proposal_url": evaluation.get("proposal_url"),
+            "review_decision": evaluation.get("review_decision"),
+            "review_record_schema_version": 1,
+            "skill_id": f"browser-skill:{slug}",
+            "validation_checks": evaluation.get("validation_checks"),
+            "version": version,
+        }
+        for field_name, expected_value in expected.items():
+            if record.get(field_name) == expected_value:
+                continue
             diagnostics.append(
                 Diagnostic(
                     "CATALOG_AUTHORITY_MISMATCH",
@@ -1034,6 +1804,49 @@ def _load_review_record(
                     ),
                 )
             )
+        legacy_identity = (
+            record.get("skill_id"),
+            record.get("version"),
+            record.get("content_sha256"),
+        )
+        legacy_allowed = (
+            legacy_identity in LEGACY_V1_REVIEW_RECORDS
+            or evaluation.get("catalog_role") == "bundled_mirror"
+            or evaluation.get("proposal_url") is None
+        )
+        if not legacy_allowed:
+            diagnostics.append(
+                Diagnostic(
+                    "CATALOG_REVIEW_RECORD_LEGACY_FORBIDDEN",
+                    relative_path,
+                    "schema-v1 review records are limited to the historical pilot",
+                )
+            )
+    elif schema_version == 2:
+        evaluation_path = catalog_root / "evals" / f"{slug}.json"
+        try:
+            evaluation_bytes = evaluation_path.read_bytes()
+        except OSError as error:
+            diagnostics.append(
+                Diagnostic(
+                    "CATALOG_REVIEW_EVALUATION_IDENTITY_INVALID",
+                    relative_path,
+                    f"evaluation fixture is unreadable: {error}",
+                )
+            )
+            evaluation_bytes = b""
+        _validate_review_record_v2(
+            record,
+            catalog_root=catalog_root,
+            slug=slug,
+            version=version,
+            content_sha256=content_sha256,
+            content_byte_count=content_byte_count,
+            evaluation=evaluation,
+            evaluation_bytes=evaluation_bytes,
+            relative_path=relative_path,
+            diagnostics=diagnostics,
+        )
 
     authority_label = re.compile(
         (
@@ -1553,6 +2366,7 @@ def validate_catalog(
                 root,
                 slug=slug,
                 content_sha256=content_sha256,
+                content_byte_count=len(source_bytes),
                 evaluation=evaluation,
                 allow_draft_provenance=allow_draft_provenance,
                 diagnostics=diagnostics,
